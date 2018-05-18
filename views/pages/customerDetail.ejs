@@ -1,0 +1,114 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+
+  <body>
+    <div class="container">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+            <div class="navbar-header">
+            <a class="navbar-brand" href="#">WebSiteName</a>
+            </div>
+            <ul class="nav navbar-nav">
+            <li ><a href="/">New Customer</a></li>
+            <li class="active"><a href="/loan">New Loan</a></li>
+            <li><a href="/reports">Reports</a></li>
+            </ul>
+            </div>
+        </nav>
+
+    <ul>
+            <h2>Customer Details</h2>
+
+            <table class="table">
+                    <tbody>
+                        <tr>
+                        <td>Membr id</td>
+                        <td><%= details.idCustomer %></td>
+                        </tr>
+
+                        <tr>
+                        <td>Name</td>
+                        <td><%= details.name %></td>
+                        </tr>
+
+                        <tr>
+                        <td>Father Name</td>
+                        <td><%= details.fatheName %></td>
+                        </tr>
+
+                        <tr>
+                        <td>DOB</td>
+                        <td><%= details.dob %></td>
+                        </tr>
+
+
+                        <tr>
+                        <td>Gender</td>
+                        <td><%= details.gender %></td>
+                        </tr>
+
+
+                        <tr>
+                        <td>Father Name</td>
+                        <td><%= details.fatheName %></td>
+                        </tr>
+
+                        <tr>
+                        <td>mobileNumber</td>
+                        <td><%= details.mobileNumber %></td>
+                        </tr>
+                        <tr>
+                        <td>land line
+                        </td>
+                        <td><%= details.landline %></td>
+                        </tr>
+
+                        <tr>
+                        <td>id idProof</td>
+                        <td><%= details.idProof %></td>
+                        </tr>
+
+                        <tr>
+                        <td>State</td>
+                        <td><%= details.state%></td>
+                        </tr>
+                        <tr>
+
+                        <td>city</td>
+                        <td><%= details.city%></td>
+                        </tr>
+
+                        <tr>
+                        <td>pincode%</td>
+                        <td><%= details.pincode%></td>
+                        </tr>
+
+
+                        <tr>
+                        <td>Reference</td>
+                        <td><%= details.reference%></td>
+                        </tr>
+
+                        <tr>
+                        <td>Ref Relationship</td>
+                        <td><%= details.refRelationship%></td>
+                        </tr>
+                        
+
+                    </tbody>
+                  </table>
+            
+
+    </ul>
+
+    </body>
+</html>

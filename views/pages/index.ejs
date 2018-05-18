@@ -1,0 +1,122 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+
+  <body>
+<div class="container">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+            <a class="navbar-brand" href="#">WebSiteName</a>
+            </div>
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="/">New Customer</a></li>
+            <li><a href="/loan">New Loan</a></li>
+            <li><a href="/reports">Reports</a></li>
+            </ul>
+        </div>
+    </nav>
+
+<!-- <img src="https://www.w3schools.com/bootstrap4/cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="280" height="236">  -->
+<!-- <button type="button" class="btn btn-primary">Primary</button> -->
+    
+
+    <!-- <ul class="list-group col-md-2">
+        <a href="#" class="list-group-item list-group-item-action active">New Customer</a>
+        <a href="#" class="list-group-item list-group-item-action">New Loan</a>
+        <a href="#" class="list-group-item list-group-item-a ction">Reports</a>
+    </ul> -->
+
+    <form action="/customer" method="POST">
+    <div class="container col-md-6">
+    <div class="form-group">
+    <label for="usr">Member Id:</label>
+    <input type="text" class="form-control" name="idCustomer">
+    </div>   
+
+    <div class="form-group">
+    <label for="usr">Name:</label>
+    <input type="text" class="form-control" name="name">
+    </div>
+
+    <div class="form-group">
+    <label>FatherName:</label>
+    <input type="text" class="form-control" name = "fatherName">
+    </div>
+
+    <div class="form-group">
+    <label >DOB:</label>
+    <input type="text" class="form-control" name="dob">
+    </div>
+
+    <input class="form-group" type="radio" name="gender" value="male" checked> Male
+    <input class="form-group" type="radio" name="gender" value="female"> Female
+
+    <div class="form-group">
+    <label>Occupation:</label>
+    <input type="text" class="form-control" name="occupation">
+    </div>     
+
+    <div class="form-group">
+    <label>Mobile Number:</label>
+    <input type="text" class="form-control" name="mobilenumber">
+    </div>
+
+    <div class="form-group">
+    <label>Land Line:</label>
+    <input type="text" class="form-control" name="landline">
+    </div>
+
+    <div class="form-group">
+    <label >id Proof:</label>
+    <input type="text" class="form-control" name="idProof">
+    </div>
+
+    <div class="form-group">
+    <label>id Number:</label>
+    <input type="text" class="form-control" name="idNumber">
+    </div>  
+
+    <div class="form-group">
+    <label>address:</label>
+    <input type="text" class="form-control" name="address">
+    </div>
+
+    <div class="form-group">
+    <label>State:</label>
+    <input type="text" class="form-control" name="state">
+    </div>
+
+    <div class="form-group">
+    <label>city:</label>
+    <input type="text" class="form-control" name="city">
+    </div>
+
+    <div class="form-group">
+    <label >pincode:</label>
+    <input type="text" class="form-control" name="pincode">
+    </div>
+
+    <div class="form-group">
+    <label>Reference:</label>
+    <input type="text" class="form-control" name="Reference">
+    </div>
+
+    <div class="form-group">
+    <label >Reference Relationship:</label>
+    <input type="text" class="form-control" name="refRelationship">
+    </div>
+    <input class="btn btn-primary btn-lg" type="submit" value="Submit">
+    <!-- <button type="button" class="btn btn-primary btn-lg">Large</button> -->
+</form>
+</div>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+
+  <body>
+    <div class="container">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+            <div class="navbar-header">
+            <a class="navbar-brand" href="#">WebSiteName</a>
+            </div>
+            <ul class="nav navbar-nav">
+            <li ><a href="/">New Customer</a></li>
+            <li class="active"><a href="/loan">New Loan</a></li>
+            <li><a href="/reports">Reports</a></li>
+            </ul>
+            </div>
+        </nav>
+
+        <div class="container col-md-6">
+        <div class="form-group">
+        <label for="usr">Customer Number:</label>
+        <input type="text" class="form-control" id="usr">
+        </div>
+    
+        <div class="form-group">
+        <label for="fatherName">Loan Amount:</label>
+        <input type="text" class="form-control" id="fatherName">
+        </div>
+
+        <form class="form-group">
+        <label class="checkbox-inline">
+            <input type="checkbox" value="">Interest
+        </label>
+        <label class="checkbox-inline">
+            <input type="checkbox" value="">Due
+        </label>
+        </form>
+
+        <div class="form-group">
+        <label for="fatherName">Interest %:</label>
+        <input type="text" class="form-control" id="fatherName">
+        </div>
+    
+        <div class="form-group">
+        <label for="fatherName">Months:</label>
+        <input type="text" class="form-control" id="fatherName">
+        </div>
+
+        <div>
+            <h5>Total Interest : </h5>
+            
+        </div>
+
+    </div>
+  </body>
+</html>
