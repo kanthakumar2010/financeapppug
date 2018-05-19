@@ -64,19 +64,24 @@ app.post('/customer', (req, res) => {
         refRelationship : req.body.refRelationship
     })
     Customer.addCustomer(newCustomer, (err) => {
-        if (err) throw err;
+        if (err){
+            console.log(err)
+            res.send(err
+            )
+        }
         else res.redirect('/customer/' + newCustomer.idCustomer)
     })
 })
 
 app.get('/customer/:id', (req, res) => {
     Customer.getCustomerByidNumber(req.params.id, (err, customer) => {
-        if (err) throw err
+        if (err) {
+            console.log(err)
+            res.redirect('/')
+        }
         else{
             console.log(customer)
-            res.render('pages/customerDetail', {
-                details : customer
-            })
+            res.render('pages/customerDetail', { details : customer })
         }  
 
     })
@@ -85,3 +90,5 @@ app.get('/customer/:id', (req, res) => {
 app.listen(process.env.PORT || 3000, () => {
     console.log('server started')
 })
+
+
