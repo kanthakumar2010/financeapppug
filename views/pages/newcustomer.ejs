@@ -1,0 +1,281 @@
+
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+    form{
+    font-size: 100%;
+    /* background-color:skyblue; */
+    }
+    h1{
+    text-align: center;
+    background-color:#9933ff;
+    }
+    button{
+        margin-left: 41%;
+    }
+    .bg { 
+        background-image: url("http://bloomboxreviews.org/wp-content/uploads/2016/05/Business-Background-HD-1024x683.jpg");
+
+        height: 100%; 
+        background-position: center;
+        background-repeat: repeat;
+        background-size: cover;
+    }    
+    button{
+        background-color: whitesmoke;
+        color: #08278f;   
+    }
+    li{
+        float: right;
+    }
+
+
+
+
+
+
+
+
+
+
+    /*sidebar css*/
+
+
+    li{list-style: none;}
+
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:#330033;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.main {
+    margin-left: 160px; 
+    font-size: 28px; 
+    padding: 0px 10px;
+}
+
+#Home{
+    background-color:#990099;
+}
+#newloan{
+    background-color: #5900b3;
+}
+
+
+</style>
+
+        <!-- <script>
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#blah')
+                            .attr('src', e.target.result)
+                            .width(150)
+                            .height(150);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script> -->
+    </head>
+    
+  <body>
+      <!-- Side navbar code -->
+        <div class="sidenav">
+        <h2 id="Home"><a href="/">New Customer</a></h2>
+        <h2 id="newloan"><a href="/loan">New Loan</a></h2>
+        </div>
+
+
+<div class="bg"> 
+    <form id="myForm">
+     <div class="form-container">
+       <div class="row columns">
+    
+        <!-- Top navBar -->
+            <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" id="New">New Customer</a>
+                    </div>
+                </div>
+            </nav>
+
+
+
+<!--  Body Contant Starts -->
+<!-- Div For left side space -->
+<div class="col-md-2"> </div> 
+
+<!-- Form Contents Starts Here -->
+<div class="col-md-4" >
+
+<!-- <form method="POST" action="/customer/new">
+
+            <div class="form-group">
+            <label  class="control-label">Member no
+            <input class="form-control" name="idCustomer" type="text" placeholder="Enter a Member no">
+            </label>
+            </div>
+
+            <div class="form-group">
+            <label  class="control-label">Name
+            <input class="form-control" name="name" type="text" placeholder="Enter a Name">
+            </label>
+            </div>
+
+            <div class="form-group">
+            <label class="control-label">Father Name
+            <input class="form-control" name="fatheName" type="text" placeholder="Enter a Father Name">
+            </label>
+            </div>
+
+            <div class="form-group">
+            <label class="control-label">Gender</label><br />
+            <input type="radio" name="gender" value="male" checked> Male
+            <input type="radio" name="gender" value="female"> Female
+            </div>
+
+            <div class="form-group">       
+            <label>Date of Birth
+            <input class="form-control" name="dob" type="date" id="datepicker"  />
+            </label>
+            </div>
+
+            <div class="form-group">       
+            <label class="control-label">Occupation
+            <input class="form-control" name="occupation" type="text"  placeholder="Enter a Occupation" />
+            </label>
+            </div>
+
+            <div class="form-group">       
+            <label class="control-label">Mobile Number
+            <input  class="form-control"type="text" name="mobilenumber" placeholder="Enter a Mobile number" />
+            </label>
+            </div>
+
+            <div class="form-group">       
+            <label class="control-label">Land-Line Number
+            <input class="form-control" name="landline" type="text" placeholder="Enter a Lan number" />
+            </label>
+            </div>     
+
+            <div class="form-group">       
+            <label class="control-label">ID Proof <br />
+            <select class="form-control" name="idProof">
+            <option value="0">Select a ID Proof</option>  
+            <option value="1">Passport</option>
+            <option value="2">Voter ID</option>
+            <option value="3">Aadhaar</option>
+            <option value="4">Pan Card</option>
+            <option value="5">Driving licence</option>
+            <option value="6">Pass book</option>
+            </select>
+            </label>
+            </div>
+       </div>
+
+<!-- image uplode btn -->
+       <!-- <div class="col-md-4" >
+           <form id="Form1" method="POST" action="/login/">
+                <div class="form-group" style="margin-left:15%">
+                <input type='file' onchange="readURL(this);" /><br />
+                <img id="blah" src="#"  />
+                </div>
+            </form>
+        </div> -->
+<!-- ########### -->
+<!-- 
+<div class="col-md-4" >
+            <div class="form-group">
+            <label class="control-label">Address 
+            <textarea class="form-control" name="address" type="text" placeholder="Enter a Temporary Address"></textarea>
+            </label>
+            </div> 
+
+            <div class="form-group">
+            <label class="control-label">State
+            <input class="form-control" name="state" type="text" placeholder="Enter a State">
+            </label>
+            </div >
+
+            <div class="form-group">
+            <label class="control-label">City
+            <input class="form-control" name="city" type="text" placeholder="Enter a City">
+            </label>
+            </div>
+
+            <div class="form-group">
+            <label class="control-label">Pincode
+            <input class="form-control" name="pincode" type="number">
+            </label>
+            </div>
+
+            <div class="form-group">       
+            <label class="control-label">Reference
+            <input class="form-control" name="Reference" type="text"  placeholder="Enter a Reference" />
+            </label>
+            </div>
+
+            <div class="form-group">       
+            <label class="control-label">Reference Relationship
+            <input class="form-control" name="refRelationship" style="top:98%;" type="text"  placeholder="Enter a Reference Relationship" />
+            </label>
+            </div>
+
+            <!-- Button Submit -->
+            <!-- <div class="form-group">
+                    <input type="submit" value="Submit">
+            </div>       
+</div>
+</form> -->
+
+<form action="/customer" method="POST">
+    First name:<br>
+    <input type="text" name="firstname" value="Mickey">
+    <br>
+    Last name:<br>
+    <input type="text" name="lastname" value="Mouse">
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+
+ </div> 
+ 
+  </body>
+</html>

@@ -7,15 +7,24 @@ const config = require('./config/database')
 const chalk = require('chalk')
 
 //  mongose connection string
-mongoose.connect(config.database)
+//mongoose.connect(config.database)
+
+
 // database connection sucessfull
-mongoose.connection.on('connected', () => {
-     console.log(chalk.bgGreen.black('Connected to Database') + chalk.green(config.database) )
-    })
+// mongoose.connection.on('connected', () => {
+//      console.log(chalk.bgGreen.black('Connected to Database') + chalk.green(config.database) )
+//     })
+
+
 // // database connection failed error
-mongoose.connection.on('error', (err) => {
-     console.log(chalk.bgRed('Database connection error') + err)
-})
+// mongoose.connection.on('error', (err) => {
+//      console.log(chalk.bgRed('Database connection error') + err)
+// })
+
+
+
+
+
 // init app
 const app = express()
 
@@ -29,48 +38,44 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 //home router
 app.get('/', (req, res) => {
-    res.render('pages/index')
+    res.render('pages/newcustomer')
 })
 
 app.get('/loan', (req, res) => {
     res.render('pages/loan')
 })
 
-app.get('/reports', (req, res)=>{
-    res.render('pages/reports')
-})
-
-app.get('/test',(req, res) => {
-    res.render('pages/test')
-})
-
 app.post('/customer', (req, res) => {
-    let newCustomer = new Customer ({
-        idCustomer : req.body.idCustomer,
-        name : req.body.name,
-        fatheName : req.body.fatheName,
-        dob : req.body.dob,
-        gender : req.body.gender,
-        occupation : req.body.occupation,
-        mobileNumber : req.body.mobilenumber,
-        landline : req.body.landline,
-        idProof : req.body.idProof,
-        idNumber : req.body.idNumber,
-        address : req.body.address,
-        state : req.body.state,
-        city : req.body.city,
-        pincode : req.body.pincode,
-        reference : req.body.Reference,
-        refRelationship : req.body.refRelationship
-    })
-    Customer.addCustomer(newCustomer, (err) => {
-        if (err){
-            console.log(err)
-            res.send(err
-            )
-        }
-        else res.redirect('/customer/' + newCustomer.idCustomer)
-    })
+    console.log(req.body)
+
+    // let newCustomer = new Customer ({
+    //     idCustomer : req.body.idCustomer,
+    //     name : req.body.name,
+    //     fatheName : req.body.fatheName,
+    //     dob : req.body.dob,
+    //     gender : req.body.gender,
+    //     occupation : req.body.occupation,
+    //     mobileNumber : req.body.mobilenumber,
+    //     landline : req.body.landline,
+    //     idProof : req.body.idProof,
+    //     idNumber : req.body.idNumber,
+    //     address : req.body.address,
+    //     state : req.body.state,
+    //     city : req.body.city,
+    //     pincode : req.body.pincode,
+    //     reference : req.body.Reference,
+    //     refRelationship : req.body.refRelationship
+    // })
+
+    // Add New Customer
+    // Customer.addCustomer(newCustomer, (err) => {
+    //     if (err){
+    //         console.log(err)
+    //         res.send(err
+    //         )
+    //     }
+    //     else res.redirect('/customer/' + newCustomer.idCustomer)
+    // })
 })
 
 app.get('/customer/:id', (req, res) => {
@@ -87,7 +92,14 @@ app.get('/customer/:id', (req, res) => {
     })
 })
 
-app.listen(process.env.PORT || 3000, () => {
+app.get('/test', (req, res) => {
+    res.render('pages/test')
+})
+app.post('/test', (req, res) => {
+    res.send(req.body)
+})
+
+app.listen(3000, () => {
     console.log('server started')
 })
 
