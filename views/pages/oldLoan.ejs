@@ -3,281 +3,276 @@
 <!doctype html>
 <html lang="en">
     <head>
-
-<!--         TITILE-->
-
-        <title>Finance Project</title>  
-        
-<!--        Plugins for css, javascript, bootstrap-->
-          
+        <title>Bootstrap Example</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="/resources/demos/style.css">
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<!--        Style for Newloan page-->
-
-    <style>
-        form{
-        font-size: 100%;
-         /* background-color:skyblue; */
+  
+<style>
+        body {
+          font-family: "Lato", sans-serif;
+      
+          background-image: url("http://www.pptback.com/uploads/a-sack-of-dollars-backgrounds-powerpoint.jpg");
+          height: 100%; 
+          background-position: center;
+          background-repeat: repeat;
+          background-size: cover;
         }
-        h1{
-        text-align: center;
-        background-color:#9933ff;
+            
+        .sidenav {
+          height: 100%;
+          width: 0;
+          position: fixed;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          background-color: rgb(48, 35, 94);
+          overflow-x: hidden;
+          transition: 0.5s;
+          padding-top: 60px;
         }
-
-        button{
-            background-color: whitesmoke;
-            color: #08278f;
-            margin-left: 48%; 
+            
+        .sidenav a {
+          padding: 8px 8px 8px 32px;
+          text-decoration: none;
+          font-size: 25px;
+          color: #818181;
+          display: block;
+          transition: 0.3s;
         }
-        .bg { 
-            background-image: url("http://www.pptback.com/uploads/a-sack-of-dollars-backgrounds-powerpoint.jpg");
-
-            height: 100%; 
-
-            background-position: center;
-            background-repeat: repeat;
-            background-size: cover;
-        } 
-        li{
-            float: right;
+            
+        .sidenav a:hover {
+          color: #f1f1f1;
         }
-        h4{
-            text-align: center;
-            font-size: 90%;
+      
+        .sidenav .closebtn {
+          position: absolute;
+          top: 0;
+          right: 25px;
+          font-size: 36px;
+          margin-left: 50px;
         }
-        input[id="box"] {
-            width: 45px;
+      
+        @media screen and (max-height: 450px) {
+          .sidenav {padding-top: 15px;}
+          .sidenav a {font-size: 18px;}
         }
-        input[id="box1"] {
-            width: 64px;
-        }
+      </style>
 
 
 
-        
-    /*sidebar css*/
 
+        <script>
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
 
-    li{list-style: none;}
+                    reader.onload = function (e) {
+                        $('#blah')
+                            .attr('src', e.target.result)
+                            .width(150)
+                            .height(150);
+                    };
 
-    body {
-        font-family: "Lato", sans-serif;
-    }
-
-    .sidenav {
-        height: 100%;
-        width: 160px;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color:#330033;
-        overflow-x: hidden;
-        padding-top: 20px;
-    }
-
-    .sidenav a {
-        padding: 6px 8px 6px 16px;
-        text-decoration: none;
-        font-size: 25px;
-        color: #818181;
-        display: block;
-    }
-
-    .sidenav a:hover {
-        color: #f1f1f1;
-    }
-
-    .main {
-        margin-left: 160px; 
-        font-size: 28px; 
-        padding: 0px 10px;
-    }
-
-    #Home{
-        background-color:#990099;
-    }
-    #newloan{
-        background-color: #5900b3;
-    }
-
-     </style>
-
-<!--        Script for Loan type-->
-
-      <script type="text/javascript">
-
-            function optradioCheck() {
-                if (document.getElementById('Interest').checked) {
-                    document.getElementById('ifDue').style.display = 'none';
-                    document.getElementById('ifInterest').style.display = 'block';
-                }
-                else {
-                    document.getElementById('ifInterest').style.display = 'none';
-                    document.getElementById('ifDue').style.display = 'block';
+                    reader.readAsDataURL(input.files[0]);
                 }
             }
+        </script>
 
-            //script for interest calculation
+<script type="text/javascript">
 
-            function calculate() {
-                p = document.getElementById("lamnt").value;
-                n = document.getElementById("interest").value;
-                r = document.getElementById("month").value;
-                result = document.getElementById("result");
+    function optradioCheck() {
+        if (document.getElementById('Interest').checked) {
+            document.getElementById('ifDue').style.display = 'none';
+            document.getElementById('ifInterest').style.display = 'block';
+        }
+        else {
+            document.getElementById('ifInterest').style.display = 'none';
+            document.getElementById('ifDue').style.display = 'block';
+        }
+    }
 
-                result.innerHTML = "The interest is " + (lamnt * interest * month / 100);
-            }
+    function calculate() {
+        p = document.getElementById("lamnt").value;
+        n = document.getElementById("interest").value;
+        r = document.getElementById("month").value;
+        result = document.getElementById("result");
+
+        result.innerHTML = "The interest is " + (lamnt * interest * month / 100);
+    }
+
     </script>
-
     </head>
-    <body>
-       <div class="sidenav">
 
-    <h2 id="Home"><a href="/">New Customer</a></h2>
-
-    <h2 id="newloan"><a href="/loan">New Loan</a></h2>
-
+  <body>
+ <!-- Side navBar -->
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="/">New Customer</a>
+    <a href="/loan">New Loan</a>
+    <a href="#">Reports</a>
   </div>
-        <div class="bg"> 
-          <form id="myForm">
-           <div class="form-container">
-             <div class="row columns">
 
-                 <!--NavBar-->
-               <nav class="navbar navbar-inverse">
-                   <div class="container-fluid">
-                     <div class="navbar-header">
-                       <a class="navbar-brand" id="New">New Loan</a>
-                     </div>
-                   </div>
-                 </nav>
-               <div class="col-md-2"></div>
-               <div class="col-md-4">
-                   <form id="loginForm" method="POST" action="/login/">
-                     <div class="form-group">
-                         <label  class="control-label">Loan no
-                         <input class="form-control" id="loanno" type="text" placeholder="Enter a Loan no">
-                         </label>
-                       </div>
-                      <div class="well">
-                       <div class="form-group">
-                           <label class="control-label">Member no
-                           <input class="form-control" id=memno type="text" placeholder="Enter a Member no">
-                           </label>
-                         </div>
-                         <label>Address:</label><br>
-                         <label>Place:</label><br>
-                         <label>Mobile:</label><br>
-                      </div>
-                      <div class="well">
-                        <h4>Guarantor Details</h4>
-                          <div class="form-group">
-                              <label class="control-label">Name</label>
-                              <input class="form-control" id=name type="text" placeholder="Enter a Name">                       
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+
+  <script>
+    function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    }
+  </script>
+<!-- ######### -->
+<div class="bg">
+    <form id="myForm">
+        <div class="form-container">
+            <div class="row columns">
+
+                <!-- <nav class="navbar navbar-inverse">
+           <div class="container-fluid">
+             <div class="navbar-header">
+               <a class="navbar-brand" id="New">New Loan</a>
+             </div>
+           </div>
+         </nav> -->
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <form id="loginForm" method="POST" action="/login/">
+                        <div class="form-group">
+                            <label class="control-label">Loan no
+                                <input class="form-control" id="loanno" type="text" placeholder="Enter a Loan no">
+                            </label>
+                        </div>
+                        <div class="well">
+                            <div class="form-group">
+                                <label class="control-label">Member no
+                                    <input class="form-control" id=memno type="text" placeholder="Enter a Member no">
+                                </label>
+                            </div>
+                            <label>Address:</label>
+                            <br>
+                            <label>Place:</label>
+                            <br>
+                            <label>Mobile:</label>
+                            <br>
+                        </div>
+                        <div class="well">
+                            <h4>Guarantor Details</h4>
+                            <div class="form-group">
+                                <label class="control-label">Name</label>
+                                <input class="form-control" id=name type="text" placeholder="Enter a Name">
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Address</label>
                                 <textarea class="form-control" id="address" type="text" placeholder="Enter a Address"></textarea>
-                              </div>
-                         </div>
-                         <div class="well">
+                            </div>
+                        </div>
+                        <div class="well">
                             <h4>Document Details</h4>
-                              <div class="form-group">
-                                  <label class="control-label">Doc Type</label>
-                                  <input class="form-control" id=dtype type="text" placeholder="Enter a Doc Type">                       
+                            <div class="form-group">
+                                <label class="control-label">Doc Type</label>
+                                <input class="form-control" id=dtype type="text" placeholder="Enter a Doc Type">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Doc Details</label>
+                                <input class="form-control" id=ddetails type="text" placeholder="Enter a Doc Details">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Doc Copy</label>
+                                <input class="form-control" id=dcopy type="text" placeholder="Enter a Doc Copy">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-4">
+                    <form id="Form1" action="/login/">
+                        <div class="form-group">
+                            <label>Loan Date
+                                <input class="form-control" type="date" id="datepicker" placeholder="Enter a Loan Date" />
+                            </label>
+                        </div>
+                        <div class="well">
+                            <div class="form-group">
+                                <label class="control-label">Loan Type</label>
+                                <br />
+                                <input type="radio" onclick="javascript: optradioCheck();" name="optradio" id="Interest"> Interest
+                                <input type="radio" onclick="javascript: optradioCheck();" name="optradio" id="Due" name="optradio"> Due
+                            </div>
+
+                            <div id="ifInterest" style="display: none">
+                                <div class="form-group">
+                                    <label class="control-label">Amount of Loan</label>
+                                    <input class="form-control" id=lamnt type="text" placeholder="Enter a Amount of Loan">
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Doc Details</label>
-                                    <input class="form-control" id=ddetails type="text" placeholder="Enter a Doc Details">                       
-                                  </div>
-                                  <div class="form-group">
-                                      <label class="control-label">Doc Copy</label>
-                                      <input class="form-control" id=dcopy type="text" placeholder="Enter a Doc Copy">                       
-                                    </div>
-                             </div>
-                      </form>
-             </div>
-
-             <div class="col-md-4" >
-                 <form id="Form1"  action="/login/">
-                  <div class="form-group">       
-                    <label>Loan Date
-                    <input class="form-control" type="date" id="datepicker"  />
-                  </label>
-               </div>
-               <div class="well">
-                  <div class="form-group">
-                      <label class="control-label">Loan Type</label><br />
-                      <input type="radio" onclick="javascript: optradioCheck();" name="optradio" id="Interest"> Interest
-                      <input type="radio" onclick="javascript: optradioCheck();" name="optradio" id="Due" name="optradio"> Due              
-                 </div>
-         
-                 <div id="ifInterest" style="display: none">
-                  <div class="form-group">
-                    <label class="control-label">Amount of Loan</label>
-                    <input class="form-control" id=lamnt type="text" placeholder="Enter a Amount of Loan">                       
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label">Interest</label>
-                    <input class="form-control" id=Text1 type="text" placeholder="Enter a interest">                       
-                  </div>         
-                 </div>
+                                    <label class="control-label">Interest</label>
+                                    <input class="form-control" id=Text1 type="text" placeholder="Enter a interest">
+                                </div>
+                            </div>
 
 
-                 <div id="ifDue" style="display: none">
-                  <div class="form-group">
-                    <label class="control-label">Amount of Loan</label>
-                    <input class="form-control" id=Text2 type="text" placeholder="Enter a Amount of Loan">                       
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label">Interest</label>
-                    <input class="form-control" id=Text3 type="text" placeholder="Enter a interest">                       
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label">Month of tenure</label>
-                    <input class="form-control" id=month type="text" placeholder="Enter a Month of tenure">                       
-                  </div>
-                  <button onclick="calculate()">Calculate</button>
-                  <p id="result"></p>
-                 </div>           
-                  <div class="form-group">
-                          <label class="control-label">Document Cost Amount</label>
-                          <input class="form-control" id=iamount type="text" placeholder="Enter a Document Cost Amount">                       
-                    </div>
-                    </div>
-                      <div>
-                      <label>Advance Due:</label><br>
-                    </div>
-                      <label>Nett Amount:</label><br>
-                      <div class="form-group">       
-                          <label class="control-label">ID Proof </label><br />
-                          <select class="form-control">
-                           <option value="0">Select a Pay Mode</option>  
-                           <option value="1">Cheque</option>
-                           <option value="2">Cash ID</option>
-                         </select>             
-                     </div>
-               <div class="form-group">
-                  <label class="control-label">Remarks</label>
-                  <textarea class="form-control" type="text" id="remarks" placeholder="Enter a Remarks"></textarea>
-                </div>     
-               </form>      
-             </div>   
-             <div class="col-md-2"></div>
-             </div>
-             <button type="submit" class="btn btn-default">Submit</button>
-           </div>
-         </form>
-        </div> 
+                            <div id="ifDue" style="display: none">
+                                <div class="form-group">
+                                    <label class="control-label">Amount of Loan</label>
+                                    <input class="form-control" id=Text2 type="text" placeholder="Enter a Amount of Loan">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Interest</label>
+                                    <input class="form-control" id=Text3 type="text" placeholder="Enter a interest">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Month of tenure</label>
+                                    <input class="form-control" id=month type="text" placeholder="Enter a Month of tenure">
+                                </div>
+                                <button onclick="calculate()">Calculate</button>
+                                <p id="result"></p>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">Document Cost Amount</label>
+                                <input class="form-control" id=iamount type="text" placeholder="Enter a Document Cost Amount">
+                            </div>
+
+                        </div>
+                        <div>
+                            <label>Advance Due:</label>
+                            <br>
+                        </div>
+                        <label>Nett Amount:</label>
+                        <br>
+                        <div class="form-group">
+                            <label class="control-label">ID Proof </label>
+                            <br />
+                            <select class="form-control">
+                                <option value="0">Select a Pay Mode</option>
+                                <option value="1">Cheque</option>
+                                <option value="2">Cash ID</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Remarks</label>
+                            <textarea class="form-control" type="text" id="remarks" placeholder="Enter a Remarks"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+
+                </div>
+
+
+            </div>
+    </form>
+    </div>
 </body>
-</html>
+    </html>

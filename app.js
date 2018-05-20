@@ -43,7 +43,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('/loan', (req, res) => {
-    res.render('pages/newLoan')
+    //res.render('pages/newLoan')
+    res.render('pages/oldLoan')
 })
 
 app.post('/loan', (req, res) => {
