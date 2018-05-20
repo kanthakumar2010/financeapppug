@@ -1,281 +1,209 @@
-
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Bootstrap Example</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<head>
+  <title>Customer Add</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style>
-    form{
-    font-size: 100%;
-    /* background-color:skyblue; */
-    }
-    h1{
-    text-align: center;
-    background-color:#9933ff;
-    }
-    button{
-        margin-left: 41%;
-    }
-    .bg { 
-        background-image: url("http://bloomboxreviews.org/wp-content/uploads/2016/05/Business-Background-HD-1024x683.jpg");
-
-        height: 100%; 
-        background-position: center;
-        background-repeat: repeat;
-        background-size: cover;
-    }    
-    button{
-        background-color: whitesmoke;
-        color: #08278f;   
-    }
-    li{
-        float: right;
-    }
-
-
-
-
-
-
-
-
-
-
-    /*sidebar css*/
-
-
-    li{list-style: none;}
-
-body {
+  body {
     font-family: "Lato", sans-serif;
-}
 
-.sidenav {
+    /* background-image: url("http://www.pptback.com/uploads/a-sack-of-dollars-backgrounds-powerpoint.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover; */
+  }
+      
+  .sidenav {
     height: 100%;
-    width: 160px;
+    width: 0;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color:#330033;
+    background-color: rgb(48, 35, 94);
     overflow-x: hidden;
-    padding-top: 20px;
-}
-
-.sidenav a {
-    padding: 6px 8px 6px 16px;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+      
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
     display: block;
-}
-
-.sidenav a:hover {
+    transition: 0.3s;
+  }
+      
+  .sidenav a:hover {
     color: #f1f1f1;
-}
+  }
 
-.main {
-    margin-left: 160px; 
-    font-size: 28px; 
-    padding: 0px 10px;
-}
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
 
-#Home{
-    background-color:#990099;
-}
-#newloan{
-    background-color: #5900b3;
-}
-
-
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
 </style>
 
-        <!-- <script>
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
+</head>
 
-                    reader.onload = function (e) {
-                        $('#blah')
-                            .attr('src', e.target.result)
-                            .width(150)
-                            .height(150);
-                    };
+<body>
+  <!-- Side navBar -->
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="/">New Customer</a>
+    <a href="/loan">New Loan</a>
+    <a href="#">Reports</a>
+  </div>
 
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-        </script> -->
-    </head>
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+
+  <script>
+    function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    }
+  </script>
+<!-- ######### -->
+
+
+<!-- Form New Customer  -->
+<div class="container">
+  <form action="/loan" method="POST">
+<!-- Form Details  -->
+
+<!-- Left Side Div -->
+<div class = "col-lg-4" >
+
+    <div class="form-group">
+      <label for="customerid">Customer Id:</label>
+      <input type="text" class="form-control" id="idCustomer" name="idCustomer">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" name="name">
+    </div>
+
+    <div class="form-group">
+      <label for="fatheName">Father Name:</label>
+      <input type="text" class="form-control" id="fatheName" name="fatheName">
+    </div>
+
+    <div class="form-group">
+      <label for="dob">Date of birth:</label>
+      <input type="date" class="form-control" id="dob" name="dob">
+      <!-- <input type="text" class="form-control" id="dob" name="dob"> -->
+      
+    </div>  
+
+    <div class="form-group">
+    <label class="radio-inline"><input type="radio" name="gender">Male</label>
+    <label class="radio-inline"><input type="radio" name="gender">Female</label>
+    </div>
+
+    <div class="form-group">
+      <label for="occupation">Occupation:</label>
+      <input type="text" class="form-control" id="occupation" name="occupation">
+    </div> 
+
+    <div class="form-group">
+      <label for="mobilenumber">Mobile Number:</label>
+      <input type="text" class="form-control" id="mobilenumber" name="mobilenumber">
+    </div>
     
-  <body>
-      <!-- Side navbar code -->
-        <div class="sidenav">
-        <h2 id="Home"><a href="/">New Customer</a></h2>
-        <h2 id="newloan"><a href="/loan">New Loan</a></h2>
-        </div>
+    <div class="form-group">
+      <label for="landline">Landline:</label>
+      <input type="text" class="form-control" id="landline" name="landline">
+    </div> 
 
+    <div class="form-group">
+      <label for="idProof">Id Proof:</label>
+      <input type="text" class="form-control" id="idProof" name="idProof">
+    </div>
 
-<div class="bg"> 
-    <form id="myForm">
-     <div class="form-container">
-       <div class="row columns">
-    
-        <!-- Top navBar -->
-            <nav class="navbar navbar-inverse">
-                    <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" id="New">New Customer</a>
-                    </div>
-                </div>
-            </nav>
-
-
-
-<!--  Body Contant Starts -->
-<!-- Div For left side space -->
-<div class="col-md-2"> </div> 
-
-<!-- Form Contents Starts Here -->
-<div class="col-md-4" >
-
-<!-- <form method="POST" action="/customer/new">
-
-            <div class="form-group">
-            <label  class="control-label">Member no
-            <input class="form-control" name="idCustomer" type="text" placeholder="Enter a Member no">
-            </label>
-            </div>
-
-            <div class="form-group">
-            <label  class="control-label">Name
-            <input class="form-control" name="name" type="text" placeholder="Enter a Name">
-            </label>
-            </div>
-
-            <div class="form-group">
-            <label class="control-label">Father Name
-            <input class="form-control" name="fatheName" type="text" placeholder="Enter a Father Name">
-            </label>
-            </div>
-
-            <div class="form-group">
-            <label class="control-label">Gender</label><br />
-            <input type="radio" name="gender" value="male" checked> Male
-            <input type="radio" name="gender" value="female"> Female
-            </div>
-
-            <div class="form-group">       
-            <label>Date of Birth
-            <input class="form-control" name="dob" type="date" id="datepicker"  />
-            </label>
-            </div>
-
-            <div class="form-group">       
-            <label class="control-label">Occupation
-            <input class="form-control" name="occupation" type="text"  placeholder="Enter a Occupation" />
-            </label>
-            </div>
-
-            <div class="form-group">       
-            <label class="control-label">Mobile Number
-            <input  class="form-control"type="text" name="mobilenumber" placeholder="Enter a Mobile number" />
-            </label>
-            </div>
-
-            <div class="form-group">       
-            <label class="control-label">Land-Line Number
-            <input class="form-control" name="landline" type="text" placeholder="Enter a Lan number" />
-            </label>
-            </div>     
-
-            <div class="form-group">       
-            <label class="control-label">ID Proof <br />
-            <select class="form-control" name="idProof">
-            <option value="0">Select a ID Proof</option>  
-            <option value="1">Passport</option>
-            <option value="2">Voter ID</option>
-            <option value="3">Aadhaar</option>
-            <option value="4">Pan Card</option>
-            <option value="5">Driving licence</option>
-            <option value="6">Pass book</option>
-            </select>
-            </label>
-            </div>
-       </div>
-
-<!-- image uplode btn -->
-       <!-- <div class="col-md-4" >
-           <form id="Form1" method="POST" action="/login/">
-                <div class="form-group" style="margin-left:15%">
-                <input type='file' onchange="readURL(this);" /><br />
-                <img id="blah" src="#"  />
-                </div>
-            </form>
-        </div> -->
-<!-- ########### -->
-<!-- 
-<div class="col-md-4" >
-            <div class="form-group">
-            <label class="control-label">Address 
-            <textarea class="form-control" name="address" type="text" placeholder="Enter a Temporary Address"></textarea>
-            </label>
-            </div> 
-
-            <div class="form-group">
-            <label class="control-label">State
-            <input class="form-control" name="state" type="text" placeholder="Enter a State">
-            </label>
-            </div >
-
-            <div class="form-group">
-            <label class="control-label">City
-            <input class="form-control" name="city" type="text" placeholder="Enter a City">
-            </label>
-            </div>
-
-            <div class="form-group">
-            <label class="control-label">Pincode
-            <input class="form-control" name="pincode" type="number">
-            </label>
-            </div>
-
-            <div class="form-group">       
-            <label class="control-label">Reference
-            <input class="form-control" name="Reference" type="text"  placeholder="Enter a Reference" />
-            </label>
-            </div>
-
-            <div class="form-group">       
-            <label class="control-label">Reference Relationship
-            <input class="form-control" name="refRelationship" style="top:98%;" type="text"  placeholder="Enter a Reference Relationship" />
-            </label>
-            </div>
-
-            <!-- Button Submit -->
-            <!-- <div class="form-group">
-                    <input type="submit" value="Submit">
-            </div>       
+    <div class="form-group">
+      <label for="idNumber">Id Number:</label>
+      <input type="text" class="form-control" id="idNumber" name="idNumber">
+    </div> 
 </div>
-</form> -->
 
-<form action="/customer" method="POST">
-    First name:<br>
-    <input type="text" name="firstname" value="Mickey">
-    <br>
-    Last name:<br>
-    <input type="text" name="lastname" value="Mouse">
-    <br><br>
-    <input type="submit" value="Submit">
+<!-- Right Side Div -->
+<div class = "col-lg-4" >
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <!-- <input type="textarea" class="form-control" id="address" name="address"> -->
+      <textarea class="form-control" rows="8" name="address" id="address"></textarea>
+    </div> 
+
+    <div class="form-group">
+      <label for="city">City:</label>
+      <input type="text" class="form-control" id="city" name="city">
+    </div> 
+
+    <!-- Well For Relationship -->
+    <div class="well well-lg"> 
+      <div class="form-group">
+        <label for="Reference">Reference:</label>
+        <input type="text" class="form-control" id="Reference" name="Reference">
+      </div>
+      
+      <div class="form-group">
+        <label for="refRelationship">Reference Relationship:</label>
+        <input type="text" class="form-control" id="refRelationship" name="refRelationship">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-default pull-right">Submit</button>
+</div>
+
+<!-- Image uplode -->
+<div class = "col-lg-4" >
+    <input type='file' onchange="readURL(this);" />
+    <img id="blah" src="#" alt="your image" />
+
+    <script>
+      function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(200);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
   </form>
-
- </div> 
- 
-  </body>
+</div>
+</body>
 </html>

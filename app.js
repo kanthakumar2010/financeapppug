@@ -33,20 +33,28 @@ app.set('view engine', 'ejs')
 
 // create application/json parser
 app.use(bodyParser.json())
+
 // create application/x-www-form-urlencoded parser
 app.use(bodyParser.urlencoded({ extended: false }))
 
 //home router
 app.get('/', (req, res) => {
-    res.render('pages/newcustomer')
+    res.render('pages/newCustomer')
 })
 
 app.get('/loan', (req, res) => {
-    res.render('pages/loan')
+    res.render('pages/newLoan')
 })
 
+app.post('/loan', (req, res) => {
+    console.log(chalk.green( JSON.stringify(req.body)))
+    res.send(req.body)
+})
+
+
 app.post('/customer', (req, res) => {
-    console.log(req.body)
+    console.log(chalk.green( JSON.stringify(req.body)))
+    res.send(req.body)
 
     // let newCustomer = new Customer ({
     //     idCustomer : req.body.idCustomer,
