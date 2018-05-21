@@ -46,7 +46,7 @@ app.get('/', (req, res) => {
 
 app.get('/loan', (req, res) => {
     //res.render('pages/newLoan')
-    res.render('pages/newLoan')
+    res.render('pages/newLoanMohan')
 })
 
 app.post('/loan', (req, res) => {
