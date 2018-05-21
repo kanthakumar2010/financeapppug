@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
 
 app.get('/loan', (req, res) => {
     //res.render('pages/newLoan')
-    res.render('pages/oldLoan')
+    res.render('pages/newLoan')
 })
 
 app.post('/loan', (req, res) => {
