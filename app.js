@@ -39,7 +39,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 //home router
 app.get('/', (req, res) => {
-    res.render('pages/newCustomer')
+    // res.render('pages/newCustomer')
+    res.render('pages/customerMohan')
+
 })
 
 app.get('/loan', (req, res) => {
