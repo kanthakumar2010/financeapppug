@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Customer Add</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+  body {
+    font-family: "Lato", sans-serif;
+
+    /* background-image: url("http://www.pptback.com/uploads/a-sack-of-dollars-backgrounds-powerpoint.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover; */
+  }
+      
+ /* .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(48, 35, 94);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+      
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+      
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }*/
+
+
+  #nav{
+  background-color:#2d0d77;
+  color:white;
+  }
+
+  a:hover {
+    background-color: yellow;
+}
+</style>
+
+</head>
+
+<body>
+  <!-- Side navBar -->
+<!--   <div id="mySidenav" class="navbar navbar-default">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="/">New Customer</a>
+    <a href="/loan">New Loan</a>
+    <a href="#">Reports</a>
+  </div> -->
+
+  <nav class="navbar navbar-default" id="nav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Finance</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="/">New Customer</a></li>
+      <li><a href="/loan">New Loan</a></li>
+      <li><a href="#">Reports</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- Form Loan -->
+  <!-- <form id="loanForm"> -->
+    <!-- Form Details  -->
+  
+    <!-- Left Side Div -->
+    <div class="col-lg-4 well">
+      <h1>Loan Page</h1>
+      <div class="form-group">
+        <label for="principalAmount">Principal Amount:</label>
+        <input type="text" class="form-control" id="principalAmount" name="principalAmount">
+      </div>
+  
+      <div class="form-group">
+        <label for="intrest">Interest % / Year:</label>
+        <input type="text" class="form-control" id="intrest" name="intrest">
+      </div>
+  
+      <div class="form-group">
+        <label for="months">Months :</label>
+        <input type="text" class="form-control" id="months" name="months">
+      </div>
+  
+      <button onclick="myFunction()" class="btn btn-default pull-right">Preview</button>
+      
+    <!-- </form> -->
+  </div>
+  
+  <!-- Right side div -->
+  
+  <!-- Calculation Div -->
+  <div class="col-lg-6">
+  
+    <!-- nav link -->
+      <!-- <ul class="nav nav-pills">
+          <li class="nav-item active">
+            <a id="navIntrest" onclick="toggleIntrest()" class="nav-link active" href="#">Intrest</a>
+          </li>
+          <li class="nav-item">
+            <a id="navEmi" onclick="toggleIntrest()" class="nav-link" href="#">Emi - Due</a>
+          </li>
+        </ul> -->
+  
+    
+    
+    <!-- Div For Showing Intrest -->
+        <div id="intrestDiv" class="well">
+          
+            <h3>Amount :  </h3>
+            <h3 id="intrestDivPricipalOutput" name="pricipalOutput"></h3>
+    
+            <h3>Intrest :  </h3>
+            <h3 id="intrestDivIntrestOutput" name="intrestOutput"></h3>
+  
+            <!-- <h3>Amount EMI :  </h3>
+            <h3 id="emiDivpricipalOutput" name="pricipalOutput"></h3>
+    
+            <h3>Intrest EMI:  </h3>
+            <h3 id="emiDivintrestOutput" name="intrestOutput"></h3>
+    
+            <h3>Months EMI:  </h3>
+            <h3 id="emiDivMonthsOutput" name="MonthsOutput"></h3>
+    
+            <h3>EMI Amount EMI :  </h3>
+            <h3 id="emiDivEmiOutput" name="EmiOutput"></h3> -->
+    
+            <button class="btn btn-default " type="submit" value="Submit">Submit</button>
+          
+        </div>
+    
+    <!-- Div For showing Emi -->
+      <!-- <div id="emiDiv" class="well">
+          
+            <h3>Amount :  </h3>
+            <h3 id="emiDivpricipalOutput" name="pricipalOutput"></h3>
+    
+            <h3>Intrest :  </h3>
+            <h3 id="emiDivintrestOutput" name="intrestOutput"></h3>
+    
+            <h3>Months :  </h3>
+            <h3 id="emiDivMonthsOutput" name="MonthsOutput"></h3>
+    
+            <h3>EMI Amount :  </h3>
+            <h3 id="emiDivEmiOutput" name="EmiOutput"></h3>
+    
+            <button class="btn btn-default " type="submit" value="Submit">Submit</button>
+          
+        </div> -->
+  
+    
+  <script>
+    // // Script for Nav Default Previntion
+    //   document.getElementById("myAnchor").addEventListener("click", function (event) {
+    //     event.preventDefault()
+    //   });
+  
+    // script for get value 
+    function myFunction() {
+  
+  
+  // Script For Simple Interest
+      var pVal = document.getElementById("principalAmount").value;
+      var iVal = document.getElementById("intrest").value;
+      var tVal = document.getElementById("months").value;
+      
+      //Calculation For Simple intrest 
+      var rt = (iVal/100) * (tVal/12) + 1;
+      var amountVal = pVal * rt ;
+      var intVal = amountVal - pVal;   
+  
+      //Script for EMI 
+  
+      // Script Copied 
+      // var princ = document.calc.loan.value;
+      //  var term  = document.calc.months.value;
+      //  var intr   = document.calc.rate.value / 1200;
+      var princ = pVal;
+      var term = iVal;
+      var intr = tVal / 1200 ;
+      var emiAmount = princ * intr / (1 - (Math.pow(1/(1 + intr), term)));
+      
+      console.log("rt => " + rt );
+      console.log("amountVal => " + amountVal );
+      console.log("intVal => " + intVal );    
+  
+  
+      console.log("princ => " + princ );
+      console.log("term => " + term );
+      console.log("intr => " + intr );
+      console.log("emiAmount => " + emiAmount );
+  
+      document.getElementById("intrestDivPricipalOutput").innerHTML = amountVal;
+      document.getElementById("intrestDivIntrestOutput").innerHTML = intVal;
+  
+      // document.getElementById("emiDivPricipalOutput").innerHTML = amountVal;
+      // document.getElementById("emiDivIntrestOutput").innerHTML = intVal;
+      // document.getElementById("emiDivMonthsOutput").innerHTML = tVal;
+      // document.getElementById("emiDivEmiOutput").innerHTML = emiAmount;
+                      
+    } 
+  
+    // Script for toggle intrest div
+    function toggleIntrest() {
+        var intrestDiv = document.getElementById('intrestDiv');
+        var emiDiv = document.getElementById('emiDiv')
+        if (intrestDiv.style.visibility === 'hidden') {
+          intrestDiv.style.visibility = 'visible';
+          emiDiv.style.visibility = 'hidden';
+        } else {
+          intrestDiv.style.visibility = 'hidden';
+          emiDiv.style.visibility = 'visible';
+        }
+      }
+  
+    // // Script For Toggle Emi Div
+    // function toggleEmi() {
+    //   var x = document.getElementById('emiDiv');
+    //   if (x.style.visibility === 'hidden') {
+        
+    //     x.style.visibility = 'visible';
+    //   } else {
+    //     x.style.visibility = 'hidden';
+    //   }
+    // }
+  </script>  
+      
+  
+  </div>
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  </form>
+</div>
+</body>
+</html>

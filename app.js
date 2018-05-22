@@ -44,6 +44,21 @@ app.get('/', (req, res) => {
     res.render('pages/customerMohan')
 
 })
+<<<<<<< HEAD
+=======
+
+app.get('/loan', (req, res) => {
+    //res.render('pages/newLoan')
+    res.render('pages/newLoanMohan')
+})
+
+app.post('/loan', (req, res) => {
+    console.log(chalk.green( JSON.stringify(req.body)))
+    res.send(req.body)
+})
+
+
+>>>>>>> ec4e65fe6fa515bf98efc3cca6ab9c20c39a5446
 app.post('/customer', (req, res) => {
     console.log(chalk.green( JSON.stringify(req.body)))
     res.send(req.body)
