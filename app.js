@@ -5,6 +5,7 @@ const Customer = require('./models/customer');
 const mongoose = require('mongoose')
 const config = require('./config/database')
 const chalk = require('chalk')
+const url = require('url'); 
 
 //  mongose connection string
 //mongoose.connect(config.database)
@@ -43,18 +44,6 @@ app.get('/', (req, res) => {
     res.render('pages/customerMohan')
 
 })
-
-app.get('/loan', (req, res) => {
-    //res.render('pages/newLoan')
-    res.render('pages/newLoanMohan')
-})
-
-app.post('/loan', (req, res) => {
-    console.log(chalk.green( JSON.stringify(req.body)))
-    res.send(req.body)
-})
-
-
 app.post('/customer', (req, res) => {
     console.log(chalk.green( JSON.stringify(req.body)))
     res.send(req.body)
@@ -89,19 +78,46 @@ app.post('/customer', (req, res) => {
     // })
 })
 
-app.get('/customer/:id', (req, res) => {
-    Customer.getCustomerByidNumber(req.params.id, (err, customer) => {
-        if (err) {
-            console.log(err)
-            res.redirect('/')
-        }
-        else{
-            console.log(customer)
-            res.render('pages/customerDetail', { details : customer })
-        }  
+// app.get('/customer/:id', (req, res) => {
+//     Customer.getCustomerByidNumber(req.params.id, (err, customer) => {
+//         if (err) {
+//             console.log(err)
+//             res.redirect('/')
+//         }
+//         else{
+//             console.log(customer)
+//             res.render('pages/customerDetail', { details : customer })
+//         }  
+//     })
+// })
 
-    })
+
+//Loan Router 
+app.get('/loan', (req, res) => {
+    //res.render('pages/newLoan')
+    res.render('pages/newLoan')
 })
+
+app.post('/loan', (req, res) => {
+    // console.log(chalk.green( JSON.stringify(req.body)))
+    // res.send(req.body)
+
+    if(req.body.loanOption === "intrest" ){
+        res.render('pages/simpleIntrestLoan', { detail : req.body })
+    }else{
+       res.render('pages/emiLoan', { detail : req.body })
+    }  
+})
+
+// app.get('/loan/emi:slug', (req, res) => {
+//     console.log( JSON.stringify(req.params.slug) )
+
+//     res.end()
+//     //res.send(req.slug)
+//     //res.render('pages/emi')
+// })
+
+// ******-----******
 
 app.get('/test', (req, res) => {
     res.render('pages/test')

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Emi Preview</title>
+
+<!-- style -->
+<style>
+/*font*/
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+    body {
+    font-family: "Lato", sans-serif;
+    background-color: #e0e0e0;
+    }
+
+    /*navbar*/
+
+nav {
+    padding: 5px;
+    text-align: center;
+    font-family: Raleway;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+#nav1 {
+    background: #9061e2;
+}
+#Finance{
+    font-size: 40px;
+    color: black;
+    font-family: 'Kaushan Script', cursive;
+}
+{
+    color: black;
+}
+#navs{
+    color: #27057f;
+    font-weight: bold;
+}
+.link {
+    transition: 0.3s ease;
+    background: #9061e2;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    border-top: 4px solid white;
+    border-bottom: 4px solid white;
+    padding: 20px 0;
+    margin: 0 20px;
+}
+.link:hover {
+    border-top: 4px solid #ffffff;
+    border-bottom: 4px solid #ffffff;
+    padding: 6px 0;
+}
+</style>
+</head>
+
+<body>
+    
+<!-- NavBar Top -->
+<!-- <nav class="navbar navbar-default" id="navTop">
+<div class="container-fluid">
+    <div class="navbar-header"><a class="navbar-brand" href="/">Finance</a></div>
+    <ul class="nav navbar-nav">
+    <li><a href="#">Home</a></li>
+    <li><a href="/">New Customer</a></li>
+    <li class="active"><a href="/loan">New Loan</a></li>
+    <li><a href="#">Reports</a></li>
+    </ul>
+</div>
+</nav> -->
+<!-- ######@@@@@@@##### -->
+
+<!-- navbar -->
+
+<nav class="navbar navbar-default" id="nav1">
+<div class="container-fluid">
+    <div class="navbar-header">
+    <a class="navbar-brand" id="Finance" href="#">Finance</a>
+    </div>
+    <ul class="nav navbar-nav">
+<!--       <li ><a  class="link" id="navs" href="#">Home</a></li>
+-->      <li><a class="link" id="navs" href="/">New Customer</a></li>
+    <li><a class="link" id="navs" href="/loan">New Loan</a></li>
+    <li><a class="link" id="navs" href="#">Reports</a></li>
+    </ul>
+</div>
+</nav>
+<!-- ######@@@@@@@##### -->
+
+
+<div class="container ">
+    <br><br><br>     
+  
+
+<div class="col-lg-4 col-lg-offset-4">    
+<table class="table table-hover" id="tab">    
+    <tbody>
+    <tr>
+        <td> <h4>Principal Amount</h4></td>
+        <td>
+            <h4><%= detail.principalAmount %></h4>
+        </td>
+    </tr>
+    <tr>            
+        <td><h4>Interest / Year</h4></td>
+        <td>
+            <h4><%= detail.intrest %></h4>
+        </td>
+    </tr>
+    <tr>
+        <td><h4>Months</h4></td>
+        <td>
+            <h4><%= detail.months %></h4>
+        </td>
+    </tr>
+    <tr>
+        <td><h4>Total Amount</h4></td>
+        <td>
+            <h4 id="totalValue"></h4>
+        </td>
+    </tr>
+    <tr>
+        <td><h4>Total Interest Paid</h4></td>
+        <td>
+            <h4 id="intrestValue"></h4>
+        </td>
+    </tr>
+    <tr>
+        <td><h4>EMI Amount / Month</h4></td>
+        <td>
+            <h4 id="emiValue"></h4>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+
+<script>    
+//Script for EMI 
+
+// Script Copied 
+// var princ = document.calc.loan.value;
+//  var term  = document.calc.months.value;
+//  var intr   = document.calc.rate.value / 1200;
+
+    var principal = <%= detail.principalAmount %> ;
+    var intrest = <%= detail.intrest %> ;
+    var months = <%= detail.months %>;
+
+    var p = principal;
+    var r = intrest / 1200;
+    var t = months;
+    
+    var temp = 1 + r;
+    var pow = Math.pow(temp, t);
+    var prpow = p * r * pow;    
+
+    var emiAmount = prpow / (pow - 1)   ;
+    // console.log( emiAmount );
+
+
+    //Emi Insert to div
+    document.getElementById("emiValue").innerHTML = emiAmount.toFixed(2);
+
+    // Total amount insert to div
+    var totalAmount = emiAmount * t;
+    document.getElementById("totalValue").innerHTML = totalAmount.toFixed(2);
+
+    //Intrest Paid insert to div
+    var intAmount = totalAmount - p ;
+    document.getElementById("intrestValue").innerHTML = intAmount.toFixed(2);
+
+
+
+    // EMI Calculator program in Python
+    //  def emi_calculator(p, r, t):
+    //      r = r / (12 * 100) # one month interest
+    //      t = t * 12 # one month period
+    //      emi = (p * r * pow(1 + r, t)) / (pow(1 + r, t) - 1)
+    //      return emi
+
+    //  # driver code
+    //  principal = 10000;
+    //  rate = 10;
+    //  time = 2;
+    //  emi = emi_calculator(principal, rate, time);
+    //  print("Monthly EMI is= ", emi)
+
+</script>
+</body>
+</html>
+
+
+
