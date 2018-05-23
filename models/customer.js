@@ -3,7 +3,7 @@ const config = require('../config/database')
 
 //Customer Schema
 const CustomerSchema = mongoose.Schema({
-    idCustomer : {type : String},
+    // idCustomer : {type : String},
     name : {type: String},
     fatherName : {type: String},
     gender : {type: String},

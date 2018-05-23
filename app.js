@@ -8,23 +8,17 @@ const chalk = require('chalk')
 const url = require('url'); 
 
 //  mongose connection string
-//mongoose.connect(config.database)
+mongoose.connect(config.database)
 
 
 // database connection sucessfull
-// mongoose.connection.on('connected', () => {
-//      console.log(chalk.bgGreen.black('Connected to Database') + chalk.green(config.database) )
-//     })
-
-
-// // database connection failed error
-// mongoose.connection.on('error', (err) => {
-//      console.log(chalk.bgRed('Database connection error') + err)
-// })
-
-
-
-
+mongoose.connection.on('connected', () => {
+     console.log(chalk.bgGreen.black('Connected to Database') + chalk.green(config.database) )
+    })
+// database connection failed error
+mongoose.connection.on('error', (err) => {
+     console.log(chalk.bgRed('Database connection error') + err)
+})
 
 // init app
 const app = express()
@@ -52,37 +46,39 @@ app.get('/customer', (req, res) => {
 })
 
 app.post('/customer', (req, res) => {
-    console.log(chalk.green( JSON.stringify(req.body)))
-    res.send(req.body)
+    // console.log(chalk.green( JSON.stringify(req.body)))
+    //res.send(req.body)
+    let newCustomer = new Customer ({
+        // idCustomer : req.body.idCustomer,
+        name : req.body.name,
+        fatheName : req.body.fatheName,
+        dob : req.body.dob,
+        gender : req.body.gender,
+        occupation : req.body.occupation,
+        mobileNumber : req.body.mobilenumber,
+        landline : req.body.landline,
+        idProof : req.body.idProof,
+        idNumber : req.body.idNumber,
+        address : req.body.address,
+        state : req.body.state,
+        city : req.body.city,
+        pincode : req.body.pincode,
+        reference : req.body.Reference,
+        refRelationship : req.body.refRelationship
+    })
 
-    // let newCustomer = new Customer ({
-    //     idCustomer : req.body.idCustomer,
-    //     name : req.body.name,
-    //     fatheName : req.body.fatheName,
-    //     dob : req.body.dob,
-    //     gender : req.body.gender,
-    //     occupation : req.body.occupation,
-    //     mobileNumber : req.body.mobilenumber,
-    //     landline : req.body.landline,
-    //     idProof : req.body.idProof,
-    //     idNumber : req.body.idNumber,
-    //     address : req.body.address,
-    //     state : req.body.state,
-    //     city : req.body.city,
-    //     pincode : req.body.pincode,
-    //     reference : req.body.Reference,
-    //     refRelationship : req.body.refRelationship
-    // })
+    // Add New Customer to db 
+    Customer.addCustomer(newCustomer, (err) => {
+        if (err){
+            console.log(err)
+            res.send(err)
+        }
+        else {
+            //res.redirect('/customer/' + newCustomer.idCustomer)
+            res.send(newCustomer);
 
-    // Add New Customer
-    // Customer.addCustomer(newCustomer, (err) => {
-    //     if (err){
-    //         console.log(err)
-    //         res.send(err
-    //         )
-    //     }
-    //     else res.redirect('/customer/' + newCustomer.idCustomer)
-    // })
+        }
+    })
 })
 
 // app.get('/customer/:id', (req, res) => {
@@ -97,7 +93,6 @@ app.post('/customer', (req, res) => {
 //         }  
 //     })
 // })
-
 
 //Loan Router 
 app.get('/loan', (req, res) => {
@@ -117,7 +112,7 @@ app.post('/loan', (req, res) => {
 })
 
 app.get('/repayLoan', (req, res) => {
-    res.render('pages/existingMember')
+    res.render('pages/existingMemberSearch')
 })
 
 app.get('/test', (req, res) => {
