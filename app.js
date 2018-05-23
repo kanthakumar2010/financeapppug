@@ -68,6 +68,7 @@ app.post('/customer', (req, res) => {
     })
 
     // Add New Customer to db 
+    console.log(newCustomer)
     Customer.addCustomer(newCustomer, (err) => {
         if (err){
             console.log(err)
@@ -75,6 +76,7 @@ app.post('/customer', (req, res) => {
         }
         else {
             //res.redirect('/customer/' + newCustomer.idCustomer)
+            console.log("Sucessufull")
             res.send(newCustomer);
 
         }
