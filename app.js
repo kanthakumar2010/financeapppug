@@ -116,16 +116,6 @@ app.post('/loan', (req, res) => {
     }  
 })
 
-// app.get('/loan/emi:slug', (req, res) => {
-//     console.log( JSON.stringify(req.params.slug) )
-
-//     res.end()
-//     //res.send(req.slug)
-//     //res.render('pages/emi')
-// })
-
-// ******-----******
-
 app.get('/test', (req, res) => {
     res.render('pages/test')
 })
