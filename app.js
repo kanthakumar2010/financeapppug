@@ -41,20 +41,15 @@ app.use(bodyParser.urlencoded({ extended: false }))
 //home router
 app.get('/', (req, res) => {
     // res.render('pages/newCustomer')
+    res.redirect('/customer')
+
+})
+
+app.get('/customer', (req, res) => {
+    // res.render('pages/newCustomer')
     res.render('pages/customerMohan')
 
 })
-
-app.get('/loan', (req, res) => {
-    //res.render('pages/newLoan')
-    res.render('pages/newLoanMohan')
-})
-
-app.post('/loan', (req, res) => {
-    console.log(chalk.green( JSON.stringify(req.body)))
-    res.send(req.body)
-})
-
 
 app.post('/customer', (req, res) => {
     console.log(chalk.green( JSON.stringify(req.body)))
@@ -116,7 +111,7 @@ app.post('/loan', (req, res) => {
 
     if(req.body.loanOption === "intrest" ){
         res.render('pages/simpleIntrestLoan', { detail : req.body })
-    }else{
+    }else if(req.body.loanOption === "emi" ){
        res.render('pages/emiLoan', { detail : req.body })
     }  
 })
