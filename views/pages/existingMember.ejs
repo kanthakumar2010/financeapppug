@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Customer Add</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+ <style>
+#first{
+margin-top:20%;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+  body {
+    font-family: "Lato", sans-serif;
+    background-color: #e0e0e0;
+  }
+nav {
+  padding: 5px;
+  text-align: center;
+  font-family: Raleway;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+#nav1 {
+  background: #9061e2;
+}
+#Finance{
+  font-size: 40px;
+  color: black;
+  font-family: 'Kaushan Script', cursive;
+}
+#navs{
+  color: #27057f;
+  font-weight: bold;
+}
+.link {
+  transition: 0.3s ease;
+  background: #9061e2;
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  border-top: 4px solid white;
+  border-bottom: 4px solid white;
+  padding: 20px 0;
+  margin: 0 20px;
+}
+.link:hover {
+  border-top: 4px solid #ffffff;
+  border-bottom: 4px solid #ffffff;
+  padding: 6px 0; 
+}
+</style>
+  
+
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-default" id="nav1">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" id="Finance" href="#">Finance</a>
+    </div>
+    <ul class="nav navbar-nav">
+   <!--  <li class="active"><a href="#">Home</a></li> -->
+      <li><a class="link" id="navs" href="/">New Customer</a></li>
+      <li><a class="link" id="navs" href="/loan">New Loan</a></li>
+      <li><a class="link" id="navs" href="#">Reports</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <script>
+    function val(){
+		 var id = document.forms["form12"]["idCustomer"].value;
+		  var phonenumber=document.forms["form12"]["mobilenumber"].value;
+		  
+    if (id == "") 
+	{
+         alert("Enter The Customer Id");
+         	
+    }
+    
+
+
+	if(phonenumber== "" )
+      {
+        alert("Enter The Mobile Number");
+        
+		
+      }
+
+if(isNaN(phonenumber))
+{
+alert("Enter the valid Mobile Number");
+
+        }
+
+
+        if(id!=""&&phonenumber!="")       
+        	{
+ document.form12.action ="customerdetailpage.html";
+
+}
+}
+        
+
+		function load()
+		{
+	 var Loan = document.forms["form2"]["LoanNumber"].value;
+	
+	if(Loan== "" )
+      {
+        alert("Enter The Loan Number");
+		
+      }
+else
+{
+ document.form2.action ="loanrepaypage.html";
+
+}
+	  }
+	</script>
+	
+	
+ 
+<!-- ######### -->
+
+<div class="container">
+<div class="row">
+ <form action="" method="POST" name="form12"  id="form12" onsubmit=" return val()">
+<!-- Form New Customer  -->
+<div class="col-lg-4"></div>
+
+
+<div class="col-lg-4">
+ 
+<!-- Form Details  -->
+<div id=first>
+<div class="well well-lg"> 
+
+    <div class="form-group">
+      <label for="customerid">Customer Id:</label>
+      <input type="text" class="form-control" id="idCustomer" name="idCustomer">
+    </div>
+
+    <div class="form-group">
+      <label for="mobilenumber">Mobile Number:</label>
+      <input type="text" class="form-control" id="mobilenumber" name="mobilenumber">
+    </div>
+	<div>
+<input type="Submit" value="Submit"  class="btn btn-default pull-right"/>
+	</div>
+	</div>
+	</form>
+	
+	<form action="" method="POST" id="form2" name="form2" onsubmit="return load()">
+<div class="well well-lg"> 
+	<div class="form-group">
+      <label for="Loan Number">Loan Number:</label>
+      <input type="text" class="form-control" id="LoanNumber" name="LoanNumber">
+    </div>
+	<div>
+	<input type="submit" value="Submit"  class="btn btn-default pull-right"/>
+	</div>
+    </div>
+	</form>
+</div>
+<div class="col-lg-4"></div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  
+  </div>
+  </div>
+
+</body>
+</html>
