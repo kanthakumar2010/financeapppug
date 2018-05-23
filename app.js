@@ -116,6 +116,10 @@ app.post('/loan', (req, res) => {
     }  
 })
 
+app.get('/repayLoan', (req, res) => {
+    res.render('pages/existingMember')
+})
+
 app.get('/test', (req, res) => {
     res.render('pages/test')
 })
