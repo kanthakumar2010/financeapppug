@@ -46,7 +46,7 @@ app.get('/customer', (req, res) => {
 })
 
 app.post('/customer', (req, res) => {
-    // console.log(chalk.green( JSON.stringify(req.body)))
+    console.log(chalk.green( JSON.stringify(req.body)))
     //res.send(req.body)
     let newCustomer = new Customer ({
         // idCustomer : req.body.idCustomer,
@@ -68,16 +68,14 @@ app.post('/customer', (req, res) => {
     })
 
     // Add New Customer to db 
-    console.log(newCustomer)
+    console.log(chalk.green( JSON.stringify(newCustomer) ) )
     Customer.addCustomer(newCustomer, (err) => {
         if (err){
             console.log(err)
             res.send(err)
         }
         else {
-            res.redirect('/customer/' + newCustomer._id)
-            // console.log("Sucessufull")
-            // res.send(newCustomer);
+            res.redirect('/customer/' + newCustomer._id)            
         }
     })
 })
