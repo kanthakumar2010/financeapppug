@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Customer Add</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <!-- style -->
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Raleway);
+        body {
+            font-family: "Lato", sans-serif;
+            background-color: #e0e0e0;
+        }
+
+        nav {
+            padding: 5px;
+            text-align: center;
+            font-family: Raleway;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        #nav1 {
+            background: #9061e2;
+        }
+
+        #navs {
+            color: #27057f;
+            font-weight: bold;
+        }
+
+        #finance {
+            font-size: 40px;
+            color: black;
+            font-family: 'Kaushan Script', cursive;
+        }
+
+        .link {
+            transition: 0.3s ease;
+            background: #9061e2;
+            font-size: 20px;
+            text-decoration: none;
+            padding: 20px 0;
+            margin: 0 20px;
+        }
+
+        .link:hover {
+            padding: 6px 0;
+        }
+
+        #drop {
+            font-size: 20px;
+            color: #27057f;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- navBar -->
+    <nav class="navbar navbar-default" id="nav1">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" id="finance" href="#">Finance</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li>
+                    <a class="dropdown-toggle" class="link" id="drop" data-toggle="dropdown" href="#">Customer
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="Customer.html">New Customer</a>
+                        </li>
+                        <li>
+                            <a href="Existing member.html">Existing Customer</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="dropdown-toggle" class="link" id="drop" data-toggle="dropdown" href="#">Loan
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#">New Loan</a>
+                        </li>
+                        <li>
+                            <a href="#">Existing Loan</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="link" id="navs" href="#">Collection</a>
+                </li>
+                <li>
+                    <a class="link" id="navs" href="#">Reports</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- Form New Customer  -->
+    <div class="container">
+        <h2>Customer Edit</h2><br>
+        <form  action="/customer" method="POST">       
+            <!-- Form Details  -->
+
+            <!-- Left Side Div -->
+            <div class="col-lg-4">
+
+                <!-- Customer Id -->
+                <!-- <div class="form-group">
+                  <label for="customerid">Customer Id:</label>
+                  <input type="text" class="form-control" id="idCustomer" name="idCustomer">
+                </div> -->
+
+                <div class="form-group">
+                    <label for="name">Customer Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" value= <%= customer.name %> >
+                </div>
+
+                <div class="form-group">
+                    <label for="fatherName">Father Name:</label>
+                    <input type="text" class="form-control" id="fatherName" name="fatherName" value=<%= customer.fatherName %>">
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">Date of birth:</label>
+                    <input type="date" class="form-control" id="dob" name="dob" value=<%= customer.dob %>>
+                </div>
+
+                <div class="form-group">
+                    <label for="Sex">Sex</label>
+                    <label class="radio-inline">
+                        <input type="radio" id="gen" value='male' name="gender">Male</label>
+                    <label class="radio-inline">
+                        <input type="radio" id="gen" value='female' name="gender">Female</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="occupation">Occupation:</label>
+                    <input type="text" class="form-control" id="occupation" name="occupation" value= <%= customer.occupation %> >
+                </div>
+
+                <div class="form-group">
+                    <label for="mobilenumber">Mobile Number:</label>
+                    <input type="text" class="form-control" id="mobilenumber" name="mobilenumber" value= <%= customer.mobilenumber %> >
+                </div>
+
+                <div class="form-group">
+                    <label for="landline">Landline Number:</label>
+                    <input type="text" class="form-control" id="landline" name="landline" value= <%= customer.landline %> >
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">ID Proof
+                        <br />
+                        <select id="dd1" class="form-control" name="idProof" value= <%= customer.proofType %> >
+
+                            <option value="1">Select a ID Proof</option>
+                            <option value="2">Passport</option>
+                            <option value="3">Voter ID</option>
+                            <option value="4">Aadhaar</option>
+                            <option value="5">Pan Card</option>
+                            <option value="6">Driving licence</option>
+                            <option value="7">Pass book</option>
+
+                        </select>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="idNumber">Id Number:</label>
+                    <input type="text" class="form-control" id="idNumber" name="idNumber" value= <%= customer.proofNumber %> >
+                </div>
+            </div>
+
+            <!-- Right Side Div -->
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <!-- <input type="textarea" class="form-control" id="address" name="address"> -->
+                    <textarea class="form-control" rows="8" name="address" id="address" value= <%= customer.address %> </textarea> ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" class="form-control" id="city" name="city" value= <%= customer.city %>>
+                </div>
+
+                <!-- Well For Relationship -->
+                <div class="well well-lg">
+                    <div class="form-group">
+                        <label for="Reference">Reference:</label>
+                        <input type="text" class="form-control" id="reference" name="reference" value= <%= customer.reference %> >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="refRelationship">Reference Relationship:</label>
+                        <input type="text" class="form-control" id="refRelationship" name="refRelationship"  value= <%= customer.refRelationship %>>
+                    </div>
+                </div>
+                <input class="btn btn-default pull-right" type="submit" value="submit" />
+                </p>
+            </div>
+
+            <!-- Image uplode -->
+            <div class="col-lg-4">
+                <input type='file' onchange="readURL(this);" />
+                <img id="blah" src="#" alt="your image" />
+
+                <script>
+                    function readURL(input) {
+                        if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+
+                            reader.onload = function (e) {
+                                $('#blah')
+                                    .attr('src', e.target.result)
+                                    .width(150)
+                                    .height(200);
+                            };
+
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+                </script>
+            </div>
+
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+
+        </form>
+    </div>
+</body>
+
+</html>
