@@ -9,10 +9,10 @@ const CustomerSchema = mongoose.Schema({
     gender : {type: String},
     dob : {type: String},
     occupation : {type: String},
-    mobileNumber : {type: String},
+    mobileNumber : {type: String , unique: true},
     landline : {type: String},
-    idProof : {type: String},
-    idNumber : {type: String},
+    proofType : {type: String},
+    proofNumber : {type: String},
     reference : {type: String},
     refRelationship : {type: String},
     address : {type: String},
@@ -31,7 +31,7 @@ module.exports.addCustomer = (newCustomer, callback) => {
 //Get Customer Details By Querying IdNumber
 module.exports.getCustomerByidNumber = (_idNumber, callback) => {
     const query = {
-        idCustomer : _idNumber
+        _id : _idNumber
     }
     //console.log(query)
     Customer.findOne(query, callback);

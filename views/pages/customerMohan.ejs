@@ -11,74 +11,185 @@
 
 <!-- style -->
 <style>
-/*font*/
-@import url(https://fonts.googleapis.com/css?family=Raleway);
-  body {
-    font-family: "Lato", sans-serif;
-    background-color: #e0e0e0;
-  }
 
-  /*navbar*/
-
-nav {
-  padding: 5px;
-  text-align: center;
-  font-family: Raleway;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-}
-#nav1 {
-  background: #9061e2;
-}
-#Finance{
-  font-size: 40px;
-  color: black;
-  font-family: 'Kaushan Script', cursive;
-}
-
-#navs{
-  color: #27057f;
-  font-weight: bold;
-}
-.link {
-  transition: 0.3s ease;
-  background: #9061e2;
-  color: white;
-  font-size: 18px;
-  text-decoration: none;
-  border-top: 4px solid white;
-  border-bottom: 4px solid white;
-  padding: 20px 0;
-  margin: 0 20px;
-}
-.link:hover {
-  border-top: 4px solid #ffffff;
-  border-bottom: 4px solid #ffffff;
-  padding: 6px 0;
-}
+    @import url(https://fonts.googleapis.com/css?family=Raleway);
+        body {
+        font-family: "Lato", sans-serif;
+        background-color: #e0e0e0;
+        }
+    nav {
+        padding: 5px;
+        text-align: center;
+        font-family: Raleway;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+    #nav1 {
+        background: #9061e2;
+    }
+    #navs{
+        color: #27057f;
+        font-weight: bold;
+    }
+        #finance{
+                font-size: 40px;
+                color: black;
+                font-family: 'Kaushan Script', cursive;
+            }
+            .link {
+        transition: 0.3s ease;
+        background: #9061e2;
+        font-size: 20px;
+        text-decoration: none;
+        padding: 20px 0;
+        margin: 0 20px;
+    }
+    .link:hover {
+        padding: 6px 0; 
+    }
+    #drop{
+        font-size: 20px;
+        color: #27057f;
+        font-weight: bold;
+    }
 </style>
 
 </head>
 
 <body>
-<!-- navbar -->
+  <!-- script for validate -->
 
-<nav class="navbar navbar-default" id="nav1">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" id="Finance" href="#">Finance</a>
+  <!-- script for validate -->
+
+  <script>
+      function validate(){
+        var name=document.forms["form1"]["name"].value;
+        var father=document.forms["form1"]["fatherName"].value;
+        var date=document.forms["form1"]["dob"].value;
+        // var gender=document.getElementById("gen");
+        var sex = document.forms["form1"]["gender"].value;
+        var occupation=document.forms["form1"]["occupation"].value;
+        var mobilenumber=document.forms["form1"]["mobilenumber"].value;
+        var landline=document.forms["form1"]["landline"].value;
+        var drop =document.forms["form1"]["dd1"];
+        var IdProof = drop.options[drop.selectedIndex].value;
+        var idNumber=document.forms["form1"]["idNumber"].value;
+        var address=document.forms["form1"]["address"].value;
+        var city=document.forms["form1"]["city"].value;
+        var Reference=document.forms["form1"]["Reference"].value;
+        var refRelationship=document.forms["form1"]["refRelationship"].value;
+  
+  // script for alert
+  
+        if(name== "")
+        {
+          alert("Enter The Customer Name");
+        }
+         if(father== "")
+        {
+          alert("Enter The Father's Name");
+        }
+        if(date== "")
+        {
+          alert("Choose The Date of Birth");
+        }
+         if(sex == "")
+        {
+           alert("Choose The Gender");
+         }
+        if(occupation== "")
+        {
+          alert("Enter The Occupation");
+        }
+        if(mobilenumber== "")
+        {
+          alert("Enter The Mobile Number");
+        } 
+        if(isNaN(mobilenumber))
+        {
+        alert("Enter the valid Mobile Number");
+        }
+        if(landline== "")
+        {
+          alert("Enter The LandLine Number");
+        }
+        if(isNaN(landline))
+        {
+        alert("Enter the valid LandLine Number");
+        }
+        if(IdProof == 0)
+        {
+          alert("Choose the ID Proof");
+        }
+        if(idNumber== "")
+        {
+          alert("Enter The Id Number");
+        }
+        if(address== "")
+        {
+          alert("Enter The Address");
+        }
+         if(city== "")
+        {
+          alert("Enter The City");
+        }
+         if(Reference== "")
+        {
+          alert("Enter the Reference");
+        }
+         if(refRelationship== "")
+        {
+          alert("Enter The Reference Relationship");
+          return false;
+        } 
+      }
+    </script>
+
+    
+ <!-- navBar --> <nav class="navbar navbar-default" id="nav1">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" id="finance" href="#">Finance</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li>
+                <a class="dropdown-toggle" class="link" id="drop" data-toggle="dropdown" href="#">Customer
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="Customer.html">New Customer</a>
+                    </li>
+                    <li>
+                        <a href="Existing member.html">Existing Customer</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" class="link" id="drop" data-toggle="dropdown" href="#">Loan
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#">New Loan</a>
+                    </li>
+                    <li>
+                        <a href="#">Existing Loan</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="link" id="navs" href="#">Collection</a>
+            </li>
+            <li>
+                <a class="link" id="navs" href="#">Reports</a>
+            </li>
+        </ul>
     </div>
-    <ul class="nav navbar-nav">
-      <li><a class="link" id="navs" href="/">Customer</a></li>
-      <li><a class="link" id="navs" href="/loan">Loan</a></li>
-      <li><a class="link" id="navs" href="/repayLoan">Collection</a></li>
-      <li><a class="link" id="navs" href="#">Reports</a></li>
-    </ul>
-  </div>
 </nav>  
-
 <!-- Form New Customer  -->
 <div class="container">
-  <form action="/customer" method="POST">
+<!-- <form  action="/customer" method="POST"> -->
+<form action="" method="POST" name="form1" id="form1" onsubmit="return validate()">
 <!-- Form Details  -->
 
 <!-- Left Side Div -->
@@ -96,8 +207,8 @@ nav {
     </div>
 
     <div class="form-group">
-      <label for="fatheName">Father's Name:</label>
-      <input type="text" class="form-control" id="fatheName" name="fatheName">
+      <label for="fatherName">Father Name:</label>
+      <input type="text" class="form-control" id="fatherName" name="fatherName">
     </div>
 
     <div class="form-group">
@@ -128,21 +239,22 @@ nav {
       <input type="text" class="form-control" id="landline" name="landline">
     </div> 
 
-    <div class="form-group">       
-         <label class="control-label">ID Proof <br />
-         <select id="dd1" class="form-control">
-<!--          <option value="0"></option>  
- -->         <option value="1">Select a ID Proof</option>
-         <option value="2">Passport</option>
-         <option value="3">Voter ID</option>
-         <option value="4">Aadhaar</option>
-         <option value="5">Pan Card</option>
-         <option value="6">Driving licence</option>
-                  <option value="7">Pass book</option>
+    <div class="form-group">
+      <label class="control-label">ID Proof
+        <br />
+        <select id="dd1" class="form-control" name="idProof">
 
+          <option value="1">Select a ID Proof</option>
+          <option value="2">Passport</option>
+          <option value="3">Voter ID</option>
+          <option value="4">Aadhaar</option>
+          <option value="5">Pan Card</option>
+          <option value="6">Driving licence</option>
+          <option value="7">Pass book</option>
+    
         </select>
-          </label>
-   </div>
+      </label>
+    </div>
 
     <div class="form-group">
       <label for="idNumber">Id Number:</label>

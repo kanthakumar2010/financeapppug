@@ -51,14 +51,14 @@ app.post('/customer', (req, res) => {
     let newCustomer = new Customer ({
         // idCustomer : req.body.idCustomer,
         name : req.body.name,
-        fatheName : req.body.fatheName,
+        fatherName : req.body.fatherName,
         dob : req.body.dob,
         gender : req.body.gender,
         occupation : req.body.occupation,
         mobileNumber : req.body.mobilenumber,
         landline : req.body.landline,
-        idProof : req.body.idProof,
-        idNumber : req.body.idNumber,
+        proofType : req.body.idProof,
+        proofNumber : req.body.idNumber,
         address : req.body.address,
         state : req.body.state,
         city : req.body.city,
@@ -75,26 +75,25 @@ app.post('/customer', (req, res) => {
             res.send(err)
         }
         else {
-            //res.redirect('/customer/' + newCustomer.idCustomer)
-            console.log("Sucessufull")
-            res.send(newCustomer);
-
+            res.redirect('/customer/' + newCustomer._id)
+            // console.log("Sucessufull")
+            // res.send(newCustomer);
         }
     })
 })
 
-// app.get('/customer/:id', (req, res) => {
-//     Customer.getCustomerByidNumber(req.params.id, (err, customer) => {
-//         if (err) {
-//             console.log(err)
-//             res.redirect('/')
-//         }
-//         else{
-//             console.log(customer)
-//             res.render('pages/customerDetail', { details : customer })
-//         }  
-//     })
-// })
+app.get('/customer/:id', (req, res) => {
+    Customer.getCustomerByidNumber(req.params.id, (err, customer) => {
+        if (err) {
+            console.log(err)
+            res.redirect('/')
+        }
+        else{
+            //console.log(customer)
+            res.render('pages/customerDetail', { details : customer })
+        }  
+    })
+})
 
 //Loan Router 
 app.get('/loan', (req, res) => {
