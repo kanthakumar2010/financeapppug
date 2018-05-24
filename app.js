@@ -63,7 +63,7 @@ app.post('/customer', (req, res) => {
         state : req.body.state,
         city : req.body.city,
         pincode : req.body.pincode,
-        reference : req.body.Reference,
+        reference : req.body.reference,
         refRelationship : req.body.refRelationship
     })
 
@@ -90,8 +90,8 @@ app.get('/customer/:id', (req, res) => {
         else{
             //console.log(customer)
             res.render('pages/customerDetail', { 
-                details : customer,
-                editLink : '/customer/edit/' + customer._id
+                details : customer,  // Send Customer Object to frontEnd as Details
+                editLink : '/customer/edit/' + customer._id  //Send Link Value to FrontEnd
             })
         }  
     })
@@ -115,7 +115,19 @@ app.get('/customer/:id', (req, res) => {
 
 //Customer Edit
 app.get('/customer/edit/:id', (req, res) => {
-    Customer.findById()
+    Customer.findById(req.params.id, (err, _customer) => {
+        console.log(chalk.green('Customer Retrived Sucessfull :'))
+        console.log(_customer)
+        if(err){
+            console.log(err)
+            res.send(err)
+        } else{
+            res.render('pages/customerEdit', {
+                customer : _customer
+            })            
+        }
+
+    })
     // res.render('pages/customerEdit')
 })
 
@@ -131,10 +143,7 @@ app.get('/loan', (req, res) => {
 })
 
 app.post('/loan', (req, res) => {
-    // console.log(chalk.green( JSON.stringify(req.body)))
-    // res.send(req.body)
-
-    if(req.body.loanOption === "intrest" ){
+     if(req.body.loanOption === "intrest" ){
         res.render('pages/simpleIntrestLoan', { detail : req.body })
     }else if(req.body.loanOption === "emi" ){
        res.render('pages/emiLoan', { detail : req.body })
