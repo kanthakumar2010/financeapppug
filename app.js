@@ -69,7 +69,7 @@ app.post('/customer', (req, res) => {
 
     // Add New Customer to db 
     console.log(chalk.green( JSON.stringify(newCustomer) ) )
-    Customer.addCustomer(newCustomer, (err) => {
+    Customer.add(newCustomer, (err) => {
         if (err){
             console.log(err)
             res.send(err)
@@ -82,7 +82,7 @@ app.post('/customer', (req, res) => {
 
 //customer Detail page
 app.get('/customer/:id', (req, res) => {
-    Customer.getCustomerByidNumber(req.params.id, (err, customer) => {
+    Customer.findById(req.params.id, (err, customer) => {
         if (err) {
             console.log(err)
             res.redirect('/')
@@ -97,12 +97,32 @@ app.get('/customer/:id', (req, res) => {
     })
 })
 
+
+// // Load Edit Form
+// router.get('/edit/:id', function(req, res){
+//     Article.findById(req.params.id, function(err, article){
+//       if(article.author != req.user._id){
+//         req.flash('danger', 'Not Authorized');
+//         res.redirect('/');
+//       }
+//       res.render('edit_article', {
+//         title:'Edit Article',
+//         article:article
+//       });
+//     });
+//   });
+
+
 //Customer Edit
+app.get('/customer/edit/:id', (req, res) => {
+    Customer.findById()
+    // res.render('pages/customerEdit')
+})
+
+// Customer Delete
 app.get('/customer/edit/:id', (req, res) => {
     res.send(' <h1> Edit Page </h1>')
 })
-
-
 
 //Loan Router 
 app.get('/loan', (req, res) => {
