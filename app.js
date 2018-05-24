@@ -80,6 +80,7 @@ app.post('/customer', (req, res) => {
     })
 })
 
+//customer Detail page
 app.get('/customer/:id', (req, res) => {
     Customer.getCustomerByidNumber(req.params.id, (err, customer) => {
         if (err) {
@@ -88,10 +89,20 @@ app.get('/customer/:id', (req, res) => {
         }
         else{
             //console.log(customer)
-            res.render('pages/customerDetail', { details : customer })
+            res.render('pages/customerDetail', { 
+                details : customer,
+                editLink : '/customer/edit/' + customer._id
+            })
         }  
     })
 })
+
+//Customer Edit
+app.get('/customer/edit/:id', (req, res) => {
+    res.send(' <h1> Edit Page </h1>')
+})
+
+
 
 //Loan Router 
 app.get('/loan', (req, res) => {
