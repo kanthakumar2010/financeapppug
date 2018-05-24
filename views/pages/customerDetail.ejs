@@ -1,104 +1,10 @@
-
-<!doctype html>
-<html lang="en">
-    <head>
-        <title>Bootstrap Example</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<style>
-
-    @import url(https://fonts.googleapis.com/css?family=Raleway);
-        body {
-        font-family: "Lato", sans-serif;
-        background-color: #e0e0e0;
-        }
-    nav {
-        padding: 5px;
-        text-align: center;
-        font-family: Raleway;
-        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-    }
-    #nav1 {
-        background: #9061e2;
-    }
-    #navs{
-        color: #27057f;
-        font-weight: bold;
-    }
-        #finance{
-                font-size: 40px;
-                color: black;
-                font-family: 'Kaushan Script', cursive;
-            }
-            .link {
-        transition: 0.3s ease;
-        background: #9061e2;
-        font-size: 20px;
-        text-decoration: none;
-        padding: 20px 0;
-        margin: 0 20px;
-    }
-    .link:hover {
-        padding: 6px 0; 
-    }
-    #drop{
-        font-size: 20px;
-        color: #27057f;
-        font-weight: bold;
-    }
-    
-</style>
-
-    </head>
+ <!--Partial of Head  -->
+ <% include ../partials/head %> 
 
   <body>
-      <!-- navBar -->
-        <nav class="navbar navbar-default" id="nav1">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" id="finance" href="#">Finance</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a class="dropdown-toggle" class="link" id="drop" data-toggle="dropdown" href="#">Customer
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="Customer.html">New Customer</a>
-                            </li>
-                            <li>
-                                <a href="Existing member.html">Existing Customer</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="dropdown-toggle" class="link" id="drop" data-toggle="dropdown" href="#">Loan
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">New Loan</a>
-                            </li>
-                            <li>
-                                <a href="#">Existing Loan</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="link" id="navs" href="#">Collection</a>
-                    </li>
-                    <li>
-                        <a class="link" id="navs" href="#">Reports</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
 
+    <!-- partials For NAV -->
+<% include ../partials/nav %>
 
 <!-- Container -->
     <div class="container">
