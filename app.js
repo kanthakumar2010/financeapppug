@@ -112,7 +112,6 @@ app.get('/customer/edit/:id', (req, res) => {
         }
 
     })
-    // res.render('pages/customerEdit')
 })
 
 // Customer Delete
