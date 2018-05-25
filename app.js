@@ -57,7 +57,7 @@ app.post('/customer', (req, res) => {
         occupation : req.body.occupation,
         mobileNumber : req.body.mobileNumber,
         landline : req.body.landline,
-        proofType : req.body.idProof,
+        proofType : req.body.proofType,
         proofNumber : req.body.idNumber,
         address : req.body.address,
         state : req.body.state,
