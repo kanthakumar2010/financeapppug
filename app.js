@@ -167,12 +167,7 @@ app.get('/repayLoan', (req, res) => {
     res.render('pages/existingMemberSearch')
 })
 
-app.get('/test', (req, res) => {
-    res.render('pages/test')
-})
-app.post('/test', (req, res) => {
-    res.send(req.body)
-})
+
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('server started')
