@@ -39,6 +39,13 @@ app.get('/', (req, res) => {
 
 })
 
+//customer Search 
+app.get('/customer/existing', (req, res) => {
+    //res.render('pages/customerSearch')
+    res.send('/customer/search')
+})
+
+//Customer New Add 
 app.get('/customer', (req, res) => {
     // res.render('pages/newCustomer')
     res.render('pages/customerMohan')
@@ -162,12 +169,6 @@ app.post('/loan', (req, res) => {
        res.render('pages/emiLoan', { detail : req.body })
     }  
 })
-
-app.get('/repayLoan', (req, res) => {
-    res.render('pages/existingMemberSearch')
-})
-
-
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('server started')
