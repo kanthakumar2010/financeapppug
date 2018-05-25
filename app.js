@@ -40,7 +40,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.get('/', (req, res) => {
     // res.render('pages/newCustomer')
     res.redirect('/customer')
-
 })
 
 //customer Search 
@@ -64,9 +63,8 @@ app.get('/customer', (req, res) => {
 
 })
 
-app.post('/customer', (req, res) => {
-    console.log(chalk.green( JSON.stringify(req.body)))
-    //res.send(req.body)
+app.post('/customer', (req, res) => {    
+   
     let newCustomer = new Customer ({
         // idCustomer : req.body.idCustomer,
         name : req.body.name,
@@ -122,13 +120,13 @@ app.get('/customer/edit/:id', (req, res) => {
     Customer.findById(req.params.id, (err, _customer) => {
         console.log(chalk.green('Customer Retrived Sucessfull :'))
         console.log(_customer)
-        if(err){
+        if (err) {
             console.log(err)
             res.send(err)
-        } else{
+        } else {
             res.render('pages/customerEdit', {
-                customer : _customer
-            })            
+                customer: _customer
+            })
         }
 
     })
@@ -141,15 +139,15 @@ app.get('/loan', (req, res) => {
 })
 
 app.post('/loan', (req, res) => {
-     if(req.body.loanOption === "intrest" ){
-        res.render('pages/simpleIntrestLoan', { detail : req.body })
-    }else if(req.body.loanOption === "emi" ){
-       res.render('pages/emiLoan', { detail : req.body })
-    }  
+    if (req.body.loanOption === "intrest") {
+        res.render('pages/simpleIntrestLoan', { detail: req.body })
+    } else if (req.body.loanOption === "emi") {
+        res.render('pages/emiLoan', { detail: req.body })
+    }
 })
 
 //CUSTOMER UPDATE:
-app.post('/customer/edit/:id', (req, res) => {
+app.put('/customer/edit/:id', (req, res) => {
     let customerUpdate = {
         name : req.body.name,
         fatherName : req.body.fatherName,
@@ -168,14 +166,16 @@ app.post('/customer/edit/:id', (req, res) => {
         refRelationship : req.body.refRelationship
     }
     console.log('Reached UPDATE')
+
     let query = {_id : req.params.id}
-    Customer.update(query,customerUpdate, (err) => {
+    Customer.update( query, customerUpdate, (err) => {
         if(err){
             console.log(err)
             res.send(err)
         }
         res.send('Updated !!!')
-    })    
+    })
+})    
 
 // Customer Delete
 app.delete('/customer/delete/:id', (req, res) => {
