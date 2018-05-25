@@ -99,7 +99,12 @@
         </ul>
 
         <a href="<%= editLink %>"  class="btn btn-success btn-lg ">EDIT</a>
-        <a href="#" class="btn btn-danger btn-lg pull-right">DELETE</a>
+        <!-- <a href="#" class="btn btn-danger btn-lg pull-right">DELETE</a> -->
+        <!-- <form action="<%= deleteLink %>" method="POST" class="btn btn-danger btn-lg pull-right">
+            > DELETE </form> -->
+        <form method="POST" action= <%= deleteLink %> >
+            <button  class="btn btn-danger btn-lg pull-right" type="submit">Delete resource</button>
+            </form>
 
     </body>
 </html>

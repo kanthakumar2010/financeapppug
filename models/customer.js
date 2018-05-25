@@ -9,7 +9,7 @@ const CustomerSchema = mongoose.Schema({
     gender : {type: String},
     dob : {type: String},
     occupation : {type: String},
-    mobileNumber : {type: String , unique: true},
+    mobileNumber : {type: String},
     landline : {type: String},
     proofType : {type: String},
     proofNumber : {type: String},

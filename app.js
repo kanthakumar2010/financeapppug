@@ -1,11 +1,12 @@
 const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
-const Customer = require('./models/customer');
+const Customer = require('./models/customer')
 const mongoose = require('mongoose')
 const config = require('./config/database')
 const chalk = require('chalk')
-const url = require('url'); 
+const url = require('url')
+var methodOverride = require('method-override')
 
 //  mongose connection string
 mongoose.connect(config.database)
@@ -22,6 +23,9 @@ mongoose.connection.on('error', (err) => {
 
 // init app
 const app = express()
+
+// External MiddleWare For Put/DELETE METHOD
+app.use(methodOverride('_method', { methods: ['POST', 'GET'] } ))
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
@@ -98,7 +102,8 @@ app.get('/customer/:id', (req, res) => {
             //console.log(customer)
             res.render('pages/customerDetail', { 
                 details : customer,  // Send Customer Object to frontEnd as Details
-                editLink : '/customer/edit/' + customer._id  //Send Link Value to FrontEnd
+                editLink : '/customer/edit/' + customer._id,  //Send Link Value to FrontEnd
+                deleteLink : '/customer/delete/' + customer._id + '?_method=DELETE'
             })
         }  
     })
@@ -119,11 +124,25 @@ app.get('/customer/edit/:id', (req, res) => {
         }
 
     })
+})   
+
+//Loan Router 
+app.get('/loan', (req, res) => {
+    //res.render('pages/newLoan')
+    res.render('pages/newLoan')
+})
+
+app.post('/loan', (req, res) => {
+     if(req.body.loanOption === "intrest" ){
+        res.render('pages/simpleIntrestLoan', { detail : req.body })
+    }else if(req.body.loanOption === "emi" ){
+       res.render('pages/emiLoan', { detail : req.body })
+    }  
 })
 
 //CUSTOMER UPDATE:
 app.post('/customer/edit/:id', (req, res) => {
-    let customer = {
+    let customerUpdate = {
         name : req.body.name,
         fatherName : req.body.fatherName,
         dob : req.body.dob,
@@ -141,34 +160,33 @@ app.post('/customer/edit/:id', (req, res) => {
         refRelationship : req.body.refRelationship
     }
 
-    let query = { _id : req.params.id }
-    Customer.update(query, customer, (req, res) => {
-        if (err) console.log(err)
-        else{
-            res.redirect( '/customer/edit/' + customer._id )
-        }
-    })
+    console.log('Reached UPDATE')
+
+    // Customer.add(newCustomer, (err) => {
+    //     if (err){
+    //         console.log(err)
+    //         res.send(err)
+    //     }
+    //     else {
+    //         res.redirect('/customer/' + newCustomer._id)            
+    //     }
+    // })
 
 })
 
 // Customer Delete
-app.get('/customer/edit/:id', (req, res) => {
-    res.send(' <h1> Customer Delete Page </h1>')
+app.delete('/customer/delete/:id', (req, res) => {
+    console.log('Reached DELETE')
+    Customer.findById(req.params.id, (err, _customer) => {
+        if (err) {
+            res.send(err)
+        } else {
+            _customer.remove()
+            res.render('/')
+        }
+    })
 })
 
-//Loan Router 
-app.get('/loan', (req, res) => {
-    //res.render('pages/newLoan')
-    res.render('pages/newLoan')
-})
-
-app.post('/loan', (req, res) => {
-     if(req.body.loanOption === "intrest" ){
-        res.render('pages/simpleIntrestLoan', { detail : req.body })
-    }else if(req.body.loanOption === "emi" ){
-       res.render('pages/emiLoan', { detail : req.body })
-    }  
-})
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('server started')
