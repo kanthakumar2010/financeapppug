@@ -114,9 +114,39 @@ app.get('/customer/edit/:id', (req, res) => {
     })
 })
 
+//CUSTOMER UPDATE:
+app.post('/customer/edit/:id', (req, res) => {
+    let customer = {
+        name : req.body.name,
+        fatherName : req.body.fatherName,
+        dob : req.body.dob,
+        gender : req.body.gender,
+        occupation : req.body.occupation,
+        mobileNumber : req.body.mobileNumber,
+        landline : req.body.landline,
+        proofType : req.body.proofType,
+        proofNumber : req.body.idNumber,
+        address : req.body.address,
+        state : req.body.state,
+        city : req.body.city,
+        pincode : req.body.pincode,
+        reference : req.body.reference,
+        refRelationship : req.body.refRelationship
+    }
+
+    let query = { _id : req.params.id }
+    Customer.update(query, customer, (req, res) => {
+        if (err) console.log(err)
+        else{
+            res.redirect( '/customer/edit/' + customer._id )
+        }
+    })
+
+})
+
 // Customer Delete
 app.get('/customer/edit/:id', (req, res) => {
-    res.send(' <h1> Edit Page </h1>')
+    res.send(' <h1> Customer Delete Page </h1>')
 })
 
 //Loan Router 
