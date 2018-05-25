@@ -6,20 +6,13 @@
  <% include ../partials/nav %>
 
 <div class="container">
-<div class="row">
- <form action="/" method="POST" name="formCustomerNumber"  id="formCustomerNumber">
-<div class="col-lg-4">
-<div id=first>
+ <form action="/customer/existing" method="POST" name="formCustomerNumber"  id="formCustomerNumber">
+
   <div class="well well-lg">
 
     <div class="form-group">
-      <label for="customerid">Customer Id:</label>
-      <input type="text" class="form-control" id="idCustomer" name="idCustomer">
-    </div>
-
-    <div class="form-group">
-      <label for="mobilenumber">Mobile Number:</label>
-      <input type="text" class="form-control" id="mobilenumber" name="mobilenumber">
+      <label for="mobileNumber">Mobile Number:</label>
+      <input type="text" class="form-control" id="mobileNumber" name="mobileNumber">
     </div>
 
     <div>
@@ -29,29 +22,7 @@
   </div>
   </form>
 
-  <!-- Form For Seatch With Mobile Number -->
-  <form action="" method="POST" name="formCustomerNumber" id="formCustomerNumber">
-    <div class="col-lg-4">
-      <div id=first>
-        <div class="well well-lg">
   
-          <div class="form-group">
-            <label for="customerid">Customer Id:</label>
-            <input type="text" class="form-control" id="idCustomer" name="idCustomer">
-          </div>
-  
-          <div class="form-group">
-            <label for="mobilenumber">Mobile Number:</label>
-            <input type="text" class="form-control" id="mobilenumber" name="mobilenumber">
-          </div>
-
-          <div>
-            <input type="Submit" value="Submit" class="btn btn-default pull-right" />
-          </div>
-          
-        </div>
-  </form>
-
 	
 	
 

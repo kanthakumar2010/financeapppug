@@ -45,9 +45,17 @@ app.get('/', (req, res) => {
 
 //customer Search 
 app.get('/customer/existing', (req, res) => {
-    //res.render('pages/customerSearch')
-    res.send('/customer/search')
+    res.render('pages/customerSearch')
+    //res.send('/customer/search')
 })
+
+app.post('/customer/existing', (req, res) => {
+    let query = {mobileNumber : req.body.mobileNumber}
+    Customer.findOne(query, (err, customer) => {
+        res.redirect('/customer/' + customer._id)
+    } )
+})
+
 
 //Customer New Add 
 app.get('/customer', (req, res) => {
@@ -159,20 +167,15 @@ app.post('/customer/edit/:id', (req, res) => {
         reference : req.body.reference,
         refRelationship : req.body.refRelationship
     }
-
     console.log('Reached UPDATE')
-
-    // Customer.add(newCustomer, (err) => {
-    //     if (err){
-    //         console.log(err)
-    //         res.send(err)
-    //     }
-    //     else {
-    //         res.redirect('/customer/' + newCustomer._id)            
-    //     }
-    // })
-
-})
+    let query = {_id : req.params.id}
+    Customer.update(query,customerUpdate, (err) => {
+        if(err){
+            console.log(err)
+            res.send(err)
+        }
+        res.send('Updated !!!')
+    })    
 
 // Customer Delete
 app.delete('/customer/delete/:id', (req, res) => {
@@ -182,7 +185,7 @@ app.delete('/customer/delete/:id', (req, res) => {
             res.send(err)
         } else {
             _customer.remove()
-            res.render('/')
+            res.redirect('/')
         }
     })
 })
