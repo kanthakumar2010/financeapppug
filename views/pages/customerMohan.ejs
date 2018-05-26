@@ -219,22 +219,81 @@
           var fatherName = document.forms["myForm"]["fatherName"].value;
           var dob = document.forms["myForm"]["dob"].value;
           var sex = document.forms["myForm"]["gender"].value;
+          var occupation = document.forms["myForm"]["occupation"].value;
+          var mobileNumber = document.forms["myForm"]["mobileNumber"].value;
+          var landline = document.forms["myForm"]["landline"].value;
+          var proofType = document.forms["myForm"]["proofType"].value;
+          var idNumber = document.forms["myForm"]["idNumber"].value;
+          var address = document.forms["myForm"]["address"].value;
+          var city = document.forms["myForm"]["city"].value;
+          var reference = document.forms["myForm"]["reference"].value;
+          var refRelationship = document.forms["myForm"]["refRelationship"].value;
+      
           if (name == "") {
             alert("Name must be filled out");
             return false;
           }
           if (fatherName == "") {
-            alert("Name must be filled out");
+            alert("Father Name must be filled out");
             return false;
           }
           if (dob == "") {
-            alert("Name must be filled out");
+            alert("DOB must be filled out");
             return false;
           }
           if (sex == "") {
-            alert("Name must be filled out");
+            alert("Gender must not be Empety");
             return false;
           }
+          if (occupation == "") {
+            alert("occupation must not be Empety");
+            return false;
+          }
+
+          if (mobileNumber == "") {
+            alert("mobileNumber must not be Empety");
+            return false;
+          }
+
+          if (isNaN(phonenumber)) {
+            alert("Enter the valid Mobile Number");
+            return fales;
+          }
+
+          if (mobilenumber.value.length != 10) {
+            alert("Enter 10 digits");
+            return false;
+          }
+
+          if (landline == "") {
+            alert("landline must not be Empety");
+            return false;
+          }
+          if (proofType == "") {
+            alert("proofType must not be Empety");
+            return false;
+          }
+          if (idNumber == "") {
+            alert("ID NUMBER  must not be Empety");
+            return false;
+          }
+          if (address == "") {
+            alert("address must not be Empety");
+            return false;
+          }
+          if (city == "") {
+            alert("city must not be Empety");
+            return false;
+          }
+          if (reference == "") {
+            alert("Reference must not be Empety");
+            return false;
+          }
+          if (refRelationship == "") {
+            alert("Reference RelationShip must not be Empety");
+            return false;
+          }
+
 }
 
     </script>
