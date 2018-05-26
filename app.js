@@ -7,6 +7,9 @@ const config = require('./config/database')
 const chalk = require('chalk')
 const url = require('url')
 var methodOverride = require('method-override')
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
+var flash = require('connect-flash');
 
 //  mongose connection string
 mongoose.connect(config.database)
