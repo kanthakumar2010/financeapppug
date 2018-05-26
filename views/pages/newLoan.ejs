@@ -1,80 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>New Loan</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <!--Partial of Head  -->
+ <% include ../partials/head %> 
 
-<style>
+  <body>
 
-/*font*/
-
-@import url(https://fonts.googleapis.com/css?family=Raleway);
-  body {
-    font-family: "Lato", sans-serif;
-    background-color: #e0e0e0;
-  }
-
-  /*navbar*/
-
-nav {
-  padding: 5px;
-  text-align: center;
-  font-family: Raleway;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-}
-#nav1 {
-  background: #9061e2;
-}
-#Finance{
-  font-size: 40px;
-  color: black;
-  font-family: 'Kaushan Script', cursive;
-}
-#navs{
-  color: #27057f;
-  font-weight: bold;
-}
-.link {
-  transition: 0.3s ease;
-  background: #9061e2;
-  color: white;
-  font-size: 18px;
-  text-decoration: none;
-  border-top: 4px solid white;
-  border-bottom: 4px solid white;
-  padding: 20px 0;
-  margin: 0 20px;
-}
-.link:hover {
-  border-top: 4px solid #ffffff;
-  border-bottom: 4px solid #ffffff;
-  padding: 6px 0; 
-}
-</style>
-
-</head>
-
-<body>
-  
-<!-- navbar -->
-
-<nav class="navbar navbar-default" id="nav1">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" id="Finance" href="#">Finance</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li><a class="link" id="navs" href="/">Customer</a></li>
-        <li><a class="link" id="navs" href="/loan">Loan</a></li>
-        <li><a class="link" id="navs" href="/repayLoan">Collection</a></li>
-        <li><a class="link" id="navs" href="#">Reports</a></li>
-      </ul>
-    </div>
-  </nav>
+    <!-- partials For NAV -->
+<% include ../partials/nav %>
 
 <!-- Main Div Container -->
 <div class="container">
@@ -86,6 +16,11 @@ nav {
   <!-- Left Side Div -->
   <div class="col-lg-8 col-lg-offset-2 well">
     <h1>Loan Page</h1>
+
+    <div class="form-group">
+      <label for="customerId">Customer Id:</label>
+      <input type="text" class="form-control" id="principalAmount" name="principalAmount">
+    </div>
 
     <div class="form-group">
       <label for="principalAmount">Principal Amount:</label>
