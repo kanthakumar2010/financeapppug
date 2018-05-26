@@ -27,6 +27,11 @@ mongoose.connection.on('error', (err) => {
 // init app
 const app = express()
 
+//flash middleware provided by connect-flash
+app.use(cookieParser('secret'));
+app.use(session({cookie: { maxAge: 60000 }}));
+app.use(flash());
+
 // External MiddleWare For Put/DELETE METHOD
 app.use(methodOverride('_method', { methods: ['POST', 'GET'] } ))
 
@@ -41,8 +46,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 //home router
 app.get('/', (req, res) => {
-    // res.render('pages/newCustomer')
-    res.redirect('/customer')
+    res.render('pages/dashboard')    
 })
 
 //customer Search 
@@ -92,10 +96,10 @@ app.post('/customer', (req, res) => {
     Customer.add(newCustomer, (err) => {
         if (err){
             console.log(err)
-            res.send(err)
+            res.render('pages/errorPage')
         }
-        else {
-            res.redirect('/customer/' + newCustomer._id)            
+        else {           
+            res.redirect('/')                         
         }
     })
 })
