@@ -1,0 +1,56 @@
+ <!--Partial of Head  -->
+ <% include ../partials/head %> 
+
+  <body>
+
+    <!-- partials For NAV -->
+<% include ../partials/nav %>
+
+<!-- Container -->
+    <div class="container">
+        <ul>
+            <h2>Loan Details</h2>
+    
+            <table class="table table-striped">
+                <tbody>    
+                    <tr>
+                        <td>Loan Number</td>
+                        <td>
+                            
+                        </td>
+                    </tr>    
+                    
+                    <tr>
+                        <td>Loan Type</td>
+                        <td>
+                           
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>principal</td>
+                        <td>
+                           
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>intrestRate</td>
+                        <td>
+                           
+                        </td>
+                    </tr>
+                </tbody>
+            </table>    
+    
+        </ul>
+
+        <div class="container">
+        
+            <form method="POST" action=< %=deleteLink %> >
+                <button class="btn btn-danger btn-lg pull-right" type="submit">Delete</button>
+            </form>
+        </div>
+
+    </body>
+</html>
