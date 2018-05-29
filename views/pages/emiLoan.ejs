@@ -56,7 +56,7 @@
 <div class="container ">
     <h2>Loan Details</h2>
     <br> <br>
-<form action="#" method="POST">
+<form action="/loan/new" method="POST">
 
     <div class="form-group">
         <label for="customerId">Customer Id:</label>
@@ -94,8 +94,8 @@
     </div>
 
     <div class="form-group">
-        <label for="emiValue"><h3>EMI Amount :</h3></label>
-        <input type="text" class="form-control" id="emiValue" name="emiValue">
+        <label for="emiAmount"><h3>EMI Amount :</h3></label>
+        <input type="text" class="form-control" id="emiAmount" name="emiAmount">
     </div>
 
     <div class="form-group">
@@ -133,7 +133,7 @@
 
 
     //Emi Insert to div
-    document.getElementById("emiValue").value = emiAmount.toFixed(2);
+    document.getElementById("emiAmount").value = emiAmount.toFixed(2);
 
     // Total amount insert to div
     var totalAmount = emiAmount * t;

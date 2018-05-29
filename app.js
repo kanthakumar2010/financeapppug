@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
 const Customer = require('./models/customer')
+const Loan = require('./models/loan')
 const mongoose = require('mongoose')
 const config = require('./config/database')
 const chalk = require('chalk')
@@ -156,8 +157,28 @@ app.post('/loan', (req, res) => {
 })
 
 // New Loan
-app.post('/loan/new', (req, res) => {   
-    
+app.post('/loan/new', (req, res) => {  
+
+    let newLoan = {
+        idCustomer : req.body.customerId,
+        loanNumber : req.body.loanNumber,
+        type : req.body.loanOption,
+        principal : req.body.principalAmount,
+        intrestRate : req.body.intrest,
+        emiAmount : req.body.emiAmount,
+        emiMonths : req.body.months,
+        createdDate : new Date
+    }
+    console.log(newLoan)
+    Loan.add(newLoan, (err) => {
+        if (err){
+            console.log(err)
+            res.render('pages/errorPage')
+        }
+        else {           
+            res.redirect('/')                         
+        }
+    })
 })
 
 //CUSTOMER UPDATE:
