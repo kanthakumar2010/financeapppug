@@ -73,7 +73,7 @@ app.get('/customer', (req, res) => {
 app.post('/customer', (req, res) => {    
    
     let newCustomer = new Customer ({
-        // idCustomer : req.body.idCustomer,
+        idCustomer : req.body.customerId,
         name : req.body.name,
         fatherName : req.body.fatherName,
         dob : req.body.dob,
@@ -106,6 +106,7 @@ app.post('/customer', (req, res) => {
 
 //customer Detail page
 app.get('/customer/:id', (req, res) => {
+    
     Customer.findById(req.params.id, (err, customer) => {
         if (err) {
             console.log(err)
@@ -152,6 +153,11 @@ app.post('/loan', (req, res) => {
     } else if (req.body.loanOption === "emi") {
         res.render('pages/emiLoan', { detail: req.body })
     }
+})
+
+// New Loan
+app.post('/loan/new', (req, res) => {   
+    
 })
 
 //CUSTOMER UPDATE:

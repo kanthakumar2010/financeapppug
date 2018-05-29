@@ -18,17 +18,19 @@ const CustomerSchema = mongoose.Schema({
     address : {type: String},
     state : {type: String},
     city : {type: String},
-    pincode : {type: String},
-    loan : { 
-        number : {type: String},
-        type : {type : String},
-        principal : {type :String},
-        intrestRate : {type : String},
-        intrestAmount : {type : String},
-        emi : {type : String},
-        months : {type : String},
-        createdDate : { type: Date, default: Date.now } 
-    }
+    pincode : {type: String}    
+})
+//loan Schema
+const loan = mongoose.Schema({ 
+    idCustomer : {type : String},
+    loanNumber : {type: String},
+    type : {type : String},
+    principal : {type :String},
+    intrestRate : {type : String},
+    intrestAmount : {type : String},
+    emi : {type : String},
+    months : {type : String},
+    createdDate : { type: Date, default: Date.now } 
 })
 
 const Customer = module.exports = mongoose.model('Customer', CustomerSchema)
