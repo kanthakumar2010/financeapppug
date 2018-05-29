@@ -147,6 +147,7 @@ app.get('/loan', (req, res) => {
 
 app.post('/loan', (req, res) => {
     if (req.body.loanOption === "intrest") {
+        console.log(req.body)
         res.render('pages/simpleIntrestLoan', { detail: req.body })
     } else if (req.body.loanOption === "emi") {
         res.render('pages/emiLoan', { detail: req.body })

@@ -6,14 +6,8 @@
     <!-- partials For NAV -->
 <% include ../partials/nav %>
 
-<div class="container ">
+<!-- <div class="container ">
     <br><br><br>
-        <!-- <h1>Simple Intrest Preview :</h1>
-
-        <h4>Final Amount : </h4>    <div id="totalValue"></div>     <br>
-        <h4>Intrest Payed</h4>  <div id="intrestValue"></div> -->
-  
-
         <div class="col-lg-4 col-lg-offset-4">
     <H1>Simple Interest</H1>
     <table class="table table-hover" id="tab">    
@@ -50,8 +44,45 @@
         </tr>
         </tbody>
     </table>
-</div>
+</div> -->
 
+<div class="container ">
+<form action="#" method="POST">
+
+    <div class="form-group">
+        <label for="customerId">Customer Id:</label>
+        <input type="text" class="form-control" id="customerId" name="customerId">
+    </div>
+
+    <div class="form-group">
+        <label for="principalAmount">Principal Amount:</label>
+        <input type="text" class="form-control" id="principalAmount" name="principalAmount" value=< %=d etail.principalAmount %> >
+    </div>
+    
+    <div class="form-group">
+        <label for="intrest">Interest % / Year:</label>
+        <input type="text" class="form-control" id="intrest" name="intrest" value=< %=d etail.intrest %>>
+    </div>
+    
+    <div class="form-group">
+        <label for="months">Months :</label>
+        <input type="text" class="form-control" id="months" name="months" value=< %=d etail.months %>>
+    </div>
+    
+    <div class="form-group">
+        <label for="totalValue">Total Amount :</label>
+        <input type="text" class="form-control" id="totalValue" name="totalValue">
+    </div>
+    
+    <div class="form-group">
+        <label for="intrestValue">Total Interest Paid :</label>
+        <input type="text" class="form-control" id="intrestValue" name="intrestValue">
+    </div>
+      
+  
+      <button onclick="myFunction()" class="btn btn-default pull-right">Preview</button>  
+</form>
+</div>
 
 <script>
     var principal = <%= detail.principalAmount %> ;
@@ -75,8 +106,8 @@
     var simpleIntrest = ( principal * intrest * ( months / 12)  ) / 100;
     var finalAmount = principal + simpleIntrest;
 
-    document.getElementById("totalValue").innerHTML =  finalAmount.toFixed(2);
-    document.getElementById("intrestValue").innerHTML =   simpleIntrest.toFixed(2) ;
+    document.getElementById("totalValue").value =  finalAmount.toFixed(2);
+    document.getElementById("intrestValue").value =   simpleIntrest.toFixed(2) ;
     
 
 </script>
