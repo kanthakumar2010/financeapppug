@@ -25,9 +25,13 @@ module.exports.add = (newLoan, callback) => {
 
 //Get Loan Details By Querying IdNumber
 module.exports.findById = (_idPrimary, callback) => {
-    const query = {
-        _id : _idPrimary
-    }
-    //console.log(query)
-    Loan.findOne(query, callback);
+
+    const query = { _id : _idPrimary }    
+    Loan.findOne(query, callback)
+
+}
+
+module.exports.findByCustomerId = (_customerId, callback) =>{
+    const query = { customerDetailId : _customerId }
+    Loan.find(query, callback)
 }

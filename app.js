@@ -111,16 +111,26 @@ app.get('/customer/:id', (req, res) => {
     Customer.findById(req.params.id, (err, customer) => {
         if (err) {
             console.log(err)
-            res.redirect('/')
+            res.render('pages/errorPage')
         }
         else{
             //console.log(customer)
-            res.render('pages/customerDetail', { 
-                details : customer,  // Send Customer Object to frontEnd as Details
-                editLink : '/customer/edit/' + customer._id,  //Send Link Value to FrontEnd              
-                newLoanLink : '/loan/' + customer._id, //Send New Loan Link with Id
-                deleteLink : '/customer/delete/' + customer._id + '?_method=DELETE'
-            })
+            // Find Customer Loan By Customer Id            
+            Loan.findByCustomerId(req.params.id, (err, loanDetails) => {
+              if(err){send(err)} else {
+                //Loan Details Console Log
+                console.log(chalk.blue('Customer Detail Page : => Method: GET : => LOAN DETAILS Of CUSTOMER'))
+                console.log(chalk.cyan(loanDetails))
+
+                res.render('pages/customerDetail', { 
+                    details : customer,  // Send Customer Object to frontEnd as Details
+                    loanDetails : loanDetails, // Send Loan Details
+                    editLink : '/customer/edit/' + customer._id,  //Send Link Value to FrontEnd              
+                    newLoanLink : '/loan/' + customer._id, //Send New Loan Link with Id
+                    deleteLink : '/customer/delete/' + customer._id + '?_method=DELETE'
+                })
+              }  
+            })            
         }  
     })
 })
@@ -161,8 +171,8 @@ app.get('/loan/:id', (req, res) => {
 app.post('/loan', (req, res) => {
     if (req.body.loanOption === "intrest") {
 
-        console.log(chalk.blue('FROM /LOAN => Method : POST LoanOption = Simple Ientrest'))
-        console.log(req.body)
+        // console.log(chalk.blue('FROM /LOAN => Method : POST LoanOption = Simple Ientrest'))
+        // console.log(req.body)
 
         res.render('pages/simpleIntrestLoan', 
         { detail: req.body })

@@ -105,11 +105,34 @@
     
         </ul>
 
+        <!-- Loan Details Table view -->
+        <div class="panel panel-primary">   
+            <div class="panel-heading">LOAN DETAILS</div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Loan Number</th>
+                            <th>Principal Amount</th>
+                        </tr>
+                    </thead>
+                    <!-- Loan Details Table  -->
+                    <tbody>
+                    <% for(var i=0; i < loanDetails.length; i++ ) { %>
+                        <tr>
+                            <td> <a href="" + <%= loanDetails[i]._id %> > <%= loanDetails[i].loanNumber %> </a> </td>
+                            <td ><%= loanDetails[i].principal %></td>
+                        </tr>
+                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
         <div class="container">
-            <a href="<%= editLink %>" class="btn btn-success btn-lg ">EDIT</a>
+            <a href= " <%= editLink %> "  class="btn btn-success btn-lg ">EDIT</a>
 
-            <a href="<%= newLoanLink %>" class="btn btn-success btn-lg ">New Loan</a>
+            <a href= " <%= newLoanLink %> " class="btn btn-success btn-lg ">New Loan</a>
         
             <form method="POST" action=< %=deleteLink %> >
                 <button class="btn btn-danger btn-lg pull-right" type="submit">Delete</button>
