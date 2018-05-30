@@ -230,9 +230,9 @@ app.get('/loan/collection/:id', (req, res) => {
 })
 
 //Loan Collection Page GET
-app.get('/loan/repay', (req, res) => {
-    res.render('pages/repayLoan')
-})
+// app.get('/loan/repay', (req, res) => {
+//     res.render('pages/repayLoan')
+// })
 
 //CUSTOMER UPDATE:
 app.put('/customer/edit/:id', (req, res) => {

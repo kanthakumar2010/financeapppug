@@ -8,103 +8,103 @@
 
 <!-- Container -->
     <div class="container">
-        <ul>
-            <h2>Customer Details</h2>
-    
-            <table class="table table-striped">
-                <tbody>
-                    
-                    <tr>
-                        <td>Customer Id </td>
-                        <td>
-                            <%= details.idCustomer %>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Name</td>
-                        <td>
-                            <%= details.name %>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td>Father Name</td>
-                        <td>
-                            <%= details.fatherName %>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td>DOB</td>
-                        <td>
-                            <%= details.dob %>
-                        </td>
-                    </tr>
-    
-    
-                    <tr>
-                        <td>Gender</td>
-                        <td>
-                            <%= details.gender %>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td>mobileNumber</td>
-                        <td>
-                            <%= details.mobileNumber %>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td>land line
-                        </td>
-                        <td>
-                            <%= details.landline %>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td>id Proof Type</td>
-                        <td>
-                            <%= details.proofType %>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td>State</td>
-                        <td>
-                            <%= details.proofNumber%>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>city</td>
-                        <td>
-                            <%= details.city%>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Reference</td>
-                        <td>
-                            <%= details.reference%>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Ref Relationship</td>
-                        <td>
-                            <%= details.refRelationship%>
-                        </td>
-                    </tr>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Customer Details</div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <tbody>
         
-                </tbody>
-            </table>    
-    
-        </ul>
-
+                        <tr>
+                            <td>Customer Id </td>
+                            <td>
+                                <%= details.idCustomer %>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>Name</td>
+                            <td>
+                                <%= details.name %>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>Father Name</td>
+                            <td>
+                                <%= details.fatherName %>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>DOB</td>
+                            <td>
+                                <%= details.dob %>
+                            </td>
+                        </tr>
+        
+        
+                        <tr>
+                            <td>Gender</td>
+                            <td>
+                                <%= details.gender %>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>mobileNumber</td>
+                            <td>
+                                <%= details.mobileNumber %>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>land line
+                            </td>
+                            <td>
+                                <%= details.landline %>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>id Proof Type</td>
+                            <td>
+                                <%= details.proofType %>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>State</td>
+                            <td>
+                                <%= details.proofNumber%>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>city</td>
+                            <td>
+                                <%= details.city%>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>Reference</td>
+                            <td>
+                                <%= details.reference%>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>Ref Relationship</td>
+                            <td>
+                                <%= details.refRelationship%>
+                            </td>
+                        </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
         <!-- Loan Details Table view -->
         <div class="panel panel-primary">   
             <div class="panel-heading">LOAN DETAILS</div>
@@ -128,16 +128,15 @@
                 </table>
             </div>
         </div>
-
-        <div class="container">
+              
             <a href= " <%= editLink %> "  class="btn btn-success btn-lg ">EDIT</a>
-
-            <a href= " <%= newLoanLink %> " class="btn btn-success btn-lg ">New Loan</a>
-        
+            <a href= " <%= newLoanLink %> " class="btn btn-success btn-lg ">New Loan</a>        
             <form method="POST" action=< %=deleteLink %> >
                 <button class="btn btn-danger btn-lg pull-right" type="submit">Delete</button>
             </form>
         </div>
+        
+    </div>
 
     </body>
 </html>
