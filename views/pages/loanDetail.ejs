@@ -15,42 +15,32 @@
                 <tbody>    
                     <tr>
                         <td>Loan Number</td>
-                        <td>
-                            
-                        </td>
-                    </tr>    
-                    
+                        <td><%= loan.loanNumber %></td>
+                    </tr>                        
                     <tr>
                         <td>Loan Type</td>
-                        <td>
-                           
-                        </td>
+                        <td><%= loan.type %></td>                        
                     </tr>
-
                     <tr>
-                        <td>principal</td>
-                        <td>
-                           
-                        </td>
+                        <td>Principal Amount</td>
+                        <td><%= loan.principal %></td>
                     </tr>
-
-                    <tr>
-                        <td>intrestRate</td>
-                        <td>
-                           
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>    
     
         </ul>
-
-        <div class="container">
-        
-            <form method="POST" action=< %=deleteLink %> >
-                <button class="btn btn-danger btn-lg pull-right" type="submit">Delete</button>
-            </form>
-        </div>
-
+        <a href="#" class="btn btn-primary">Collect</a>
     </body>
+
+    <!-- <script>
+        var principal = <%= loan.principal %>;
+        var intrest = <%= loan.intrestRate %>;
+        var months = 1 ;
+
+        var simpleIntrest = (principal * intrest * (months / 12)) / 100;
+
+        document.getElementById("ipMonth").innerText =  simpleIntrest.toFixed(2);
+        
+    </script> -->
 </html>

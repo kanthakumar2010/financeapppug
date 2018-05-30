@@ -117,10 +117,13 @@ app.get('/customer/:id', (req, res) => {
             //console.log(customer)
             // Find Customer Loan By Customer Id            
             Loan.findByCustomerId(req.params.id, (err, loanDetails) => {
-              if(err){send(err)} else {
+              if(err){
+                    send(err)
+                    console.log(err)
+                } else {
                 //Loan Details Console Log
-                console.log(chalk.blue('Customer Detail Page : => Method: GET : => LOAN DETAILS Of CUSTOMER'))
-                console.log(chalk.cyan(loanDetails))
+                // console.log(chalk.blue('Customer Detail Page : => Method: GET : => LOAN DETAILS Of CUSTOMER'))
+                // console.log(chalk.cyan(loanDetails))
 
                 res.render('pages/customerDetail', { 
                     details : customer,  // Send Customer Object to frontEnd as Details
@@ -188,6 +191,9 @@ app.post('/loan', (req, res) => {
 
 // New Loan
 app.post('/loan/new', (req, res) => {
+    console.log(chalk.cyan('From => /loan/new ; METHOD = POST ; '))
+    console.log(req.body)
+
     let newLoan = new Loan({  
         customerDetailId : req.body.customerObjId,   
         idCustomer: req.body.customerId,
@@ -199,7 +205,7 @@ app.post('/loan/new', (req, res) => {
         emiMonths: req.body.months,
         createdDate: new Date
     })
-    console.log(newLoan)
+    // console.log(newLoan)
     Loan.add(newLoan, (err) => {
         if (err) {
             console.log(err)
@@ -210,9 +216,19 @@ app.post('/loan/new', (req, res) => {
         }
     })
 })
-app.get('/loan/detail/:id')
+//Loan Details/ collection Page
+app.get('/loan/collection/:id', (req, res) => {
 
-
+    Loan.findById(req.params.id, (err, _loan) => {
+        if(err){
+            console.log(err)
+            res.render('pages/errorPage')
+        } else{
+            res.render('pages/loanDetail', {loan : _loan})
+        }
+    })
+    
+})
 
 //CUSTOMER UPDATE:
 app.put('/customer/edit/:id', (req, res) => {
