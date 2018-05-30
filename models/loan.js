@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const config = require('../config/database')
 
 //loan Schema
-const loanSchema = mongoose.Schema({ 
+const LoanSchema = mongoose.Schema({ 
     idCustomer : {type : String},
     loanNumber : {type: String},
     type : {type : String},
@@ -14,10 +14,11 @@ const loanSchema = mongoose.Schema({
     createdDate : { type: Date, default: Date.now } 
 })
 
-const Loan = module.exports = mongoose.model('loan', loanSchema)
+const Loan = module.exports = mongoose.model('Loan', LoanSchema)
 
 //Add new loan
 module.exports.add = (newLoan, callback) => {
+    //newLoan.save(callback)
     newLoan.save(callback)
 }
 

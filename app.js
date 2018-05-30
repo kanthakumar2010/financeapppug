@@ -159,7 +159,7 @@ app.post('/loan', (req, res) => {
 // New Loan
 app.post('/loan/new', (req, res) => {  
 
-    let newLoan = {
+    let newLoan = new Loan({
         idCustomer : req.body.customerId,
         loanNumber : req.body.loanNumber,
         type : req.body.loanOption,
@@ -168,7 +168,7 @@ app.post('/loan/new', (req, res) => {
         emiAmount : req.body.emiAmount,
         emiMonths : req.body.months,
         createdDate : new Date
-    }
+    })
     console.log(newLoan)
     Loan.add(newLoan, (err) => {
         if (err){
