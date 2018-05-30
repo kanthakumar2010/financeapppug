@@ -117,7 +117,7 @@ app.get('/customer/:id', (req, res) => {
             //console.log(customer)
             res.render('pages/customerDetail', { 
                 details : customer,  // Send Customer Object to frontEnd as Details
-                editLink : '/customer/edit/' + customer._id,  //Send Link Value to FrontEnd
+                editLink : '/customer/edit/' + customer._id,  //Send Link Value to FrontEnd               
                 deleteLink : '/customer/delete/' + customer._id + '?_method=DELETE'
             })
         }  
@@ -157,7 +157,7 @@ app.post('/loan', (req, res) => {
 })
 
 // New Loan
-app.post('/loan/new', (req, res) => {  
+app.post('/loan/new/', (req, res) => {  
 
     let newLoan = new Loan({
         idCustomer : req.body.customerId,
@@ -180,6 +180,8 @@ app.post('/loan/new', (req, res) => {
         }
     })
 })
+
+
 
 //CUSTOMER UPDATE:
 app.put('/customer/edit/:id', (req, res) => {
