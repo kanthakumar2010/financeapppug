@@ -1,19 +1,218 @@
- <!--Partial of Head  -->
- <% include ../partials/head %> 
 
-  <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Customer Add</title>
+  <!-- <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
-    <!-- partials For NAV -->
-<% include ../partials/nav %>
+  
+ <style>
 
 
-<div class="container">
-    <h3>DASHBOARD</h3>
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+  body {
+    font-family: "Lato", sans-serif;
+    background-color: #e0e0e0;
+  }
+nav {
+  padding: 5px;
+  text-align: center;
+  font-family: Raleway;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+#nav1 {
+  background: #9061e2;
+}
+#navs{
+  color: #27057f;
+  font-weight: bold;
+}
+  #finance{
+      font-size: 40px;
+      color: black;
+      font-family: 'Kaushan Script', cursive;
+    }
+    .link {
+  transition: 0.3s ease;
+  background: #9061e2;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 20px 0;
+  margin: 0 20px;
+}
+.link:hover {
+  padding: 6px 0; 
+}
+#drop{
+  font-size: 20px;
+  color: #27057f;
+  font-weight: bold;
+}
+.dropdown-menu{
+  /*background-color: #e1bee7;*/
+  background-color: #ea80fc;
+}
+#total{
+margin-top:2%;
+/*opacity:1;*/
+}
+.dropdown-menu{
+  /*background-color: #e1bee7;*/
+  background-color: #ea80fc;
+  font-family: cursive;
 
-    <a class="btn btn-primary btn-lg" href="/customer" > CUSTOMER NEW </a>
-    <a class="btn btn-primary btn-lg" href="/customer/existing" > SEARCH CUSTOMER </a>
-    <a class="btn btn-primary btn-lg" href="/loan" > NEW LOAN </a>
-    <a class="btn btn-primary btn-lg" href="/customer/existing" > SEARCH LOAN </a>
+}
+#one{
+padding-top:6%;
+padding-left:2.5%;
+padding-right:2.5%;
+padding-bottom:6%;
+margin:2%;
+width:40%;
+text-align: center;
+color: #2b1e42;
+}
+#two{
+/* padding:10%;*/
+padding-top:6%;
+padding-left:0.5%;
+padding-right:0.5%;
+padding-bottom:6%;
+margin:2%; 
+width:40%;
+text-align: center;
+/*width:220px;*/
+/*text-align: center;*/
+background-color: #84ffff;
+color: #2b1e42;
+}
+#three{
+  /* padding:10%;*/
+   padding-top:6%;
+   padding-bottom:6%;
+margin:2%;
+width:40%;
+/*background-color: #ff6e40;*/
+background-color: #ffd600;
+color: #2b1e42;
+}
+#four{
+  /* padding:10%;*/
+margin:2%;
+width:40%;
+   padding-top:6%;
+   padding-bottom:6%;
+   background-color: #b2ff59;
+   color: #2b1e42;
+}
+#five{
+    /* padding:10%;*/
+margin-top:2%;
+margin-left:25%;
+width:40%;
+   padding-top:6%;
+   padding-bottom:6%;
+   background-color:#ffab91;
+   color: #2b1e42;
+}
+.glyphicon
+{
+  font-size: 50px;
+  color:#2b1e42;
+}
+body{
+  background-image: url("http://www.safe1.com.br/images/new-banner-img1.jpg");
+  width:100%;
+ 
+  height:800px;
+ 
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-y: hidden;
+    /*opacity: 0.5;*/
+  
+}
 
-</div>
-  </body>
+
+</style> 
+ 
+  
+
+</head>
+
+<body>
+
+
+  
+
+ <nav class="navbar navbar-default" id="nav1">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" id="finance" href="#">Finance</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li ><a class="dropdown-toggle" class="link" id="drop" data-toggle="dropdown" href="#">Customer <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/customer">New Customer</a></li>
+          <li><a href="/customer/existing">Existing Customer</a></li>
+        </ul>
+      </li>
+      <li ><a class="dropdown-toggle" class="link" id="drop" data-toggle="dropdown" href="#">Loan <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/loan">New Loan</a></li>
+          <li><a href="/customer/existing">Existing Loan</a></li>
+        </ul>
+      </li>
+      <li><a class="link" id="navs" href="#">Collection</a></li>
+      <li><a class="link" id="navs" href="#">Reports</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- ######### -->
+
+<div class="container" id="full">
+<div class="row">
+ <form action="" method="POST" name="form1" id="form1">
+<!-- Form New Customer  -->
+<div class="col-lg-2 col-sm-0"></div>
+
+
+<div class="col-lg-8 col-sm-12">
+ 
+<!-- Form Details  -->
+
+<div id="total">
+<a href="/customer" class="btn btn-danger btn-lg blue" role="button" id="one"><span class="glyphicon glyphicon-user"></span><br>New Customer</a>
+<a href="/customer/existing" class="btn btn-warning btn-lg" role="button" id="two"><span class="glyphicon glyphicon-search"></span><br>Search Customer</a>
+<a href="/loan"  class="btn btn-success btn-lg" role="button" id="three"><span class="glyphicon glyphicon-plus-sign"></span><br>New Loan</a>
+<a href="#" class="btn btn-info btn-lg" role="button" id="four"><span class="glyphicon glyphicon-tasks"></span><br>Reports</a>
+<a href="#" class="btn btn-primary btn-lg" role="button" id="five"><span class="glyphicon glyphicon-font"></span><br>Admin</a>
+  </div>  
+  
+    
+
+    
+
+<div class="col-lg-2 col-sm-0"></div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  </form>
+  </div>
+  </div>
+
+</body>
+</html>
