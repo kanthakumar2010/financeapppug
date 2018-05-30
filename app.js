@@ -296,6 +296,16 @@ app.get('/report/customer', (req, res)=>{
     })
 })
 
+app.get('/report/loan', (req, res)=>{
+    Loan.find({}, (err, _loan)=>{
+        if(err){
+            console.log(err)
+        } else {
+            res.render('pages/loanReport', {loan : _loan})
+        }
+    })
+})
+
 app.listen(process.env.PORT || 3000, () => {
     console.log('server started')
 })

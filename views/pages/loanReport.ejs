@@ -1,0 +1,49 @@
+<!--Partial of Head  -->
+<% include ../partials/head %>
+
+
+    <body>
+
+        <!-- partials For NAV -->
+        <% include ../partials/nav %>
+            <div class="container">
+                <h2>Loan Report</h2>
+                <br>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Loan Number</th>
+                            <th>Type</th>
+                            <th>Created Date</th>
+                            <th>principal</th>
+                            <th>intrestRate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i=0; i < loan.length; i++ ) { %>
+                            <tr>
+                                <td>
+                                    <%= loan[i].loanNumber %>
+                                </td>
+                                <td>
+                                    <%= loan[i].type %>
+                                </td>
+                                <td>
+                                    <%= loan[i].createdDate%>
+                                </td>
+                                <td>
+                                    <%= loan[i].principal %>
+                                </td>
+                                <td>
+                                    <%= loan[i].intrestRate %>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+            </div>
+
+    </body>
+
+    </html>

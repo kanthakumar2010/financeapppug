@@ -6,8 +6,11 @@
 
     <!-- partials For NAV -->
 <% include ../partials/nav %>
+<div class="container">
 
-<table class="table">
+    <h2>Customer Report</h2><br>
+
+<table class="table table-hover">
     <thead>
         <tr>
         <th>Name </th>
@@ -21,12 +24,13 @@
         <tr>
             <td> <%= customer[i].name %></td>
             <td> <%= customer[i].dob %></td>
-            <td><%= customer[i].idCustomer %></td>
+            <td> <%= customer[i].mobileNumber%></td>
+            <td> <%= customer[i].idCustomer %></td>
         </tr>
     <% } %>  
     </tbody>
 </table>
-    
+</div>  
 
   </body>
   </html>
