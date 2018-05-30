@@ -156,6 +156,14 @@ app.get('/customer/edit/:id', (req, res) => {
 })   
 
 //Loan Router 
+
+// Loan Collection Page GET
+app.get('/loan/repay', (req, res) => {
+    res.render('pages/repayLoan')
+    // res.send('Hello world')
+})
+
+// Loan Get New Loan 
 app.get('/loan/:id', (req, res) => {
     //res.render('pages/newLoan')
     Customer.findById(req.params.id, (err, _customer) => {
@@ -228,11 +236,6 @@ app.get('/loan/collection/:id', (req, res) => {
     })
     
 })
-
-//Loan Collection Page GET
-// app.get('/loan/repay', (req, res) => {
-//     res.render('pages/repayLoan')
-// })
 
 //CUSTOMER UPDATE:
 app.put('/customer/edit/:id', (req, res) => {

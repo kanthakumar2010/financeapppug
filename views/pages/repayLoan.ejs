@@ -6,18 +6,19 @@
     <!-- partials For NAV -->
 <% include ../partials/nav %>
 
-    <div class="container">
-      <div class="well">
-        <div class="form-group">
+<div class="container">
+  <div class="form-group well">
 
-          <label for="paymentAmount">Payment Amount:</label>
-          <input type="text" class="form-control" id="paymentAmount" name="paymentAmount">
+  <label for="paymentAmount">Payable Amount:</label>
+  <input type="text" class="form-control" id="paymentAmount" name="paymentAmount" value='12345'>
 
-          <label for="paymentNote">Note:</label>
-          <input type="text" class="form-control" id="paymentNote" name="paymentNote">
+  <label for="paymentAmount">Payment Amount:</label>
+  <input type="text" class="form-control" id="paymentAmount" name="paymentAmount">
 
-        </div>
-      </div>
-    </div>
-  </body>
+  <label for="paymentNote">Note:</label>
+  <textarea type="textarea" class="form-control" id="paymentNote" name="paymentNote"></textarea>
+  <button>Submit</button>
+  </div>
+</div>
+    </body>
   </html>
