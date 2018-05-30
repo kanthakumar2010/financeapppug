@@ -210,6 +210,7 @@ app.post('/loan/new', (req, res) => {
         }
     })
 })
+app.get('/loan/detail/:id')
 
 
 

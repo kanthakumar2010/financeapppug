@@ -120,7 +120,7 @@
                     <tbody>
                     <% for(var i=0; i < loanDetails.length; i++ ) { %>
                         <tr>
-                            <td> <a href="" + <%= loanDetails[i]._id %> > <%= loanDetails[i].loanNumber %> </a> </td>
+                            <td> <a href="/loan/detail/" + <%= loanDetails[i]._id %> > <%= loanDetails[i].loanNumber %> </a> </td>
                             <td ><%= loanDetails[i].principal %></td>
                         </tr>
                     <% } %>
