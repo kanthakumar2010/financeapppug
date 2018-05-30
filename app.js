@@ -178,7 +178,6 @@ app.post('/loan', (req, res) => {
 
 // New Loan
 app.post('/loan/new', (req, res) => {
-
     let newLoan = new Loan({  
         customerDetailId : req.body.customerObjId,   
         idCustomer: req.body.customerId,
@@ -200,7 +199,6 @@ app.post('/loan/new', (req, res) => {
             res.redirect('/')
         }
     })
-
 })
 
 
