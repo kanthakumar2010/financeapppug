@@ -1,0 +1,32 @@
+ <!--Partial of Head  -->
+ <% include ../partials/head %> 
+
+
+  <body>
+
+    <!-- partials For NAV -->
+<% include ../partials/nav %>
+
+<table class="table">
+    <thead>
+        <tr>
+        <th>Name </th>
+        <th>Dob</th>
+        <th>Mobile Number</th>
+        <th>Customer Id</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% for(var i=0; i < customer.length; i++ ) { %>
+        <tr>
+            <td> <%= customer[i].name %></td>
+            <td> <%= customer[i].dob %></td>
+            <td><%= customer[i].idCustomer %></td>
+        </tr>
+    <% } %>  
+    </tbody>
+</table>
+    
+
+  </body>
+  </html>

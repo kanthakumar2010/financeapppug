@@ -281,6 +281,20 @@ app.delete('/customer/delete/:id', (req, res) => {
     })
 })
 
+// Reports Routes
+app.get('/reports', (req, res)=>{
+    res.render('pages/reports')
+})
+
+app.get('/report/customer', (req, res)=>{
+    Customer.find({}, (err, _customer)=>{
+        if(err){
+            console.log(err)
+        } else {
+            res.render('pages/customerReport', {customer : _customer})
+        }
+    })
+})
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('server started')

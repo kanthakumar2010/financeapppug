@@ -2,94 +2,7 @@
 <% include ../partials/head %> 
 
 <body>
-  <!-- script for validate -->
-  <!-- <script>
-      function validate(){
-        var name=document.forms["form1"]["name"].value;
-        var father=document.forms["form1"]["fatherName"].value;
-        var date=document.forms["form1"]["dob"].value;
-        // var gender=document.getElementById("gen");
-        var sex = document.forms["form1"]["gender"].value;
-        var occupation=document.forms["form1"]["occupation"].value;
-        var mobilenumber=document.forms["form1"]["mobilenumber"].value;
-        var landline=document.forms["form1"]["landline"].value;
-        var drop =document.forms["form1"]["dd1"];
-        var IdProof = drop.options[drop.selectedIndex].value;
-        var idNumber=document.forms["form1"]["idNumber"].value;
-        var address=document.forms["form1"]["address"].value;
-        var city=document.forms["form1"]["city"].value;
-        var Reference=document.forms["form1"]["Reference"].value;
-        var refRelationship=document.forms["form1"]["refRelationship"].value;
-  
-  // script for alert
-  
-        if(name== "")
-        {
-          alert("Enter The Customer Name");
-        }
-         if(father== "")
-        {
-          alert("Enter The Father's Name");
-        }
-        if(date== "")
-        {
-          alert("Choose The Date of Birth");
-        }
-         if(sex == "")
-        {
-           alert("Choose The Gender");
-         }
-        if(occupation== "")
-        {
-          alert("Enter The Occupation");
-        }
-        if(mobilenumber== "")
-        {
-          alert("Enter The Mobile Number");
-        } 
-        if(isNaN(mobilenumber))
-        {
-        alert("Enter the valid Mobile Number");
-        }
-        if(landline== "")
-        {
-          alert("Enter The LandLine Number");
-        }
-        if(isNaN(landline))
-        {
-        alert("Enter the valid LandLine Number");
-        }
-        if(IdProof == 0)
-        {
-          alert("Choose the ID Proof");
-        }
-        if(idNumber== "")
-        {
-          alert("Enter The Id Number");
-        }
-        if(address== "")
-        {
-          alert("Enter The Address");
-        }
-         if(city== "")
-        {
-          alert("Enter The City");
-        }
-         if(Reference== "")
-        {
-          alert("Enter the Reference");
-        }
-         if(refRelationship== "")
-        {
-          alert("Enter The Reference Relationship");
-          return false;
-        } 
-      }
-    </script> -->
-
-
  <% include ../partials/nav %>
-
 
 <!-- Form New Customer  -->
 <div class="container">
@@ -145,14 +58,7 @@
 
     <div class="form-group">
       <label class="control-label">ID Proof</label>        
-        <!-- <select id="dd1" class="form-control" name="proofType">          
-          <option value="2">Passport</option>
-          <option value="3">Voter ID</option>
-          <option value="4">Aadhaar</option>
-          <option value="5">Pan Card</option>
-          <option value="6">Driving licence</option>
-          <option value="7">Pass book</option>    
-        </select> -->
+       
         <input type="text" class="form-control" id="proofType" name="proofType">      
     </div>
 
