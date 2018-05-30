@@ -231,7 +231,7 @@ app.get('/loan/collection/:id', (req, res) => {
             console.log(err)
             res.render('pages/errorPage')
         } else{
-            res.render('pages/loanDetail', {loan : _loan})
+            res.render('pages/loanDetailInterest', {loan : _loan})
         }
     })
     
