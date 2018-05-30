@@ -177,12 +177,11 @@ app.post('/loan', (req, res) => {
         // console.log(chalk.blue('FROM /LOAN => Method : POST LoanOption = Simple Ientrest'))
         // console.log(req.body)
 
-        res.render('pages/simpleIntrestLoan', 
-        { detail: req.body })
+        res.render('pages/simpleIntrestLoan', { detail: req.body })
 
     } else if (req.body.loanOption === "emi") {
 
-        console.log(chalk.blue('FROM /LOAN => Method : POST LoanOption  = EMI'))
+        console.log(chalk.blue('FROM /LOAN : EMI => Method : POST LoanOption  = EMI'))
         console.log(req.body)
 
         res.render('pages/emiLoan', { detail: req.body })
@@ -212,7 +211,7 @@ app.post('/loan/new', (req, res) => {
             res.render('pages/errorPage')
         }
         else {
-            res.redirect('/')
+            res.redirect('/customer/' + req.body.customerObjId)
         }
     })
 })
