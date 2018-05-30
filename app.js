@@ -93,7 +93,7 @@ app.post('/customer', (req, res) => {
     })
 
     // Add New Customer to db 
-    console.log(chalk.green( JSON.stringify(newCustomer) ) )
+    // console.log(chalk.green( JSON.stringify(newCustomer) ) )
     Customer.add(newCustomer, (err) => {
         if (err){
             console.log(err)
@@ -128,7 +128,7 @@ app.get('/customer/:id', (req, res) => {
 //Customer Edit
 app.get('/customer/edit/:id', (req, res) => {
     Customer.findById(req.params.id, (err, _customer) => {
-        console.log(chalk.green('Customer Retrived Sucessfull :'))
+        // console.log(chalk.green('Customer Retrived Sucessfull :'))
         // console.log(_customer)
         if (err) {
             console.log(err)
@@ -146,11 +146,11 @@ app.get('/customer/edit/:id', (req, res) => {
 app.get('/loan/:id', (req, res) => {
     //res.render('pages/newLoan')
     Customer.findById(req.params.id, (err, _customer) => {
-        console.log(chalk.green('Customer Retrived Sucessfull :'))
+        // console.log(chalk.green('Customer Retrived Sucessfull :'))
         if (err) {
             res.send(err)
         } else {
-            console.log(_customer) //_customer Details Show
+            // console.log(_customer) //_customer Details Show
             res.render('pages/newLoan', {
                 customer: _customer
             })
@@ -160,20 +160,27 @@ app.get('/loan/:id', (req, res) => {
 
 app.post('/loan', (req, res) => {
     if (req.body.loanOption === "intrest") {
+
+        console.log(chalk.blue('FROM /LOAN => Method : POST LoanOption = Simple Ientrest'))
         console.log(req.body)
+
         res.render('pages/simpleIntrestLoan', 
-        { 
-            detail: req.body            
-        })
+        { detail: req.body })
+
     } else if (req.body.loanOption === "emi") {
+
+        console.log(chalk.blue('FROM /LOAN => Method : POST LoanOption  = EMI'))
+        console.log(req.body)
+
         res.render('pages/emiLoan', { detail: req.body })
     }
 })
 
 // New Loan
-app.post('/loan/new/', (req, res) => {
+app.post('/loan/new', (req, res) => {
 
-    let newLoan = new Loan({        
+    let newLoan = new Loan({  
+        customerDetailId : req.body.customerObjId,   
         idCustomer: req.body.customerId,
         loanNumber: req.body.loanNumber,
         type: req.body.loanOption,
