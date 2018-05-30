@@ -74,7 +74,7 @@ app.get('/customer', (req, res) => {
 app.post('/customer', (req, res) => {    
    
     let newCustomer = new Customer ({
-        idCustomer : req.body.customerId,
+        idCustomer : req.body.idCustomer,
         name : req.body.name,
         fatherName : req.body.fatherName,
         dob : req.body.dob,
@@ -117,7 +117,8 @@ app.get('/customer/:id', (req, res) => {
             //console.log(customer)
             res.render('pages/customerDetail', { 
                 details : customer,  // Send Customer Object to frontEnd as Details
-                editLink : '/customer/edit/' + customer._id,  //Send Link Value to FrontEnd               
+                editLink : '/customer/edit/' + customer._id,  //Send Link Value to FrontEnd              
+                newLoanLink : '/loan/' + customer._id, //Send New Loan Link with Id
                 deleteLink : '/customer/delete/' + customer._id + '?_method=DELETE'
             })
         }  
@@ -128,7 +129,7 @@ app.get('/customer/:id', (req, res) => {
 app.get('/customer/edit/:id', (req, res) => {
     Customer.findById(req.params.id, (err, _customer) => {
         console.log(chalk.green('Customer Retrived Sucessfull :'))
-        console.log(_customer)
+        // console.log(_customer)
         if (err) {
             console.log(err)
             res.send(err)
@@ -142,43 +143,57 @@ app.get('/customer/edit/:id', (req, res) => {
 })   
 
 //Loan Router 
-app.get('/loan', (req, res) => {
+app.get('/loan/:id', (req, res) => {
     //res.render('pages/newLoan')
-    res.render('pages/newLoan')
+    Customer.findById(req.params.id, (err, _customer) => {
+        console.log(chalk.green('Customer Retrived Sucessfull :'))
+        if (err) {
+            res.send(err)
+        } else {
+            console.log(_customer) //_customer Details Show
+            res.render('pages/newLoan', {
+                customer: _customer
+            })
+        }
+    })
 })
 
 app.post('/loan', (req, res) => {
     if (req.body.loanOption === "intrest") {
         console.log(req.body)
-        res.render('pages/simpleIntrestLoan', { detail: req.body })
+        res.render('pages/simpleIntrestLoan', 
+        { 
+            detail: req.body            
+        })
     } else if (req.body.loanOption === "emi") {
         res.render('pages/emiLoan', { detail: req.body })
     }
 })
 
 // New Loan
-app.post('/loan/new/', (req, res) => {  
+app.post('/loan/new/', (req, res) => {
 
-    let newLoan = new Loan({
-        idCustomer : req.body.customerId,
-        loanNumber : req.body.loanNumber,
-        type : req.body.loanOption,
-        principal : req.body.principalAmount,
-        intrestRate : req.body.intrest,
-        emiAmount : req.body.emiAmount,
-        emiMonths : req.body.months,
-        createdDate : new Date
+    let newLoan = new Loan({        
+        idCustomer: req.body.customerId,
+        loanNumber: req.body.loanNumber,
+        type: req.body.loanOption,
+        principal: req.body.principalAmount,
+        intrestRate: req.body.intrest,
+        emiAmount: req.body.emiAmount,
+        emiMonths: req.body.months,
+        createdDate: new Date
     })
     console.log(newLoan)
     Loan.add(newLoan, (err) => {
-        if (err){
+        if (err) {
             console.log(err)
             res.render('pages/errorPage')
         }
-        else {           
-            res.redirect('/')                         
+        else {
+            res.redirect('/')
         }
     })
+
 })
 
 

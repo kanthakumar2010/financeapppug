@@ -13,7 +13,14 @@
     
             <table class="table table-striped">
                 <tbody>
-    
+                    
+                    <tr>
+                        <td>Customer Id </td>
+                        <td>
+                            <%= details.idCustomer %>
+                        </td>
+                    </tr>
+
                     <tr>
                         <td>Name</td>
                         <td>
@@ -101,6 +108,8 @@
 
         <div class="container">
             <a href="<%= editLink %>" class="btn btn-success btn-lg ">EDIT</a>
+
+            <a href="<%= newLoanLink %>" class="btn btn-success btn-lg ">New Loan</a>
         
             <form method="POST" action=< %=deleteLink %> >
                 <button class="btn btn-danger btn-lg pull-right" type="submit">Delete</button>

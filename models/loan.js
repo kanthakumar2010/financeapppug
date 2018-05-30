@@ -3,6 +3,7 @@ const config = require('../config/database')
 
 //loan Schema
 const LoanSchema = mongoose.Schema({ 
+    customerDetailId : {type : String},
     idCustomer : {type : String},
     loanNumber : {type: String},
     type : {type : String},
