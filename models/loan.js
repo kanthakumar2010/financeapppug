@@ -6,7 +6,7 @@ const config = require('../config/database')
 const LoanSchema = mongoose.Schema({ 
     customerDetailId : {type : String},
     idCustomer : {type : String},
-    loanNumber : {type: String},
+    loanNumber : {type : String},
     type : {type : String},
     principal : {type :String},
     intrestRate : {type : String},    

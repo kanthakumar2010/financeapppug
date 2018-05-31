@@ -165,30 +165,20 @@ app.get('/loan/repay/:id', (req, res) => {
             console.log(chalk.cyan('FROM => /loan/repay Method : GET'))
             console.log(err)
         } else {
-            // console.log(chalk.green(_loan))
-            console.log('req.params.id = ' + req.params.id)           
-
-            // Payment.findByLoanId( req.params.id, (err, _payment)=>{
-            //     if(err){
-            //         console.log(err)
-            //         res.render('pages/errorPage')
-            //     }
-            //     else{
-            //        res.render('pages/repaySi', { 
-            //            loan: _loan,
-            //            payment : 
-            //         })
-            //     }
-            // })        
+            // console.log(chalk.cyan(_loan))
+            // console.log('req.params.id = ' + req.params.id)           
+            
             Payment.findCount(req.params.id, (err, count)=> {
                 if(err){
+                    console.log(chalk.cyan('FROM => /loan/repay Method : GET  => Find Count'))
                     console.log(err)
                     res.render('pages/errorPage')
                 } else{
-                    res.render('pages/repaySi', { 
-                        loan: _loan,
-                        paymentCount: count
-                    })
+                    if(_loan.type == 'intrest'){
+                        res.render('pages/repaySi', {loan: _loan, paymentCount: count})
+                    } else if( _loan.type == 'emi' ){                
+                        res.render('pages/repayEmi', {loan: _loan, paymentCount: count})
+                    }                   
                 }
             }) 
         }
@@ -287,7 +277,7 @@ app.get('/loan/collection/:id', (req, res) => {
         } else{            
             if(_loan.type == 'intrest'){
                 res.render('pages/loanDetailInterest', {loan : _loan})
-            } else if( _loan.type == 'emi' ){
+            } else if( _loan.type == 'emi' ){                
                 res.render('pages/loanDetailEmi', {loan : _loan})
             }            
         }
