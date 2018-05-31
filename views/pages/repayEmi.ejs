@@ -1,1 +1,53 @@
-<h2> Emi Collection Page</h2>
+    <!--Partial of Head  -->
+    <% include ../partials/head %> 
+
+    <body>
+  
+      <!-- partials For NAV -->
+  <% include ../partials/nav %>
+  
+  
+      <div class="container well ">
+          <h2>EMI Collection :</h2><br><br>       
+          <form action="/loan/repay" method="POST">
+
+              <input type="text" id="loanId" name="loanId" value="<%= loan._id %>" hidden>
+  
+              <div class="form-group">
+                <label for="principal">Loan Amount :</label>
+                <input type="text" class="form-control" id="principal" name="principal" value="<%= loan.principal %>" disabled>
+              </div>
+  
+              <div class="form-group">
+                <label for="instalmentNumber">Instalment No:</label>
+                <input type="text" class="form-control" name="instalmentNumber" id="instalmentNumber" value="<%= paymentCount %>" disabled>
+              </div>    
+              
+              <div class="form-group">
+                  <label for="intrestAmount">EMi Amount:</label>
+                  <input type="text" class="form-control" name="intrestAmount" id="intrestAmount" value="<%= loan.emiAmount %>" disabled >
+              </div>
+  
+              <div class="form-group">
+                  <label for="paymentIntrest">Pay:</label>
+                  <input type="text" class="form-control" name="paymentIntrest" id="paymentIntrest">
+              </div>
+  
+              <button type="submit" class="btn btn-default">Save</button>
+              <!-- <button onclick="goBack()">Go Back</button> -->
+  
+            </form>
+      </div>
+  
+          
+  
+      <script>
+          function goBack() {
+              window.history.back();
+          }
+      </script>
+  
+      
+  
+    </body>
+    </html>
