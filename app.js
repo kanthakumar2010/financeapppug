@@ -223,6 +223,7 @@ app.post('/loan/new', (req, res) => {
         }
     })
 })
+
 //Loan Details/ collection Page
 app.get('/loan/collection/:id', (req, res) => {
 
