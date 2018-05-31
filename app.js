@@ -159,7 +159,7 @@ app.get('/customer/edit/:id', (req, res) => {
 
 // Loan Collection Page GET
 app.get('/loan/repay', (req, res) => {
-    res.render('pages/repayLoan')
+    res.render('pages/repaySi')
     // res.send('Hello world')
 })
 
