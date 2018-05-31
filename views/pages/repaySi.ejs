@@ -5,30 +5,46 @@
 
     <!-- partials For NAV -->
 <% include ../partials/nav %>
-<h1> REPAY SI PAY </h1>
+
 
     <div class="container well ">
-        <table class="table">
-            <tbody>
-                <tr>
-                    <td>Emi Amount :</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Instalment No :</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Amount To Pay : </td>
-                    <td></td>                    
-                </tr>
-                <tr>
-                    <td>Note : </td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
+        <h2>Simple Intrest Collection :</h2><br><br>       
+        <form action="#">
+
+            <div class="form-group">
+              <label for="emiAmount">Intrest Amount :</label>
+              <input type="text" class="form-control" id="emiAmount" name="emiAmount" value="<%= loan.principal %>" disabled>
+            </div>
+
+            <div class="form-group">
+              <label for="instalmentNumber">Instalment No:</label>
+              <input type="text" class="form-control" name="instalmentNumber" id="instalmentNumber" value="5" disabled>
+            </div>    
+            
+            <div class="form-group">
+                <label for="intrestAmount">Intrest Amount:</label>
+                <input type="text" class="form-control" name="intrestAmount" id="intrestAmount" disabled >
+            </div>
+
+            <div class="form-group">
+                <label for="paymentIntrest">Pay:</label>
+                <input type="text" class="form-control" name="paymentIntrest" id="paymentIntrest">
+            </div>
+
+            <button type="submit" class="btn btn-default">Save</button>
+
+          </form>
     </div>
+
+    <script>
+        var principal = <%= loan.principal %> ;
+        var intrest = <%= loan.intrestRate %> ; 
+        var months = 1;
+
+        var simpleIntrest = ( principal * intrest * ( months / 12)  ) / 100;
+        document.getElementById("intrestAmount").value =   simpleIntrest.toFixed(2) ;
+        
+    </script>
 
   </body>
   </html>

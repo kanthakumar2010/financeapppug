@@ -158,9 +158,17 @@ app.get('/customer/edit/:id', (req, res) => {
 //Loan Router 
 
 // Loan Collection Page GET
-app.get('/loan/repay', (req, res) => {
-    res.render('pages/repaySi')
-    // res.send('Hello world')
+app.get('/loan/repay/:id', (req, res) => {
+
+    Loan.findById(req.params.id, (err, _loan)=> {
+        if(err){
+            console.log(chalk.cyan('FROM => /loan/repay Method : GET'))
+            console.log(err)
+        } else {
+            res.render('pages/repaySi', {loan : _loan})  
+        }
+    })
+      
 })
 
 // Loan Get New Loan 
