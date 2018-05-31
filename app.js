@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
 const Customer = require('./models/customer')
+const Payment = require('./models/payment')
 const Loan = require('./models/loan')
 const mongoose = require('mongoose')
 const config = require('./config/database')
@@ -159,16 +160,60 @@ app.get('/customer/edit/:id', (req, res) => {
 
 // Loan Collection Page GET
 app.get('/loan/repay/:id', (req, res) => {
-
-    Loan.findById(req.params.id, (err, _loan)=> {
-        if(err){
+    Loan.findById(req.params.id, (err, _loan) => {
+        if (err) {
             console.log(chalk.cyan('FROM => /loan/repay Method : GET'))
             console.log(err)
         } else {
-            res.render('pages/repaySi', {loan : _loan})  
+            // console.log(chalk.green(_loan))
+            console.log('req.params.id = ' + req.params.id)           
+
+            // Payment.findByLoanId( req.params.id, (err, _payment)=>{
+            //     if(err){
+            //         console.log(err)
+            //         res.render('pages/errorPage')
+            //     }
+            //     else{
+            //        res.render('pages/repaySi', { 
+            //            loan: _loan,
+            //            payment : 
+            //         })
+            //     }
+            // })        
+            Payment.findCount(req.params.id, (err, count)=> {
+                if(err){
+                    console.log(err)
+                    res.render('pages/errorPage')
+                } else{
+                    res.render('pages/repaySi', { 
+                        loan: _loan,
+                        paymentCount: count
+                    })
+                }
+            }) 
         }
     })
-      
+    
+})
+
+//Save Collection  -  Payment Page 
+app.post('/loan/repay', (req, res) => {
+    console.log(chalk.blue('POST => /loan/repay'))
+    console.log(req.body)
+    var newPayment = new Payment({
+        loanId : req.body.loanId,
+        paymentAmount : req.body.paymentIntrest
+    })
+    Payment.add(newPayment , (err) => {
+        if(err){
+            console.log(err)
+            res.send(err)
+        } else{
+            console.log( chalk.cyan('Payment Saved') )
+            console.log(chalk.cyan('/loan/collection/' + req.body.loanId))
+            res.redirect('/loan/collection/' + req.body.loanId)
+        }        
+    })
 })
 
 // Loan Get New Loan 
@@ -239,12 +284,17 @@ app.get('/loan/collection/:id', (req, res) => {
         if(err){
             console.log(err)
             res.render('pages/errorPage')
-        } else{
-            res.render('pages/loanDetailInterest', {loan : _loan})
+        } else{            
+            if(_loan.type == 'intrest'){
+                res.render('pages/loanDetailInterest', {loan : _loan})
+            } else if( _loan.type == 'emi' ){
+                res.render('pages/loanDetailEmi', {loan : _loan})
+            }            
         }
     })
     
 })
+
 
 //CUSTOMER UPDATE:
 app.put('/customer/edit/:id', (req, res) => {

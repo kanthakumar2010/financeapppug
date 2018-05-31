@@ -9,7 +9,9 @@
 
     <div class="container well ">
         <h2>Simple Intrest Collection :</h2><br><br>       
-        <form action="#">
+        <form action="/loan/repay" method="POST">
+
+            <input type="text" id="loanId" name="loanId" value="<%= loan._id %>" hidden>
 
             <div class="form-group">
               <label for="emiAmount">Intrest Amount :</label>
@@ -18,7 +20,7 @@
 
             <div class="form-group">
               <label for="instalmentNumber">Instalment No:</label>
-              <input type="text" class="form-control" name="instalmentNumber" id="instalmentNumber" value="5" disabled>
+              <input type="text" class="form-control" name="instalmentNumber" id="instalmentNumber" value="<%= paymentCount %>" disabled>
             </div>    
             
             <div class="form-group">
@@ -32,9 +34,18 @@
             </div>
 
             <button type="submit" class="btn btn-default">Save</button>
+            <!-- <button onclick="goBack()">Go Back</button> -->
 
           </form>
     </div>
+
+        
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 
     <script>
         var principal = <%= loan.principal %> ;
