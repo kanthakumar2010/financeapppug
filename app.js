@@ -68,7 +68,7 @@ app.post('/customer/existing', (req, res) => {
 //Customer New Add 
 app.get('/customer', (req, res) => {
     // res.render('pages/newCustomer')
-    res.render('pages/customerMohan')
+    res.render('pages/customerAdd')
 
 })
 
