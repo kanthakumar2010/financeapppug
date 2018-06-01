@@ -270,17 +270,21 @@ app.post('/loan/new', (req, res) => {
 
 //Loan Details/ collection Page
 app.get('/loan/collection/:id', (req, res) => {
-
     Loan.findById(req.params.id, (err, _loan) => {
         if(err){
             console.log(err)
             res.render('pages/errorPage')
         } else{            
-            if(_loan.type == 'intrest'){
-                res.render('pages/loanDetailInterest', {loan : _loan})
-            } else if( _loan.type == 'emi' ){                
-                res.render('pages/loanDetailEmi', {loan : _loan})
-            }            
+            Payment.findAllByLoanId(req.params.id, (err, _payment)=> {
+                if(_loan.type == 'intrest'){
+                    res.render('pages/loanDetailInterest', {
+                        loan : _loan,
+                        payment : _payment
+                    })
+                } else if( _loan.type == 'emi' ){                
+                    res.render('pages/loanDetailEmi', {loan : _loan})
+                } 
+            })                       
         }
     })
     

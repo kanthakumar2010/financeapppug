@@ -1,7 +1,15 @@
  <!--Partial of Head  -->
  <% include ../partials/head %> 
 
-  <body>
+ <style>
+        #del {
+            bottom: 45px;
+            position: relative;
+            left: 2px;
+        }
+    </style>
+
+  <body>    
 
     <!-- partials For NAV -->
 <% include ../partials/nav %>
@@ -9,7 +17,7 @@
 <!-- Container -->
     <div class="container">
         <div class="panel panel-primary">
-            <div class="panel-heading">Customer Details</div>
+            <div class="panel-heading"> <h2>CUSTOMER DETAILS</h2></div>
             <div class="panel-body">
                 <table class="table table-striped">
                     <tbody>
@@ -107,13 +115,13 @@
         
         <!-- Loan Details Table view -->
         <div class="panel panel-primary">   
-            <div class="panel-heading">LOAN DETAILS</div>
+            <div class="panel-heading"><h2>LOAN DETAILS</h2></div>
             <div class="panel-body">
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Loan Number</th>
-                            <th>Principal Amount</th>
+                            <th>LOAN NUMBER</th>
+                            <th>PRINCIPAL AMOUNT</th>
                         </tr>
                     </thead>
                     <!-- Loan Details Table  -->
@@ -128,11 +136,12 @@
                 </table>
             </div>
         </div>
-              
+        
+        <div>              
             <a href= " <%= editLink %> "  class="btn btn-success btn-lg ">EDIT</a>
             <a href= " <%= newLoanLink %> " class="btn btn-success btn-lg ">New Loan</a>        
             <form method="POST" action=< %=deleteLink %> >
-                <button class="btn btn-danger btn-lg pull-right" type="submit">Delete</button>
+                <button id="del" class="btn btn-danger btn-lg pull-right" type="submit">Delete</button>
             </form>
         </div>
         

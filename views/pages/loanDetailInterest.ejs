@@ -7,34 +7,47 @@
 <% include ../partials/nav %>
 
 <!-- Container -->
-    <div class="container">
-        <ul>
-            <h2>Loan Details </h2>
-    
-            <table class="table table-striped">
-                <tbody>    
-                    <tr>
-                        <td>Loan Number</td>
-                        <td><%= loan.loanNumber %></td>
-                    </tr>                        
-                    <tr>
-                        <td>Loan Type</td>
-                        <td><%= loan.type %></td>                        
-                    </tr>
-                    <tr>
-                        <td>Principal Amount</td>
-                        <td><%= loan.principal %></td>
-                    </tr>
+    <div class="container">        
+    <h2>Loan Details </h2>     
+    <div class="panel panel-default">   
+        <table class="table table-striped">
+        <tbody>
+            <tr>
+                <td>Loan Number</td>
+                <td><%= loan.loanNumber %></td>
+            </tr>
+            <tr>
+                <td>Loan Type</td>
+                <td><%= loan.type %></td>
+            </tr>
+            <tr>
+                <td>Principal Amount</td>
+                <td><%= loan.principal %></td>
+            </tr>
 
-                    <tr>
-                        <td>Interest Amount / Month</td>
-                        <td id="intrestAmount" ></td>
-                    </tr>
-                </tbody>
-            </table>    
+            <tr>
+                <td>Interest Amount / Month</td>
+                <td id="intrestAmount"></td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
     
-        </ul>
-        <a href="/loan/repay/<%= loan._id %>" class="btn btn-primary">Collect</a>
+    <h3>Loan Collection </h3>
+    <div class="panel panel-default">
+        <table class="table">
+            <% for(var i=0; i < payment.length; i++) {%>
+                <tr>
+                    <td><%= i + 1 %></td>
+                    <td><%= payment[i].paymentAmount %></td>
+                    <td><%= payment[i].date %></td>                    
+                </tr>
+            <% } %>
+        </table>
+    </div>
+        
+        <a href="/loan/repay/<%= loan._id %>" class="btn btn-primary pull-right">Collect</a>
+    </div>
     </body>
 
     <script>
