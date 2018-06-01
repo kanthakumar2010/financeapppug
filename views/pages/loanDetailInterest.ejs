@@ -29,6 +29,10 @@
                 <td>Interest Amount / Month</td>
                 <td id="intrestAmount"></td>
             </tr>
+            <tr>
+                <td>Created Date</td>
+                <td><%= loan.createdDate %></td>
+            </tr>
         </tbody>
         </table>
     </div>
@@ -50,9 +54,9 @@
                     <td><%= payment[i].date %></td>                                                            
                 </tr>
             <% } %>
-        </table>       
+        </table>
+    </div> 
 
-    </div>    
         <a href="/loan/repay/<%= loan._id %>" class="btn btn-primary pull-right">Collect</a>
     </div>
     </body>

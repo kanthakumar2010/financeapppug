@@ -37,6 +37,28 @@
                 </tr>
             </tbody>
         </table>
+<!-- EMI PAYMENTS DETAILS -->
+        <div class="panel panel-default">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>S.no</th>
+                            <th>Amount paid</th>
+                            <th>Payment Date</th>                    
+                        </tr>
+                    </thead>
+                    <% for(var i=0; i < loan.emiMonths; i++) {%>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <% if(payment[i]) {%>
+                                <td><%= payment[i].paymentAmount %></td>
+                                <td><%= payment[i].date %></td>
+                            <% } %>                                           
+                        </tr>
+                    <% } %>
+                </table>
+            </div> 
+
     <a href="/loan/repay/<%= loan._id %>" class="btn btn-primary">Collect</a>
     </body>
 </html>

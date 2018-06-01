@@ -287,12 +287,11 @@ app.get('/loan/collection/:id', (req, res) => {
                         // totalIntrestPaid : totalIntrest                                               
                     })
                 } else if( _loan.type == 'emi' ){                
-                    res.render('pages/loanDetailEmi', {loan : _loan})
+                    res.render('pages/loanDetailEmi', {loan : _loan, payment : _payment})
                 } 
             })                       
         }
-    })
-    
+    })    
 })
 
 
