@@ -18,19 +18,8 @@ module.exports.findByLoanId = ( loanId, callback ) =>{
     Payment.findOne(query, callback)
 }
 
-module.exports.findByLoanId = ( loanId, callback ) =>{
-    const query = { loanId : loanId }
-    Payment.findOne(query, callback)
-}
-
 module.exports.findCount = ( loanId, callback ) =>{
     const query = { loanId : loanId }
     Payment.count(query, callback)
 }
-
-
-// userModel.count({name: 'anand'}, function(err, c) {
-//     console.log('Count is ' + c);
-// })
-
 

@@ -164,6 +164,7 @@ app.get('/loan/repay/:id', (req, res) => {
         if (err) {
             console.log(chalk.cyan('FROM => /loan/repay Method : GET'))
             console.log(err)
+            res.render('pages/errorPage')
         } else {
             // console.log(chalk.cyan(_loan))
             // console.log('req.params.id = ' + req.params.id)           
