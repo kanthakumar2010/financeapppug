@@ -47,7 +47,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 //home router
-app.get('/', (req, res) => {
+app.get('/', (req, res) => {    
     res.render('pages/dashboard')    
 })
 
@@ -69,7 +69,6 @@ app.post('/customer/existing', (req, res) => {
 app.get('/customer', (req, res) => {
     // res.render('pages/newCustomer')
     res.render('pages/customerAdd')
-
 })
 
 app.post('/customer', (req, res) => {    
@@ -276,10 +275,16 @@ app.get('/loan/collection/:id', (req, res) => {
             res.render('pages/errorPage')
         } else{            
             Payment.findAllByLoanId(req.params.id, (err, _payment)=> {
-                if(_loan.type == 'intrest'){
+                if(_loan.type == 'intrest'){ 
+                        // // Calculating the amount of intrest paid till date
+                        // let totalIntrest = 0 ;
+                        // for (let i = 0; i < _payment.length; i++){
+                        //     totalIntrest += parseInt( _payment[i].paymentAmount );                      
+                        // }            
                     res.render('pages/loanDetailInterest', {
                         loan : _loan,
-                        payment : _payment
+                        payment : _payment,
+                        // totalIntrestPaid : totalIntrest                                               
                     })
                 } else if( _loan.type == 'emi' ){                
                     res.render('pages/loanDetailEmi', {loan : _loan})

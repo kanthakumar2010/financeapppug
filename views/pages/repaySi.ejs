@@ -20,7 +20,7 @@
 
             <div class="form-group">
               <label for="instalmentNumber">Instalment No:</label>
-              <input type="text" class="form-control" name="instalmentNumber" id="instalmentNumber" value="<%= paymentCount %>" disabled>
+              <input type="text" class="form-control" name="instalmentNumber" id="instalmentNumber" value="<%= paymentCount  + 1 %>" disabled>
             </div>    
             
             <div class="form-group">
@@ -33,7 +33,7 @@
                 <input type="text" class="form-control" name="paymentIntrest" id="paymentIntrest">
             </div>
 
-            <button type="submit" class="btn btn-default">Save</button>
+            <button type="submit" class="btn btn-primary">Save</button>
             <!-- <button onclick="goBack()">Go Back</button> -->
 
           </form>

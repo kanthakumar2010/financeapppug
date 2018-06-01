@@ -7,46 +7,36 @@
 <% include ../partials/nav %>
 
 <!-- Container -->
-    <div class="container">
-        <ul>
-            <h2>Loan Details </h2>
-    
-            <table class="table table-striped">
-                <tbody>    
-                    <tr>
-                        <td>Loan Number</td>
-                        <td><%= loan.loanNumber %></td>
-                    </tr>                        
-                    <tr>
-                        <td>Loan Type</td>
-                        <td><%= loan.type %></td>                        
-                    </tr>
-                    <tr>
-                        <td>Principal Amount</td>
-                        <td><%= loan.principal %></td>
-                    </tr>
-
-                    <tr>
-                        <td>EMI Amount</td>
-                        <td><%= loan.emiAmount%></td>
-                    </tr>
-                    
-                    <tr>
-                        <td>EMI Tenure</td>
-                        <td><%= loan.emiMonths%></td>
-                    </tr>
-
-                    <tr>
-                        <td>Resudual Amount</td>
-                        <td></td>
-                    </tr>
-
-                </tbody>
-            </table>    
-    
-        </ul>
-        <a href="/loan/repay/<%= loan._id %>" class="btn btn-primary">Collect</a>
-        
-
+    <div class="container">        
+        <h2>Loan Details </h2>    
+        <table class="table table-striped">
+            <tbody>    
+                <tr>
+                    <td>Loan Number</td>
+                    <td><%= loan.loanNumber %></td>
+                </tr>                        
+                <tr>
+                    <td>Loan Type</td>
+                    <td><%= loan.type %></td>                        
+                </tr>
+                <tr>
+                    <td>Principal Amount</td>
+                    <td><%= loan.principal %></td>
+                </tr>
+                <tr>
+                    <td>EMI Amount</td>
+                    <td><%= loan.emiAmount%></td>
+                </tr>                
+                <tr>
+                    <td>EMI Tenure</td>
+                    <td><%= loan.emiMonths%></td>
+                </tr>
+                <tr>
+                    <td>Resudual Amount</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    <a href="/loan/repay/<%= loan._id %>" class="btn btn-primary">Collect</a>
     </body>
 </html>

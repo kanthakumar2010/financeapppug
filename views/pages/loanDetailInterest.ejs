@@ -36,16 +36,23 @@
     <h3>Loan Collection </h3>
     <div class="panel panel-default">
         <table class="table">
+            <thead>
+                <tr>
+                    <th>S.no</th>
+                    <th>Amount paid</th>
+                    <th>Payment Date</th>                    
+                </tr>
+            </thead>
             <% for(var i=0; i < payment.length; i++) {%>
                 <tr>
                     <td><%= i + 1 %></td>
                     <td><%= payment[i].paymentAmount %></td>
-                    <td><%= payment[i].date %></td>                    
+                    <td><%= payment[i].date %></td>                                                            
                 </tr>
             <% } %>
-        </table>
-    </div>
-        
+        </table>       
+
+    </div>    
         <a href="/loan/repay/<%= loan._id %>" class="btn btn-primary pull-right">Collect</a>
     </div>
     </body>
@@ -56,7 +63,6 @@
         var months = 1;
 
         var simpleIntrest = ( principal * intrest * ( months / 12)  ) / 100;
-        document.getElementById("intrestAmount").innerText =   simpleIntrest.toFixed(2) ;
-        
+        document.getElementById("intrestAmount").innerText =   simpleIntrest.toFixed(2) ;        
     </script>
 </html>
