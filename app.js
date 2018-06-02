@@ -291,8 +291,9 @@ app.get('/loan/collection/:id', (req, res) => {
                 } 
             })                       
         }
-    })    
+    })                                                                          
 })
+    
 
 
 //CUSTOMER UPDATE:
