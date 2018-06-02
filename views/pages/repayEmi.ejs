@@ -15,22 +15,22 @@
   
               <div class="form-group">
                 <label for="principal">Loan Amount :</label>
-                <input type="text" class="form-control" id="principal" name="principal" value="<%= loan.principal %>" disabled>
+                <input type="text" class="form-control" id="principal" name="principal" value="<%= loan.principal %>" readonly>
               </div>
   
               <div class="form-group">
                 <label for="instalmentNumber">Instalment No:</label>
-                <input type="text" class="form-control" name="instalmentNumber" id="instalmentNumber" value="<%= paymentCount %>" disabled>
+                <input type="text" class="form-control" name="instalmentNumber" id="instalmentNumber" value="<%= paymentCount %>" readonly>
               </div>    
               
               <div class="form-group">
                   <label for="intrestAmount">EMi Amount:</label>
-                  <input type="text" class="form-control" name="intrestAmount" id="intrestAmount" value="<%= loan.emiAmount %>" disabled >
+                  <input type="text" class="form-control" name="intrestAmount" id="intrestAmount" value="<%= loan.emiAmount %>" readonly >
               </div>
   
               <div class="form-group">
                   <label for="paymentIntrest">Pay:</label>
-                  <input type="text" class="form-control" name="paymentIntrest" id="paymentIntrest">
+                  <input type="text" class="form-control" name="paymentIntrest" id="paymentIntrest" value="<%= loan.emiAmount %>" readonly >
               </div>
   
               <button type="submit" class="btn btn-default">Save</button>

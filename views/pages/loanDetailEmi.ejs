@@ -44,7 +44,8 @@
                         <tr>
                             <th>S.no</th>
                             <th>Amount paid</th>
-                            <th>Payment Date</th>                    
+                            <th>Payment Date</th>
+                            <th>Status</th>                    
                         </tr>
                     </thead>
                     <% for(var i=0; i < loan.emiMonths; i++) {%>
@@ -53,12 +54,17 @@
                             <% if(payment[i]) {%>
                                 <td><%= payment[i].paymentAmount %></td>
                                 <td><%= payment[i].date %></td>
-                            <% } %>                                           
+                                <td>PAID</td>
+                            <% } else { %>
+                                <td><%= loan.emiAmount %></td>
+                                <td>TO BE PAID</td>
+                                <td><a href="/loan/repay/<%= loan._id %>" class="btn btn-primary">Pay</a></td>
+                                <% } %>                                           
                         </tr>
                     <% } %>
                 </table>
             </div> 
 
-    <a href="/loan/repay/<%= loan._id %>" class="btn btn-primary">Collect</a>
+    <!-- <a href="/loan/repay/<%= loan._id %>" class="btn btn-primary">Collect</a> -->
     </body>
 </html>
