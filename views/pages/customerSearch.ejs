@@ -6,22 +6,19 @@
  <% include ../partials/nav %>
 
 <div class="container">
- <form action="/customer/existing" method="POST" name="formCustomerNumber"  id="formCustomerNumber">
-
-  <div class="well well-lg">
-    <div class="form-group">
-      <label for="mobileNumber">Mobile Number:</label>
-      <input type="text" class="form-control" id="mobileNumber" name="mobileNumber">
+  <form action="/customer/search/mobilenumber" method="POST" name="formCustomerNumber" id="formCustomerNumber">
+    <div class="well well-lg">
+      <div class="form-group">
+        <label for="mobileNumber">Mobile Number:</label>
+        <input type="text" class="form-control" id="mobileNumber" name="mobileNumber">
+      </div>
+      <div>
+        <input type="Submit" value="SEARCH" class="btn btn-default pull-right" />
+      </div>
     </div>
-
-    <div>
-      <input type="Submit" value="SEARCH" class="btn btn-default pull-right" />
-    </div>
-
-  </div>
   </form>
 
-  <form action="#" method="POST" name="formCustomerName"  id="formCustomerName">
+  <form action="/customer/search/name" method="POST" name="formCustomerName"  id="formCustomerName">
     <div class="well well-lg">
 
       <div class="form-group">

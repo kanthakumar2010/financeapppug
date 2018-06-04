@@ -57,11 +57,36 @@ app.get('/customer/existing', (req, res) => {
     //res.send('/customer/search')
 })
 
-app.post('/customer/existing', (req, res) => {
-    let query = {mobileNumber : req.body.mobileNumber}
-    Customer.findOne(query, (err, customer) => {
-        res.redirect('/customer/' + customer._id)
-    } )
+
+// Search Customer By MOBILE NUMBER
+app.post('/customer/search/mobilenumber', (req, res) => {
+    // let query = {mobileNumber : req.body.mobileNumber}
+    // Customer.findOne(query, (err, customer) => {
+    //     res.redirect('/customer/' + customer._id)
+    // } )
+    
+    Customer.find({'mobileNumber' : { $regex : req.body.mobileNumber , $options: 'i'}}, (err, _customer) => {
+        if(err){
+            console.log(err)
+            res.send(err)
+        } else {
+            console.log(chalk.yellow(_customer))
+            res.render('pages/customerSearchResult', { customer : _customer})
+        }        
+    })  
+})
+
+//Search Customer by Name
+app.post('/customer/search/name', (req,res) => {
+    Customer.find({'name' : {$regex : req.body.customerName , $options: 'i'}} , (err, _customer) => {
+        if(err){
+            console.log(err)
+            res.send(err)
+        } else{
+            console.log(chalk.yellow(_customer))
+            res.render('pages/customerSearchResult', { customer : _customer})
+        }        
+    })
 })
 
 

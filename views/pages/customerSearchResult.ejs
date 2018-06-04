@@ -1,0 +1,35 @@
+ <!--Partial of Head  -->
+ <% include ../partials/head %> 
+
+ <body>
+ 
+  <% include ../partials/nav %>
+ 
+    <div class="container">
+        <h1>CUSTOMER RESULTS</h1>
+        <table class="table table-hover">
+            <tbody>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>NAME</th>
+                        <th>DOB</th>
+                        <th>Mobile Number</th>
+                        <th>Gender</th>
+                        <th>Occupation</th>
+                        <th>CITY</th>
+                    </tr>
+                </thead>
+                <%for( var i=0; i < customer.length; i++ ) { %>
+                    <tr>
+                        <td><a href= '/customer/<%= customer[i]._id %>' > <%= customer[i].name%></a></td>                         
+                        <td><%= customer[i].mobileNumber%></td>
+                        <td><%= customer[i].dob%></td>
+                        <td><%= customer[i].gender%></td>
+                        <td><%= customer[i].occupation%></td> 
+                        <td><%= customer[i].city%></td>               
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+ </body>
