@@ -30,7 +30,7 @@
 
             <div class="form-group">
                 <label for="paymentIntrest">Pay:</label>
-                <input type="text" class="form-control" name="paymentIntrest" id="paymentIntrest">
+                <input type="text" class="form-control" name="paymentIntrest" id="paymentIntrest" readonly>
             </div>
 
             <button type="submit" class="btn btn-primary">Save</button>
@@ -54,6 +54,7 @@
 
         var simpleIntrest = ( principal * intrest * ( months / 12)  ) / 100;
         document.getElementById("intrestAmount").value =   simpleIntrest.toFixed(2) ;
+        document.getElementById("paymentIntrest").value =   simpleIntrest.toFixed(2) ;
         
     </script>
 

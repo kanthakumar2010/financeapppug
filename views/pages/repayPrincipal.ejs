@@ -1,0 +1,19 @@
+<!--Partial of Head  -->
+<% include ../partials/head %> 
+
+<body>
+
+    <!-- partials For NAV -->
+<% include ../partials/nav %>
+
+<div class="container well">
+    <h2>Principal Collection :</h2><br><br> 
+    <input type="text" id="loanId" name="loanId" value="<%= loan._id %>" hidden>
+
+    <div class="form-group">
+    <label for="principal">Intrest Amount :</label>
+    <input type="text" class="form-control" id="principal" name="principal" value="<%= loan.principal %>" disabled>
+    </div>
+</div>
+
+</body>
