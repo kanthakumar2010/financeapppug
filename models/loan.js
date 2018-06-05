@@ -8,6 +8,7 @@ const LoanSchema = mongoose.Schema({
     idCustomer : {type : String},
     loanNumber : {type : String},
     type : {type : String},
+    loanAmount  : {type : String},
     principal : {type :String},
     intrestRate : {type : String},    
     emiAmount : {type : String},

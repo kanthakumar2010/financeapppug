@@ -1,0 +1,36 @@
+<!--Partial of Head  -->
+<% include ../partials/head %>
+
+
+    <body>
+
+        <!-- partials For NAV -->
+        <% include ../partials/nav %>
+        
+            <div class="container">
+                <div class="panel panel-primary  col-lg-8">
+                    <div class="panel-heading"><h3>Search Loan</h3></div>
+                    <div class="panel-body">
+                        <form action="/test" method="POST">                   
+
+                        <label>From</label>
+                        <input type="date" name="fromDate">
+
+                        <label>Till</label>
+                        <input type="date" name="toDate">
+
+                        </br>
+
+                        <div id="form-group">
+                            <label class="radio-inline"><input type="radio" name="loantype" value="intrest">Interest</label>
+                            <label class="radio-inline"><input type="radio" name="loantype" value="emi">Emi</label>
+                        </div>
+                        
+                        <button type="submit" class="">Search</button>
+                        </form>
+                    </div> 
+                </div>
+            </div>
+        
+        
+    </body>

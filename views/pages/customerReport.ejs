@@ -22,7 +22,7 @@
     <tbody>
     <% for(var i=0; i < customer.length; i++ ) { %>
         <tr>
-            <td> <%= customer[i].name %></td>
+            <td><a href="/customer/<%= customer[i]._id %>" > <%= customer[i].name %> </a> </td>
             <td> <%= customer[i].dob %></td>
             <td> <%= customer[i].mobileNumber%></td>
             <td> <%= customer[i].idCustomer %></td>

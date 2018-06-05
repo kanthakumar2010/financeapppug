@@ -180,14 +180,14 @@ app.get('/customer/edit/:id', (req, res) => {
     })
 })   
 
-//Loan Router 
+//Loan Router $$$$$$$##############@@@@@@@@@@@@@@@@@
 
 // Loan Collection Page GET
 app.get('/loan/repay/:id', (req, res) => {
     Loan.findById(req.params.id, (err, _loan) => {
         if (err) {
-            console.log(chalk.cyan('FROM => /loan/repay Method : GET'))
-            console.log(err)
+            // console.log(chalk.cyan('FROM => /loan/repay Method : GET'))
+            // console.log(err)
             res.render('pages/errorPage')
         } else {
             // console.log(chalk.cyan(_loan))
@@ -211,10 +211,36 @@ app.get('/loan/repay/:id', (req, res) => {
     
 })
 
+//RePay Principal Amount For Simple Intrest
+app.get('/loan/repay/principal/:id', (req, res)=> {
+    Loan.findById(req.params.id, (err, _loan)=> {
+        console.log(_loan)
+        if (err) {
+            console.log(err)
+            res.send(err)
+        } else {
+            res.render('pages/repayPrincipal', {loan : _loan})
+        }
+    })
+})
+
+app.post('/loan/repay/principal', (req, res)=>{
+    Loan.findById(req.body.loanId, (err, _loan)=>{
+        if(err){
+            console.log(err)
+        } else{
+            
+            _loan.loanAmount = _loan.loanAmount - req.body.principalAmount 
+            _loan.save() 
+            res.redirect('/customer/' + _loan.customerDetailId)
+        }   
+    })
+})
+
 //Save Collection  -  Payment Page 
 app.post('/loan/repay', (req, res) => {
-    console.log(chalk.blue('POST => /loan/repay'))
-    console.log(req.body)
+    // console.log(chalk.blue('POST => /loan/repay'))
+    // console.log(req.body)
     var newPayment = new Payment({
         loanId : req.body.loanId,
         paymentAmount : req.body.paymentIntrest
@@ -231,7 +257,7 @@ app.post('/loan/repay', (req, res) => {
     })
 })
 
-// Loan Get New Loan 
+//New Loan PAGE 
 app.get('/loan/:id', (req, res) => {
     //res.render('pages/newLoan')
     Customer.findById(req.params.id, (err, _customer) => {
@@ -247,6 +273,7 @@ app.get('/loan/:id', (req, res) => {
     })
 })
 
+// LOAN PREVIEW PAGE
 app.post('/loan', (req, res) => {
     if (req.body.loanOption === "intrest") {
 
@@ -257,14 +284,14 @@ app.post('/loan', (req, res) => {
 
     } else if (req.body.loanOption === "emi") {
 
-        console.log(chalk.blue('FROM /LOAN : EMI => Method : POST LoanOption  = EMI'))
-        console.log(req.body)
+        // console.log(chalk.blue('FROM /LOAN : EMI => Method : POST LoanOption  = EMI'))
+        // console.log(req.body)
 
         res.render('pages/emiLoan', { detail: req.body })
     }
 })
 
-// New Loan
+// Create New Loan
 app.post('/loan/new', (req, res) => {
     console.log(chalk.cyan('From => /loan/new ; METHOD = POST ; '))
     console.log(req.body)
@@ -274,6 +301,7 @@ app.post('/loan/new', (req, res) => {
         idCustomer: req.body.customerId,
         loanNumber: req.body.loanNumber,
         type: req.body.loanOption,
+        loanAmount  : req.body.principalAmount,
         principal: req.body.principalAmount,
         intrestRate: req.body.intrest,
         emiAmount: req.body.emiAmount,
@@ -292,6 +320,8 @@ app.post('/loan/new', (req, res) => {
     })
 })
 
+
+//Loan Details Page 
 //Loan Details/ collection Page
 app.get('/loan/collection/:id', (req, res) => {
     Loan.findById(req.params.id, (err, _loan) => {
@@ -301,15 +331,9 @@ app.get('/loan/collection/:id', (req, res) => {
         } else{            
             Payment.findAllByLoanId(req.params.id, (err, _payment)=> {
                 if(_loan.type == 'intrest'){ 
-                        // // Calculating the amount of intrest paid till date
-                        // let totalIntrest = 0 ;
-                        // for (let i = 0; i < _payment.length; i++){
-                        //     totalIntrest += parseInt( _payment[i].paymentAmount );                      
-                        // }            
                     res.render('pages/loanDetailInterest', {
                         loan : _loan,
-                        payment : _payment,
-                        // totalIntrestPaid : totalIntrest                                               
+                        payment : _payment                                                                   
                     })
                 } else if( _loan.type == 'emi' ){                
                     res.render('pages/loanDetailEmi', {loan : _loan, payment : _payment})
@@ -388,6 +412,13 @@ app.get('/report/loan', (req, res)=>{
             res.render('pages/loanReport', {loan : _loan})
         }
     })
+})
+
+app.get('/test', (req , res)=>{
+    res.render('pages/reportLoanSearch')
+})
+app.post('/test', (req, res) => {
+    res.send(req.body)
 })
 
 app.listen(process.env.PORT || 3000, () => {

@@ -24,7 +24,14 @@
                 <td>Principal Amount</td>
                 <td><%= loan.principal %></td>
             </tr>
-
+            <tr>
+                <td>Principal Amount Final</td>
+                <td><%= loan.loanAmount %></td>
+            </tr>
+            <tr>
+                <td>Intrest Rate</td>
+                <td><%= loan.intrestRate %></td>
+            </tr>
             <tr>
                 <td>Interest Amount / Month</td>
                 <td id="intrestAmount"></td>
@@ -57,12 +64,14 @@
         </table>
     </div> 
 
-        <a href="/loan/repay/<%= loan._id %>" class="btn btn-primary pull-right">Collect</a>
+        <a href="/loan/repay/<%= loan._id %>" class="btn btn-primary pull-right">REPAY INTREST</a>
+        <a href="/loan/repay/principal/<%= loan._id %>" class="btn btn-primary pull-right">REPAY PRINCIPAL</a>
     </div>
     </body>
 
     <script>
-        var principal = <%= loan.principal %> ;
+        
+        var principal = <%= loan.loanAmount %> ;
         var intrest = <%= loan.intrestRate %> ; 
         var months = 1;
 

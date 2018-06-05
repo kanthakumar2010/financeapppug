@@ -6,52 +6,12 @@
     <!-- partials For NAV -->
 <% include ../partials/nav %>
 
-<!-- <div class="container ">
-    <br><br><br>
-        <div class="col-lg-4 col-lg-offset-4">
-    <H1>Simple Interest</H1>
-    <table class="table table-hover" id="tab">    
-        <tbody>
-        <tr>
-            <td> <h4>Principal Amount</h4></td>
-            <td>
-                <h4><%= detail.principalAmount %></h4>
-            </td>
-        </tr>
-        <tr>            
-            <td><h4>Interest / Year</h4></td>
-            <td>
-                <h4><%= detail.intrest %></h4>
-            </td>
-        </tr>
-        <tr>
-            <td><h4>Months</h4></td>
-            <td>
-                <h4><%= detail.months %></h4>
-            </td>
-        </tr>
-        <tr>
-            <td><h4>Total Amount</h4></td>
-            <td>
-                <h4 id="totalValue"></h4>
-            </td>
-        </tr>
-        <tr>
-            <td><h4>Total Interest Paid</h4></td>
-            <td>
-                <h4 id="intrestValue"></h4>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div> -->
-
 <div class="container ">
     <h2>Loan Details</h2>
     <br> <br>
 <form action="/loan/new" method="POST">   
     
-    <input type="hidden"  id="customerObjId" name="customerObjId" value= <%= detail.customerObjId %>>
+    <input type="hidden" id="customerObjId" name="customerObjId" value= <%= detail.customerObjId %>>    
 
     <div class="form-group">
         <label for="customerId">Customer Id:</label>        
