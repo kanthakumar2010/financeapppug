@@ -70,7 +70,7 @@ app.post('/customer/search/mobilenumber', (req, res) => {
             console.log(err)
             res.send(err)
         } else {
-            console.log(chalk.yellow(_customer))
+            // console.log(chalk.yellow(_customer))
             res.render('pages/customerSearchResult', { customer : _customer})
         }        
     })  
@@ -83,7 +83,7 @@ app.post('/customer/search/name', (req,res) => {
             console.log(err)
             res.send(err)
         } else{
-            console.log(chalk.yellow(_customer))
+            // console.log(chalk.yellow(_customer))
             res.render('pages/customerSearchResult', { customer : _customer})
         }        
     })
@@ -250,8 +250,8 @@ app.post('/loan/repay', (req, res) => {
             console.log(err)
             res.send(err)
         } else{
-            console.log( chalk.cyan('Payment Saved') )
-            console.log(chalk.cyan('/loan/collection/' + req.body.loanId))
+            // console.log( chalk.cyan('Payment Saved') )
+            // console.log(chalk.cyan('/loan/collection/' + req.body.loanId))
             res.redirect('/loan/collection/' + req.body.loanId)
         }        
     })
@@ -293,8 +293,8 @@ app.post('/loan', (req, res) => {
 
 // Create New Loan
 app.post('/loan/new', (req, res) => {
-    console.log(chalk.cyan('From => /loan/new ; METHOD = POST ; '))
-    console.log(req.body)
+    // console.log(chalk.cyan('From => /loan/new ; METHOD = POST ; '))
+    // console.log(req.body)
 
     let newLoan = new Loan({  
         customerDetailId : req.body.customerObjId,   
@@ -405,20 +405,16 @@ app.get('/report/customer', (req, res)=>{
 })
 
 app.get('/report/loan', (req, res)=>{
-    Loan.find({}, (err, _loan)=>{
-        if(err){
-            console.log(err)
-        } else {
-            res.render('pages/loanReport', {loan : _loan})
-        }
-    })
+    res.render('pages/reportLoanSearch')
 })
 
 app.get('/test', (req , res)=>{
     res.render('pages/reportLoanSearch')
 })
 app.post('/test', (req, res) => {
-    res.send(req.body)
+        Loan.find({'createdDate' : {"$gte": new Date(req.body.fromDate), "$lte": new Date(req.body.toDate)} , 'type' : req.body.loanType } , (err , _loan) => {            
+            res.send(_loan)
+        })     
 })
 
 app.listen(process.env.PORT || 3000, () => {
