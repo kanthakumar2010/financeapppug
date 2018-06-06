@@ -362,16 +362,21 @@ app.get('/loan/collection/:id', (req, res) => {
             res.render('pages/errorPage')
         } else{            
             Payment.findAllByLoanId(req.params.id, (err, _payment)=> {
-                if(_loan.type == 'intrest'){ 
-                    res.render('pages/loanDetailInterest', {loan : _loan, payment : _payment})
+                if(_loan.type == 'intrest'){
+                    // Calculate The Total Amount of Intrest Paid
+                    var tempIntrestValueTotal = 0 ; 
+                    for (let i = 0; i < _payment.length ; i++) {
+                        tempIntrestValueTotal = tempIntrestValueTotal + parseInt(_payment[i].paymentAmount)                        
+                    }
+                    //Render the page Loan Detail
+                    res.render('pages/loanDetailInterest', {loan : _loan, payment : _payment, totalIntrest : tempIntrestValueTotal})
                 } else if( _loan.type == 'emi' ){                
                     res.render('pages/loanDetailEmi', {loan : _loan, payment : _payment})
                 } 
             })                       
         }
     })                                                                          
-})
-    
+})    
 
 // Customer Delete
 app.delete('/customer/delete/:id', (req, res) => {
