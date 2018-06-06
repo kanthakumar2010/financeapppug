@@ -422,10 +422,9 @@ app.post('/report/loan', (req, res) => {
 })
 
 // GET DUE Report
-// app.get('/report/due', (req, res)=>{
-//     res.render('pages/reportdueSearch')
-// })
-
+app.get('/report/due', (req, res)=>{
+    res.render('pages/reportdueSearch')
+})
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('server started')
