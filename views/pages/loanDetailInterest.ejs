@@ -62,6 +62,8 @@
                 </tr>
             <% } %>
         </table>
+    <h2>TOTAL Intrest Paid Till now = </h2>
+  
     </div> 
 
         <a href="/loan/repay/<%= loan._id %>" class="btn btn-primary pull-right">REPAY INTREST</a>
@@ -76,6 +78,7 @@
         var months = 1;
 
         var simpleIntrest = ( principal * intrest * ( months / 12)  ) / 100;
-        document.getElementById("intrestAmount").innerText =   simpleIntrest.toFixed(2) ;        
+        document.getElementById("intrestAmount").innerText =   simpleIntrest.toFixed(2) ; 
+        
     </script>
 </html>

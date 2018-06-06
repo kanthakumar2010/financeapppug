@@ -1,33 +1,32 @@
 <!--Partial of Head  -->
+
 <% include ../partials/head %>
+<body>
 
+    <!-- partials For NAV -->
+    <% include ../partials/nav %>        
+    
+<div class="container">
+        <div class="col-lg-8 well ">
+        <div class="panel-heading"><h3>Search Loan</h3></div>
+        <div class="panel-body">
+            <form action="/report/loan" method="POST">   
+            <div>          
+            <label>From</label> &nbsp&nbsp   
+            <input type="date" name="fromDate"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
-    <body>
-
-        <!-- partials For NAV -->
-        <% include ../partials/nav %>        
-       
-    <div class="container">
-            <div class="col-lg-8 well ">
-            <div class="panel-heading"><h3>Search Loan</h3></div>
-            <div class="panel-body">
-                <form action="/test" method="POST">   
-                <div>          
-                <label>From</label> &nbsp&nbsp   
-                <input type="date" name="fromDate"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-
-                <label>Till</label> &nbsp&nbsp   
-                <input type="date" name="toDate"> &nbsp&nbsp&nbsp&nbsp   
-                </div>
-                <br>
-                <div id="form-group">
-                    <label class="radio-inline"><input type="radio" name="loanType" value="intrest">Interest</label>
-                    <label class="radio-inline"><input type="radio" name="loanType" value="emi">Emi</label>
-                </div>
-                <br>
-                <button type="submit" class="btn btn-danger" id="btn">Search</button>
-                </form>
-            </div> 
-        </div>                
-    </div> 
-    </body>
+            <label>Till</label> &nbsp&nbsp   
+            <input type="date" name="toDate"> &nbsp&nbsp&nbsp&nbsp   
+            </div>
+            <br>
+            <div id="form-group">
+                <label class="radio-inline"><input type="radio" name="loanType" value="intrest">Interest</label>
+                <label class="radio-inline"><input type="radio" name="loanType" value="emi">Emi</label>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-danger" id="btn">Search</button>
+            </form>
+        </div> 
+    </div>                
+</div> 
+</body>

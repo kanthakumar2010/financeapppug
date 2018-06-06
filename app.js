@@ -363,10 +363,7 @@ app.get('/loan/collection/:id', (req, res) => {
         } else{            
             Payment.findAllByLoanId(req.params.id, (err, _payment)=> {
                 if(_loan.type == 'intrest'){ 
-                    res.render('pages/loanDetailInterest', {
-                        loan : _loan,
-                        payment : _payment                                                                   
-                    })
+                    res.render('pages/loanDetailInterest', {loan : _loan, payment : _payment})
                 } else if( _loan.type == 'emi' ){                
                     res.render('pages/loanDetailEmi', {loan : _loan, payment : _payment})
                 } 
@@ -390,10 +387,13 @@ app.delete('/customer/delete/:id', (req, res) => {
 })
 
 // Reports Routes
+
+//GET Reports Page
 app.get('/reports', (req, res)=>{
     res.render('pages/reports')
 })
 
+// GET Customer Reports
 app.get('/report/customer', (req, res)=>{
     Customer.find({}, (err, _customer)=>{
         if(err){
@@ -404,15 +404,23 @@ app.get('/report/customer', (req, res)=>{
     })
 })
 
+// GET Loan Reports
 app.get('/report/loan', (req, res)=>{
     res.render('pages/reportLoanSearch')
 })
 
+// POST => Search Loan Details 
 app.post('/report/loan', (req, res) => {
     Loan.find({'createdDate' : {"$gte": new Date(req.body.fromDate), "$lte": new Date(req.body.toDate)} , 'type' : req.body.loanType } , (err , _loan) => {            
-        res.send(_loan)
+        res.render('pages/loanReport', {loan : _loan})
     })     
 })
+
+// GET DUE Report
+// app.get('/report/due', (req, res)=>{
+//     res.render('pages/reportdueSearch')
+// })
+
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('server started')
