@@ -48,20 +48,22 @@
                             <th>Status</th>                    
                         </tr>
                     </thead>
-                    <% for(var i=0; i < loan.emiMonths; i++) {%>
-                        <tr>
-                            <td><%= i + 1 %></td>
-                            <% if(payment[i]) {%>
-                                <td><%= payment[i].paymentAmount %></td>
-                                <td><%= payment[i].date %></td>
-                                <td>PAID</td>
-                            <% } else { %>
-                                <td><%= loan.emiAmount %></td>
-                                <td>TO BE PAID</td>
-                                <td><a href="/loan/repay/<%= loan._id %>" class="btn btn-primary">Pay</a></td>
-                                <% } %>                                           
-                        </tr>
-                    <% } %>
+                    <tbody>
+                        <% for(var i=0; i < loan.emiMonths; i++) {%>
+                            <tr>
+                                <td><%= i + 1 %></td>
+                                <% if(payment[i]) {%>
+                                    <td><%= payment[i].paymentAmount %></td>
+                                    <td><%= payment[i].date %></td>
+                                    <td>PAID</td>
+                                <% } else { %>
+                                    <td><%= loan.emiAmount %></td>
+                                    <td>TO BE PAID</td>
+                                    <td><a href="/loan/repay/<%= loan._id %>" class="btn btn-primary">Pay</a></td>
+                                    <% } %>                                           
+                            </tr>
+                        <% } %>
+                    </tbody>
                 </table>
             </div> 
 

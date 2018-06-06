@@ -153,7 +153,7 @@ app.get('/customer/:id', (req, res) => {
                 res.render('pages/customerDetail', { 
                     details : customer,  // Send Customer Object to frontEnd as Details
                     loanDetails : loanDetails, // Send Loan Details
-                    editLink : '/customer/edit/' + customer._id,  //Send Link Value to FrontEnd              
+                    editLink : '/customer/edit/' + customer._id ,  //Send Link Value to FrontEnd              
                     newLoanLink : '/loan/' + customer._id, //Send New Loan Link with Id
                     deleteLink : '/customer/delete/' + customer._id + '?_method=DELETE'
                 })
@@ -178,7 +178,39 @@ app.get('/customer/edit/:id', (req, res) => {
         }
 
     })
-})   
+}) 
+// CUSTOMER UPDATE:
+app.put('/customer/edit/:id', (req, res) => {
+
+let customerUpdate = {
+    idCustomer : req.body.idCustomer,
+    name : req.body.name,
+    fatherName : req.body.fatherName,
+    dob : req.body.dob,
+    gender : req.body.gender,
+    occupation : req.body.occupation,
+    mobileNumber : req.body.mobileNumber,
+    landline : req.body.landline,
+    proofType : req.body.proofType,
+    proofNumber : req.body.idNumber,
+    address : req.body.address,
+    state : req.body.state,
+    city : req.body.city,
+    pincode : req.body.pincode,
+    reference : req.body.reference,
+    refRelationship : req.body.refRelationship
+}
+console.log('req.params.id =>', req.params.id)
+    let query = {_id : req.params.id}
+    Customer.update(query, customerUpdate, (err, _customer)=> {
+        if(err){
+            console.log(err)
+            res.send(err)
+        } else {
+            res.redirect('/customer/' + req.params.id )
+        }
+    })
+})     
 
 //Loan Router $$$$$$$##############@@@@@@@@@@@@@@@@@
 
@@ -344,38 +376,6 @@ app.get('/loan/collection/:id', (req, res) => {
 })
     
 
-
-//CUSTOMER UPDATE:
-app.put('/customer/edit/:id', (req, res) => {
-    let customerUpdate = {
-        name : req.body.name,
-        fatherName : req.body.fatherName,
-        dob : req.body.dob,
-        gender : req.body.gender,
-        occupation : req.body.occupation,
-        mobileNumber : req.body.mobileNumber,
-        landline : req.body.landline,
-        proofType : req.body.proofType,
-        proofNumber : req.body.idNumber,
-        address : req.body.address,
-        state : req.body.state,
-        city : req.body.city,
-        pincode : req.body.pincode,
-        reference : req.body.reference,
-        refRelationship : req.body.refRelationship
-    }
-    console.log('Reached UPDATE')
-
-    let query = {_id : req.params.id}
-    Customer.update( query, customerUpdate, (err) => {
-        if(err){
-            console.log(err)
-            res.send(err)
-        }
-        res.send('Updated !!!')
-    })
-})    
-
 // Customer Delete
 app.delete('/customer/delete/:id', (req, res) => {
     console.log('Reached DELETE')
@@ -408,13 +408,10 @@ app.get('/report/loan', (req, res)=>{
     res.render('pages/reportLoanSearch')
 })
 
-app.get('/test', (req , res)=>{
-    res.render('pages/reportLoanSearch')
-})
-app.post('/test', (req, res) => {
-        Loan.find({'createdDate' : {"$gte": new Date(req.body.fromDate), "$lte": new Date(req.body.toDate)} , 'type' : req.body.loanType } , (err , _loan) => {            
-            res.send(_loan)
-        })     
+app.post('/report/loan', (req, res) => {
+    Loan.find({'createdDate' : {"$gte": new Date(req.body.fromDate), "$lte": new Date(req.body.toDate)} , 'type' : req.body.loanType } , (err , _loan) => {            
+        res.send(_loan)
+    })     
 })
 
 app.listen(process.env.PORT || 3000, () => {
