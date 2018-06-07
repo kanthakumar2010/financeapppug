@@ -448,10 +448,24 @@ app.post('/report/loan', (req, res) => {
 })
 
 // GET DUE Report
-app.get('/report/due', (req, res)=>{
-    res.render('pages/reportdueSearch')
+app.get('/report/due', (req, res)=>{   
+    Payment.find({'date' : {"$lte": new Date()} }).distinct('loanId', (err, _loanId)=> {
+        Loan.find({ '_id' : { $in: _loanId } }, (err, _loan) => {
+            res.render('pages/loanReport', {loan : _loan})
+        })
+    })
 })
 
+// //TEST
+// app.get('/test', (req, res) => {
+//     res.render('pages/test')
+// })
+
+// app.post('/test', (req, res) => {
+//     console.log('FROM DATE', req.body.fromDate)
+//     console.log('TILL DATE', req.body.toDate)
+//     console.log('FROM DATE',  + 1)
+// })
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('server started')

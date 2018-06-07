@@ -1,0 +1,58 @@
+<!--Partial of Head  -->
+<% include ../partials/head %>
+
+
+    <body>
+
+        <!-- partials For NAV -->
+        <% include ../partials/nav %>
+            <div class="container">
+                <button class="btn btn-default pull-right" onclick="myFunction()">Print</button>
+                <h2>Loan Due Report</h2>                
+                <br>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Loan Number</th>
+                            <th>Type</th>
+                            <th>Created Date</th>
+                            <th>principal</th>
+                            <th>intrestRate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i=0; i < loan.length; i++ ) { %>
+                            <tr>
+                                <td>
+                                    <a href="/loan/collection/<%= loan[i]._id %>"><%= loan[i].loanNumber %></a>                                    
+                                </td>
+                                <td>
+                                    <%= loan[i].type %>
+                                </td>
+                                <td>
+                                    <%= loan[i].createdDate%>
+                                </td>
+                                <td>
+                                    <%= loan[i].principal %>
+                                </td>
+                                <td>
+                                    <%= loan[i].intrestRate %>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+                
+            </div>
+   
+
+    <script>
+    function myFunction() {
+        window.print();
+    }
+    </script>
+
+    </body>
+
+    </html>
