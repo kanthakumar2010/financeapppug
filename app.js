@@ -8,10 +8,11 @@ const mongoose = require('mongoose')
 const config = require('./config/database')
 const chalk = require('chalk')
 const url = require('url')
-var methodOverride = require('method-override')
-var session = require('express-session');
-var cookieParser = require('cookie-parser');
-var flash = require('connect-flash');
+const methodOverride = require('method-override')
+const session = require('express-session')
+const cookieParser = require('cookie-parser')
+const flash = require('connect-flash')
+const fileUpload = require('express-fileupload')
 
 //  mongose connection string
 mongoose.connect(config.database)
@@ -33,6 +34,7 @@ const app = express()
 app.use(cookieParser('secret'));
 app.use(session({cookie: { maxAge: 60000 }}));
 app.use(flash());
+app.use(fileUpload());
 
 // External MiddleWare For Put/DELETE METHOD
 app.use(methodOverride('_method', { methods: ['POST', 'GET'] } ))
@@ -97,7 +99,7 @@ app.get('/customer', (req, res) => {
 })
 
 app.post('/customer', (req, res) => {    
-   
+
     let newCustomer = new Customer ({
         idCustomer : req.body.idCustomer,
         name : req.body.name,
@@ -116,6 +118,30 @@ app.post('/customer', (req, res) => {
         reference : req.body.reference,
         refRelationship : req.body.refRelationship
     })
+
+    // File Uplode Handeler
+    if (req.files.profileImage){
+        // The name of the input field (i.e. "profileImage") is used to retrieve the uploaded file
+        let uploadedFile = req.files.profileImage
+
+        // Generate File Name With ObjectId()
+        // Generate Path Variable 
+        var filePath = path.join( __dirname, 'asserts', String(mongoose.Types.ObjectId()) + '.jpg')
+        
+        //console.log(chalk.green('var FILEPATH : '), filePath)
+
+        //Use the mv() method to place the file somewhere on your server
+        uploadedFile.mv( filePath ), function(err) {
+            if (err){
+                res.redirect('/customer') 
+            }                     
+        }  
+
+        newCustomer.profilePath = filePath
+        console.log(chalk.bgRed.black('file Uploded'))
+    } 
+    
+    console.log(newCustomer)
 
     // Add New Customer to db 
     // console.log(chalk.green( JSON.stringify(newCustomer) ) )
@@ -425,6 +451,7 @@ app.post('/report/loan', (req, res) => {
 app.get('/report/due', (req, res)=>{
     res.render('pages/reportdueSearch')
 })
+
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('server started')

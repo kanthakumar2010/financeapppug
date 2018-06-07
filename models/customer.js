@@ -17,7 +17,8 @@ const CustomerSchema = mongoose.Schema({
     refRelationship : {type: String},
     address : {type: String},
     state : {type: String},
-    city : {type: String}      
+    city : {type: String},
+    profilePath : {type : String}      
 })
 
 

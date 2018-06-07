@@ -7,7 +7,7 @@
 <!-- Form New Customer  -->
 <div class="container">
   <h2>New Customer</h2><br><br>
-<form name="myForm" action="/customer" method="POST" onsubmit="return validateForm()">
+<form name="myForm" action="/customer" method="POST" encType="multipart/form-data" onsubmit="return validateForm()">
 <!-- Form Details  -->
 
 <!-- Left Side Div -->
@@ -93,117 +93,117 @@
         <label for="refRelationship">Reference Relationship:</label>
         <input type="text" class="form-control" id="refRelationship" name="refRelationship">
       </div>
-    </div>
+    </div>    
+
     <input type="submit" class="btn btn-default pull-right" value="submit" />
     </p>
 </div>
 
 <!-- Image uplode -->
 <div class = "col-lg-4" >
-    <input type='file' onchange="readURL(this);" />
+    <input type='file' onchange="readURL(this);" name="profileImage" accept=".jpg"/>
+    <!-- Image Preview -->
     <img id="blah" src="#" alt="your image" />
 
-    <script>
-      //Photo Upload.
-      function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+  <script>
+    //Photo Upload.
+    function readURL(input) {
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
 
-                reader.onload = function (e) {
-                    $('#blah')
-                        .attr('src', e.target.result)
-                        .width(150)
-                        .height(200);
-                };
+              reader.onload = function (e) {
+                  $('#blah')
+                      .attr('src', e.target.result)
+                      .width(150)
+                      .height(200);
+              };
 
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-      
-      //VALIDATION
-      function validateForm() {
-          var name = document.forms["myForm"]["name"].value;
-          var fatherName = document.forms["myForm"]["fatherName"].value;
-          var dob = document.forms["myForm"]["dob"].value;
-          var sex = document.forms["myForm"]["gender"].value;
-          var occupation = document.forms["myForm"]["occupation"].value;
-          var mobileNumber = document.forms["myForm"]["mobileNumber"].value;
-          var landline = document.forms["myForm"]["landline"].value;
-          var proofType = document.forms["myForm"]["proofType"].value;
-          var idNumber = document.forms["myForm"]["idNumber"].value;
-          var address = document.forms["myForm"]["address"].value;
-          var city = document.forms["myForm"]["city"].value;
-          var reference = document.forms["myForm"]["reference"].value;
-          var refRelationship = document.forms["myForm"]["refRelationship"].value;
-      
-          if (name == "") {
-            alert("Name must be filled out");
-            return false;
+              reader.readAsDataURL(input.files[0]);
           }
-          if (fatherName == "") {
-            alert("Father Name must be filled out");
-            return false;
-          }
-          if (dob == "") {
-            alert("DOB must be filled out");
-            return false;
-          }
-          if (sex == "") {
-            alert("Gender must not be Empety");
-            return false;
-          }
-          if (occupation == "") {
-            alert("occupation must not be Empety");
-            return false;
-          }
+      }
+        
+  //VALIDATION
+  function validateForm() {
+      var name = document.forms["myForm"]["name"].value;
+      var fatherName = document.forms["myForm"]["fatherName"].value;
+      var dob = document.forms["myForm"]["dob"].value;
+      var sex = document.forms["myForm"]["gender"].value;
+      var occupation = document.forms["myForm"]["occupation"].value;
+      var mobileNumber = document.forms["myForm"]["mobileNumber"].value;
+      var landline = document.forms["myForm"]["landline"].value;
+      var proofType = document.forms["myForm"]["proofType"].value;
+      var idNumber = document.forms["myForm"]["idNumber"].value;
+      var address = document.forms["myForm"]["address"].value;
+      var city = document.forms["myForm"]["city"].value;
+      var reference = document.forms["myForm"]["reference"].value;
+      var refRelationship = document.forms["myForm"]["refRelationship"].value;
 
-          if (mobileNumber == "") {
-            alert("mobileNumber must not be Empety");
-            return false;
-          }
+      if (name == "") {
+        alert("Name must be filled out");
+        return false;
+      }
+      if (fatherName == "") {
+        alert("Father Name must be filled out");
+        return false;
+      }
+      if (dob == "") {
+        alert("DOB must be filled out");
+        return false;
+      }
+      if (sex == "") {
+        alert("Gender must not be Empety");
+        return false;
+      }
+      if (occupation == "") {
+        alert("occupation must not be Empety");
+        return false;
+      }
 
-          if (isNaN(phonenumber)) {
-            alert("Enter the valid Mobile Number");
-            return fales;
-          }
+      if (mobileNumber == "") {
+        alert("mobileNumber must not be Empety");
+        return false;
+      }
 
-          if (mobilenumber.value.length != 10) {
-            alert("Enter 10 digits");
-            return false;
-          }
+      if (isNaN(phonenumber)) {
+        alert("Enter the valid Mobile Number");
+        return fales;
+      }
 
-          if (landline == "") {
-            alert("landline must not be Empety");
-            return false;
-          }
-          if (proofType == "") {
-            alert("proofType must not be Empety");
-            return false;
-          }
-          if (idNumber == "") {
-            alert("ID NUMBER  must not be Empety");
-            return false;
-          }
-          if (address == "") {
-            alert("address must not be Empety");
-            return false;
-          }
-          if (city == "") {
-            alert("city must not be Empety");
-            return false;
-          }
-          if (reference == "") {
-            alert("Reference must not be Empety");
-            return false;
-          }
-          if (refRelationship == "") {
-            alert("Reference RelationShip must not be Empety");
-            return false;
-          }
+      if (mobilenumber.value.length != 10) {
+        alert("Enter 10 digits");
+        return false;
+      }
 
-}
-
-    </script>
+      if (landline == "") {
+        alert("landline must not be Empety");
+        return false;
+      }
+      if (proofType == "") {
+        alert("proofType must not be Empety");
+        return false;
+      }
+      if (idNumber == "") {
+        alert("ID NUMBER  must not be Empety");
+        return false;
+      }
+      if (address == "") {
+        alert("address must not be Empety");
+        return false;
+      }
+      if (city == "") {
+        alert("city must not be Empety");
+        return false;
+      }
+      if (reference == "") {
+        alert("Reference must not be Empety");
+        return false;
+      }
+      if (refRelationship == "") {
+        alert("Reference RelationShip must not be Empety");
+        return false;
+      }
+  }
+  </script>
 </div>
 
 <!-- Optional JavaScript -->
