@@ -7,13 +7,13 @@
  
     <div class="container">
         <h1>CUSTOMER RESULTS</h1>
-        <table class="table table-hover">
+        <table class="table table-striped">
             <tbody>
-                <thead class="thead-dark">
+                <thead>
                     <tr>
-                        <th>NAME</th>
-                        <th>DOB</th>
+                        <th>Customer Name</th>
                         <th>Mobile Number</th>
+                        <th>DOB</th>                        
                         <th>Gender</th>
                         <th>Occupation</th>
                         <th>CITY</th>
@@ -21,9 +21,9 @@
                 </thead>
                 <%for( var i=0; i < customer.length; i++ ) { %>
                     <tr>
-                        <td><a href= '/customer/<%= customer[i]._id %>' > <%= customer[i].name%></a></td>                         
+                        <td><a href= '/customer/<%= customer[i]._id %>' > <%= customer[i].name%></a></td>
                         <td><%= customer[i].mobileNumber%></td>
-                        <td><%= customer[i].dob%></td>
+                        <td><%= customer[i].dob%></td>                        
                         <td><%= customer[i].gender%></td>
                         <td><%= customer[i].occupation%></td> 
                         <td><%= customer[i].city%></td>               
